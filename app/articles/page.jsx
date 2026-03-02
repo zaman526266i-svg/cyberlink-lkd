@@ -21,14 +21,7 @@ const ArticlesPage = () => {
   }
 
   return (
-    <div className="min-h-screen font-hind  py-3
-
-bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
-font-hind  
-selection:text-white
-animate-[gradientMove_18s_ease_infinite]
-font-hind 
-selection:bg-orange-500">
+    <div className="min-h-screen font-hind py-3 bg-white selection:text-white selection:bg-orange-500">
       
       {/* ১. প্রিমিয়াম হেডার সেকশন */}
       <section className="relative h-[350px] lg:h-[450px] flex items-center overflow-hidden">
@@ -36,19 +29,16 @@ selection:bg-orange-500">
           <video 
             src={articlesData.header.bgVideo} 
             autoPlay muted loop playsInline 
-            className="w-full h-full object-cover opacity-60 brightness-75" 
+            className="w-full h-full object-cover opacity-100" 
           />
-          {/* লাইম গ্রিন এবং ডার্ক গ্রিন ওভারলে */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-[#414b41]/60 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#414b41]"></div>
         </div>
 
         <div className="container mx-auto px-6 lg:px-20 relative z-10 pt-10">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-            <h1 className="text-5xl lg:text-8xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic">
+            <h1 className="text-5xl lg:text-8xl font-black mb-6 text-slate-900 font-poppins tracking-tighter uppercase italic">
               Tech <span className="text-[#BFFF00]">Articles</span>
             </h1>
-            <p className="text-gray-100 text-lg lg:text-xl font-medium leading-relaxed max-w-xl opacity-90">
+            <p className="text-slate-800 text-lg lg:text-xl font-medium leading-relaxed max-w-xl opacity-90 bg-white/70 rounded-xl p-3">
               {articlesData.header.description}
             </p>
           </motion.div>

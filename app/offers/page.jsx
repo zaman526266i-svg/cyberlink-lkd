@@ -34,7 +34,7 @@ export default function OffersPage() {
   }, []);
 
   return (
-    <div className="min-h-screen font-hind selection:text-white selection:bg-blue-600 pb-24 bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.035)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.025)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)]">
+    <div className="min-h-screen font-hind selection:text-white selection:bg-blue-600 pb-24 bg-white">
       <section className="relative min-h-[450px] lg:min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           {offersData.header.bgImage ? (
@@ -44,8 +44,6 @@ export default function OffersPage() {
               className="w-full h-full object-cover opacity-60"
             />
           ) : null}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-950/85 via-blue-900/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-950/75" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10 pt-20 pb-32 lg:pb-64">
@@ -55,10 +53,10 @@ export default function OffersPage() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <h1 className="text-3xl sm:text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase drop-shadow-2xl leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-8xl font-black mb-4 text-slate-900 font-poppins tracking-tighter uppercase drop-shadow-2xl leading-tight">
               {offersData.header.title}
             </h1>
-            <p className="text-blue-50 text-sm sm:text-lg lg:text-xl leading-relaxed font-medium opacity-90 drop-shadow-md max-w-2xl">
+            <p className="text-slate-800 text-sm sm:text-lg lg:text-xl leading-relaxed font-medium opacity-90 drop-shadow-md max-w-2xl bg-white/70 rounded-xl p-3 inline-block">
               {offersData.header.description}
             </p>
           </motion.div>

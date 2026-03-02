@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --gp-bg-top: #f3f8ff;
+--gp-bg-top: #ffffff;
   --gp-bg-mid: #ffffff;
-  --gp-bg-bottom: #eef5ff;
+  --gp-bg-bottom: #ffffff;
   --foreground: #0f172a;
   --chakra-fonts-heading: Telenor, "Noto Sans Bengali", "Helvetica Neue", Helvetica, Arial, "Noto Sans Bengali", sans-serif;
   --chakra-fonts-body: Telenor, "Noto Sans Bengali", "Helvetica Neue", Helvetica, Arial, "Noto Sans Bengali", sans-serif;
@@ -16,10 +16,10 @@
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 14% 18%, rgba(125, 182, 255, 0.05) 0, rgba(125, 182, 255, 0) 32%),
-    radial-gradient(circle at 88% 12%, rgba(90, 156, 255, 0.04) 0, rgba(90, 156, 255, 0) 28%),
-    linear-gradient(180deg, var(--gp-bg-top) 0%, var(--gp-bg-mid) 46%, var(--gp-bg-bottom) 100%);
+background: #ffffff;
+    /* radial-gradient(circle at 14% 18%,  32%),
+    radial-gradient(circle at 88% 12%, 28%),
+    linear-gradient(180deg, var(--gp-bg-top) 0%, var(--gp-bg-mid) 46%, var(--gp-bg-bottom) 100%); */
   color: var(--foreground);
   font-family: var(--chakra-fonts-body);
 }

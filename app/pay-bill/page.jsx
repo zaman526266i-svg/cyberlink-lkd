@@ -18,32 +18,25 @@ export default function PayBillPage() {
     }
 
     return (
-        <div className="min-h-screen my-4
-
-bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)] 
-font-hind  
-selection:text-white
-
-font-hind 
-selection:bg-blue-600">
+        <div className="min-h-screen my-4 bg-white font-hind selection:text-white selection:bg-blue-600">
 
             {/* ১. হেডার সেকশন - প্যাডিং কমিয়ে চওড়া করা হয়েছে */}
-            <section className="relative h-[250px] lg:h-[350px] flex items-center overflow-hidden bg-blue-200/50">
+            <section className="relative h-[250px] lg:h-[350px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg"
-                        className="w-full h-full object-cover opacity-20 brightness-110"
+                        className="w-full h-full object-cover opacity-50"
                         alt="Pay Bill Header"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-100 via-blue-100/80 to-transparent"></div>
+                    
                 </div>
 
                 <div className="max-w-[1400px] mx-auto w-full px-4 lg:px-6 relative z-10">
                     <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-2xl">
-                        <h1 className="text-4xl lg:text-6xl font-black mb-3 text-blue-900 font-poppins tracking-tight uppercase">
-                            How to <span className="text-blue-600">Pay?</span>
+                        <h1 className="text-4xl lg:text-6xl font-black mb-3 text-slate-900 font-poppins tracking-tight uppercase">
+                            How to <span className="text-blue-700">Pay?</span>
                         </h1>
-                        <p className="text-slate-600 text-base lg:text-lg font-medium leading-relaxed font-hind opacity-80">
+                        <p className="text-slate-800 text-base lg:text-lg font-medium leading-relaxed font-hind opacity-90 bg-white/70 rounded-xl p-3 inline-block">
                             সহজ কিছু ধাপ অনুসরণ করে আপনার মাসিক ইন্টারনেট বিল পরিশোধ করুন।
                         </p>
                     </motion.div>

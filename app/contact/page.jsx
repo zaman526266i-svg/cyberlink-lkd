@@ -18,32 +18,24 @@ export default function ContactPage() {
     }
 
     return (
-        <div className="min-h-screen my-4
-
-bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)] 
-font-hind  
-selection:text-white
-
-font-hind 
-selection:bg-blue-600">
+        <div className="min-h-screen my-4 bg-white font-hind selection:text-white selection:bg-blue-600">
             
             {/* ১. হেডার সেকশন - নীল/ডার্ক ওভারলেসহ (ভিডিওর সাথে মিল রেখে) */}
             <section className="relative h-[300px] lg:h-[450px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/banner/cyberlink_web_banner_01.png"
+                        src="header/contact-us.png"
                         alt="Contact banner"
-                        className="w-full h-full object-cover opacity-35"
+                        className="w-full h-full object-cover opacity-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-900/80 to-transparent"></div>
                 </div>
 
                 <div className="container mx-auto px-6 lg:px-20 relative z-10">
                     <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-                        <h1 className="text-5xl lg:text-8xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic">
-                            Get in <span className="text-blue-400">touch</span>
+                        <h1 className="text-5xl lg:text-8xl font-black mb-6 text-slate-900 font-poppins tracking-tighter uppercase italic">
+                            Get in <span className="text-blue-700">touch</span>
                         </h1>
-                        <p className="text-blue-100 text-lg lg:text-xl font-medium leading-relaxed opacity-90">
+                        <p className="text-slate-800 text-lg lg:text-xl font-medium leading-relaxed opacity-90 bg-white/70  rounded-xl p-3 inline-block">
                             {contactData.header.description}
                         </p>
                     </motion.div>

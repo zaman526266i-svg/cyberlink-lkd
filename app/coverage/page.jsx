@@ -58,7 +58,7 @@ export default function CoveragePage() {
   );
 
   return (
-    <div className="min-h-screen my-5 bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)] font-hind selection:text-white  selection:bg-blue-600">
+    <div className="min-h-screen my-5 bg-white font-hind selection:text-white selection:bg-blue-600">
       <section className="relative h-[350px] lg:h-[450px] flex items-center justify-center overflow-hidden">
         <img
           src="/header/coverage.png"
@@ -67,10 +67,10 @@ export default function CoveragePage() {
         />
      
         <div className="relative z-10 text-center px-6 py-3">
-        <h1 className="text-4xl lg:text-7xl font-black italic font-poppins tracking-tighter uppercase text-blue-700 drop-shadow-sm">
+     <h1 className="text-4xl lg:text-7xl font-black italic font-poppins tracking-tighter uppercase text-slate-900 drop-shadow-2xl">
   {coverageData.header.title}
 </h1>
-<p className="text-gray-50 text-xl mt-4 max-w-xl mx-auto font-medium font-hind">
+<p className="text-slate-800 text-xl mt-4 max-w-xl mx-auto font-medium font-hind bg-white/70 backdrop-blur-[2px] rounded-lg p-2">
   {coverageData.header.description}
 </p>
         </div>
@@ -175,13 +175,12 @@ export default function CoveragePage() {
             );
           })}
         </div>
-        {loading ? <p className="text-slate-100 mt-8">Loading coverage...</p> : null}
-        {error ? <p className="text-red-300 mt-8">{error}</p> : null}
+        {loading ? <p className="text-slate-600 mt-8">Loading coverage...</p> : null}
+        {error ? <p className="text-red-600 mt-8">{error}</p> : null}
         {!loading && !error && filteredRegions.length === 0 ? (
-          <p className="text-slate-100 mt-8">No coverage data found.</p>
+          <p className="text-slate-600 mt-8">No coverage data found.</p>
         ) : null}
       </div>
     </div>
   );
 }
-

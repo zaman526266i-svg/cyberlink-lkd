@@ -23,7 +23,7 @@ const { data: aboutData, loading } = usePublicContent("about", {
 <img
  src="/header/about-section.png"
  alt="About banner"
- className="absolute inset-0 w-full h-full object-cover opacity-80"
+ className="absolute inset-0 w-full h-full object-cover opacity-100"
  />
 
 
@@ -31,7 +31,8 @@ const { data: aboutData, loading } = usePublicContent("about", {
  <motion.h1
 initial={{ opacity: 0, y: -20 }}
  animate={{ opacity: 1, y: 0 }}
- className="text-5xl lg:text-8xl font-black italic tracking-tighter text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] font-poppins uppercase"
+ className="text-5xl lg:text-8xl font-black italic tracking-tighter text-slate-900 
+  drop-shadow-[0_10px_20px_rgba(0,0,0,0.2)] font-poppins uppercase bg-white/90 rounded-xl px-5 py-2 inline-block"
  >
  {aboutData.aboutHeader.title}
 <div className="w-24 h-1.5 bg-cyan-400 mx-auto mt-4 rounded-full" />

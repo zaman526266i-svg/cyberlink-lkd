@@ -44,7 +44,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-[#070b14] text-white px-4 py-1 border-b border-blue-500/25 sticky top-0 z-[100] shadow-2xl">
+      <nav className="bg-[#021833] text-white px-4 py-1 border-b border-blue-500/25 sticky top-0 z-[100] shadow-2xl">
         <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-4">
           
           {/* ১. লোগো */}

@@ -212,7 +212,7 @@ export default function HomePage() {
         ))}
     </Swiper>
 </section>
-            <div className="bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)]">
+            <div className="bg-white">
             {/* 2. Solutions Section */}
             <section className="py-5 lg:py-10 px-4 lg:px-10">
                 <SectionBorder />

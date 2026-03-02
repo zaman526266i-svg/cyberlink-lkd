@@ -36,26 +36,25 @@ const RefundPolicyPage = () => {
   ];
 
   return (
-    <div className="min-h-screen font-hind pb-24 bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b]">
+    <div className="min-h-screen font-hind pb-24 bg-white">
       
       {/* ১. হেডার সেকশন */}
       <section className="relative h-[350px] lg:h-[450px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
-            className="w-full h-full object-cover opacity-60 brightness-75" 
+            className="w-full h-full object-cover opacity-100" 
             alt="Refund Header" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-[#414b41]/80 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#414b41]"></div>
+          
         </div>
 
         <div className="container mx-auto px-6 lg:px-20 relative z-10">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-            <h1 className="text-5xl lg:text-8xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic leading-none">
+            <h1 className="text-5xl lg:text-8xl font-black mb-6 text-slate-900 font-poppins tracking-tighter uppercase italic leading-none">
               Return & <span className="text-[#BFFF00]">Refund</span>
             </h1>
-            <p className="text-gray-100 text-lg lg:text-xl font-medium leading-relaxed max-w-xl opacity-90">
+            <p className="text-slate-800 text-lg lg:text-xl font-medium leading-relaxed max-w-xl opacity-90 bg-white/70 rounded-xl p-3">
               আমাদের রিফান্ড এবং রিটার্ন পলিসি সম্পর্কে পরিষ্কার ধারণা নিন। গ্রাহক সন্তুষ্টিই আমাদের সর্বোচ্চ অগ্রাধিকার।
             </p>
           </motion.div>

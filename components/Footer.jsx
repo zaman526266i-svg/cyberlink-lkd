@@ -72,7 +72,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-[#070b14] pt-24 pb-12 overflow-hidden border-t border-orange-500/10 font-hind">
+    <footer className="relative bg-[#021833] pt-24 pb-12 overflow-hidden border-t border-orange-500/10 font-hind">
       
       {/* ব্যাকগ্রাউন্ড ইমেজ ও ওভারলে */}
       <div className="absolute inset-0 z-0 pointer-events-none">

@@ -42,27 +42,20 @@ const ErpyPage = () => {
     ];
 
     return (
-        <div className="min-h-screen  my-4
-
-bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)] 
-font-hind  
-selection:text-white
-
-font-hind 
-selection:bg-blue-600">
+        <div className="min-h-screen my-4 bg-white font-hind selection:text-white selection:bg-blue-600">
             
             {/* ১. লাক্সারি হেডার সেকশন */}
             <section className="relative h-[450px] lg:h-[550px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
-                        className="w-full h-full object-cover opacity-30 brightness-110" 
+                        className="w-full h-full object-cover opacity-40" 
                         alt="ERP Header" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-100 via-blue-100/70 to-transparent"></div>
+                    
                 </div>
 
-                <div className="container mx-auto px-6 lg:px-20 relative z-10">
+                <div className="container mx-auto px-6  lg:px-20 relative z-10">
                     <motion.div 
                         initial={{ opacity: 0, x: -50 }} 
                         animate={{ opacity: 1, x: 0 }} 
@@ -72,17 +65,17 @@ selection:bg-blue-600">
                         <div className="inline-block px-4 py-1 bg-blue-600 text-white rounded-lg text-xs font-black mb-6 tracking-[0.3em] font-poppins uppercase shadow-lg shadow-blue-600/20">
                             The Next-Gen ERP
                         </div>
-                        <h1 className="text-5xl lg:text-9xl font-black mb-6 text-blue-950 font-poppins tracking-tighter uppercase italic leading-none">
-                            ERP <span className="text-blue-600">System</span>
+                        <h1 className="text-5xl lg:text-9xl font-black mb-6 text-slate-900 font-poppins tracking-tighter uppercase italic leading-none">
+                            ERP <span className="text-blue-700">System</span>
                         </h1>
-                        <p className="text-slate-600 text-lg lg:text-2xl font-bold leading-relaxed opacity-90 max-w-2xl">
+                        <p className="text-slate-800 text-lg lg:text-2xl font-bold leading-relaxed opacity-90 max-w-2xl bg-white/70 rounded-xl p-3 inline-block">
                             আপনার ব্যবসাকে অটোমেটেড এবং স্মার্ট করতে আমরা নিয়ে এসেছি সম্পূর্ণ ইন্টিগ্রেটেড ERP সলিউশন। পরিচালনা করুন সবকিছু এক জায়গা থেকে।
                         </p>
                     </motion.div>
                 </div>
             </section>
 
-            <div className="container mx-auto px-4 lg:px-10 relative z-20">
+            <div className="container py-10 mx-auto px-4 lg:px-10 relative z-20">
                 
                 {/* ২. ইন্ট্রো কার্ড */}
                 <motion.div 

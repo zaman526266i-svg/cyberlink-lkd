@@ -39,25 +39,25 @@ const TermsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] text-slate-800 font-hind pb-24">
+    <div className="min-h-screen bg-white text-slate-800 font-hind pb-24">
       
       {/* ১. হেডার সেকশন */}
-      <section className="relative h-[300px] lg:h-[400px] flex items-center overflow-hidden bg-[#070b14]">
+      <section className="relative h-[300px] lg:h-[400px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
-            className="w-full h-full object-cover opacity-30 brightness-110" 
+            className="w-full h-full object-cover opacity-100" 
             alt="Terms Header" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b14] via-[#070b14]/80 to-transparent"></div>
+          
         </div>
 
         <div className="container mx-auto px-6 lg:px-20 relative z-10">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-            <h1 className="text-4xl lg:text-7xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic">
+            <h1 className="text-4xl lg:text-7xl font-black mb-4 text-slate-900 font-poppins tracking-tighter uppercase italic">
               Terms & <span className="text-orange-500">Conditions</span>
             </h1>
-            <p className="text-gray-300 text-lg lg:text-xl font-medium leading-relaxed font-hind">
+            <p className="text-slate-800 text-lg lg:text-xl font-medium leading-relaxed font-hind bg-white/70 rounded-xl p-3">
               সাইবারলিংক কমিউনিকেশন এর সেবা ব্যবহারের ক্ষেত্রে গ্রাহক এবং আমাদের মধ্যকার আইনি শর্তাবলী ও নিয়মসমূহ।
             </p>
           </motion.div>

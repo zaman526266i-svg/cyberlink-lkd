@@ -101,23 +101,22 @@ export default function PricingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.035)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.025)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)] text-slate-800 font-hind pb-24">
+    <div className="min-h-screen bg-white text-slate-800 font-hind pb-24">
       <section className="relative h-[300px] lg:h-[400px] flex items-center justify-center overflow-hidden">
         <img
           src="/header/pricing.png"
           alt="Pricing banner"
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
+          className="absolute inset-0 w-full h-full object-cover opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-200/80 via-blue-100/40 to-blue-100"></div>
         <div className="relative z-10 text-center px-6 max-w-4xl">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl lg:text-7xl font-black italic text-blue-950 font-poppins mb-4 uppercase tracking-tighter"
+            className="text-4xl lg:text-7xl font-black italic text-slate-900 font-poppins mb-4 uppercase tracking-tighter bg-white/70 rounded-xl px-5 py-2 inline-block"
           >
             {pricingData?.header?.title || "Pricing Plans"}
           </motion.h1>
-          <p className="text-blue-900/70 text-lg lg:text-xl font-bold max-w-2xl mx-auto">
+          <p className="text-slate-800 text-lg lg:text-xl font-bold max-w-2xl mx-auto bg-white/70 rounded-xl p-3">
             {pricingData?.header?.description || "Choose the best package for your budget and needs."}
           </p>
         </div>
@@ -154,4 +153,3 @@ export default function PricingPage() {
     </div>
   );
 }
-

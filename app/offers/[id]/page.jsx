@@ -23,7 +23,7 @@ export default async function OfferDetails({ params }) {
   }
 
   return (
-    <div className="min-h-screen text-slate-800 pb-24 bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.035)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.025)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)]">
+    <div className="min-h-screen text-slate-800 pb-24 bg-white">
 
       {/* 🔥 HERO SECTION */}
       <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
@@ -31,13 +31,12 @@ export default async function OfferDetails({ params }) {
           src={offer.image}
           alt={offer.title}
           fill
-          className="object-cover opacity-50"
+          className="object-cover opacity-100"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-950/85 via-blue-950/45 to-transparent" />
 
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-4xl lg:text-7xl font-black uppercase tracking-tight">
+          <h1 className="text-4xl lg:text-7xl font-black uppercase tracking-tight text-slate-900 bg-white/70 rounded-xl px-6 py-3 inline-block">
             {offer.title}
           </h1>
         </div>
