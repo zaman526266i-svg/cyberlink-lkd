@@ -38,9 +38,6 @@ export default function ServicesPage() {
 
   return (
     <section className="relative my-3 py-6 lg:py-10 font-hind selection:bg-blue-600 selection:text-white overflow-hidden">
-      <div className="pointer-events-none absolute -top-16 -left-16 h-52 w-52 rounded-full bg-blue-200/25 blur-3xl"></div>
-      <div className="pointer-events-none absolute -bottom-20 -right-16 h-56 w-56 rounded-full bg-sky-200/25 blur-3xl"></div>
-
       <div className="relative max-w-7xl mx-auto">
 
         <div className="text-center mb-16">

@@ -2,6 +2,70 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { jsPDF } from "jspdf";
+
+function sanitizeFileNamePart(value) {
+  return String(value || "")
+    .trim()
+    .replace(/[<>:"/\\|?*\x00-\x1F]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .toLowerCase();
+}
+
+function downloadRequestPdf(requestData) {
+  const doc = new jsPDF({ orientation: "portrait", unit: "pt", format: "a4" });
+  const now = new Date().toLocaleString();
+  const marginLeft = 48;
+  const maxWidth = 500;
+  const pageHeight = doc.internal.pageSize.getHeight();
+  let y = 52;
+
+  const rows = [
+    ["Generated", now],
+    ["Request ID", requestData._id || "N/A"],
+    ["Full Name", requestData.fullName || "N/A"],
+    ["Email", requestData.email || "N/A"],
+    ["Mobile", requestData.mobile || "N/A"],
+    ["Phone", requestData.phone || "N/A"],
+    ["Package", requestData.package || "N/A"],
+    ["Location", requestData.location || "N/A"],
+    ["Flat No", requestData.flatNo || "N/A"],
+    ["House No", requestData.houseNo || "N/A"],
+    ["Road No", requestData.roadNo || "N/A"],
+    ["Area", requestData.area || "N/A"],
+    ["Landmark", requestData.landmark || "N/A"],
+    ["NID", requestData.nid || "N/A"],
+    ["Latitude", requestData.latitude || "N/A"],
+    ["Longitude", requestData.longitude || "N/A"],
+    ["Google Map", requestData.mapLink || "N/A"],
+    ["Status", "Submitted"],
+  ];
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(16);
+  doc.text("CyberLink - New Connection Request", marginLeft, y);
+  y += 28;
+
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "normal");
+
+  for (const [key, value] of rows) {
+    const wrapped = doc.splitTextToSize(`${key}: ${String(value)}`, maxWidth);
+    const neededHeight = wrapped.length * 16;
+    if (y + neededHeight > pageHeight - 48) {
+      doc.addPage();
+      y = 52;
+    }
+    doc.text(wrapped, marginLeft, y);
+    y += neededHeight;
+  }
+
+  const namePart = sanitizeFileNamePart(requestData.fullName) || "customer";
+  const fileName = `new-collection-request-of-${namePart}.pdf`;
+  doc.save(fileName);
+}
 
 export default function ConnectionForm() {
   const router = useRouter();
@@ -113,8 +177,13 @@ export default function ConnectionForm() {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        alert("Your request has been submitted successfully.");
+        const result = await response.json();
+        const requestData = result?.request || { ...formData, _id: result?.id || "" };
+        downloadRequestPdf(requestData);
+        alert("Your request has been submitted successfully. PDF downloaded.");
         router.push("/");
+      } else {
+        alert("Something went wrong, please try again.");
       }
     } catch {
       alert("Something went wrong, please try again.");

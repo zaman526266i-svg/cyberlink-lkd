@@ -11,15 +11,16 @@
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "framer-motion": "^12.23.26",
+    "jspdf": "^4.2.0",
     "leaflet": "^1.9.4",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.562.0",
     "mongoose": "^9.2.1",
     "next": "16.1.1",
-    "resend": "^4.6.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-leaflet": "^5.0.0",
+    "resend": "^4.6.0",
     "swiper": "^12.0.3"
   },
   "devDependencies": {
@@ -33,4 +34,3 @@
     "tailwindcss": "^4.1.18"
   }
 }
-

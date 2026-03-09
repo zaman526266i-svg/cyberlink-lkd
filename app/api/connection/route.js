@@ -35,9 +35,18 @@ export async function POST(request) {
     };
 
     const res = await db.collection("connection_requests").insertOne(payload);
-    await notifyAdminsNewRequest(db, { ...payload, _id: res.insertedId });
+    const requestDoc = { ...payload, _id: res.insertedId };
+    const mailResult = await notifyAdminsNewRequest(db, requestDoc);
 
-    return NextResponse.json({ success: true, id: res.insertedId });
+    return NextResponse.json({
+      success: true,
+      id: res.insertedId.toString(),
+      request: {
+        ...payload,
+        _id: res.insertedId.toString(),
+      },
+      mailSent: Boolean(mailResult?.success),
+    });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
