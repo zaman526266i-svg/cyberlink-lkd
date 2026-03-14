@@ -77,7 +77,7 @@ export default function ApplicationsPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-3xl font-black">Collection Requests</h2>
         <div className="bg-orange-600/20 text-orange-500 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">
           Total: {apps.length}
@@ -87,8 +87,77 @@ export default function ApplicationsPage() {
       {loading ? <p className="text-slate-400">Loading requests...</p> : null}
       {error ? <p className="text-red-400">{error}</p> : null}
 
-      <div className="bg-slate-900 rounded-[2rem] border border-white/5 overflow-x-auto">
-        <table className="w-full text-left border-collapse min-w-[1200px]">
+      <div className="grid gap-4 xl:hidden">
+        {apps.map((app) => (
+          <div key={app._id} className="rounded-[1.5rem] border border-white/5 bg-slate-900 p-5">
+            <div className="space-y-1">
+              <Link href={`/admin/dashboard/applications/${app._id}`} className="font-bold text-white hover:text-orange-400 transition">
+                {app.fullName || app.name || "N/A"}
+              </Link>
+              <p className="text-xs text-slate-500">{app.mobile || app.phone || "N/A"}</p>
+              <p className="text-xs text-slate-500">
+                {app.requestedAt ? new Date(app.requestedAt).toLocaleString() : "N/A"}
+              </p>
+              <p className="font-mono text-sm text-orange-400">{app.package || "N/A"}</p>
+              <p className="text-sm text-slate-400">{app.location || app.address || "N/A"}</p>
+            </div>
+            <div className="mt-4 grid gap-3">
+              <select
+                value={app.assignedManagerId || ""}
+                onChange={(event) => updateApplication(app._id, { assignedManagerId: event.target.value })}
+                className="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-xs outline-none"
+              >
+                <option value="">Unassigned</option>
+                {managers
+                  .filter((manager) => manager.active)
+                  .map((manager) => (
+                    <option key={manager._id} value={manager._id}>
+                      {manager.username}
+                    </option>
+                  ))}
+              </select>
+              <select
+                value={app.status || "pending"}
+                onChange={(event) => updateApplication(app._id, { status: event.target.value })}
+                className="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-xs outline-none"
+              >
+                {statusOptions.map((status) => (
+                  <option key={status} value={status}>
+                    {status.toUpperCase()}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={app.assignmentStatus || "unassigned"}
+                onChange={(event) => updateApplication(app._id, { assignmentStatus: event.target.value })}
+                className="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-xs outline-none"
+              >
+                {assignmentOptions.map((status) => (
+                  <option key={status} value={status}>
+                    {status.toUpperCase()}
+                  </option>
+                ))}
+              </select>
+              <div className="flex gap-4 text-sm">
+                <Link href={`/admin/dashboard/applications/${app._id}`} className="text-orange-400 hover:underline">
+                  View
+                </Link>
+                <button type="button" onClick={() => removeApplication(app._id)} className="text-red-400 hover:underline">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+        {!loading && apps.length === 0 ? (
+          <div className="rounded-[1.5rem] border border-white/5 bg-slate-900 p-10 text-center text-slate-500">
+            No collection requests found.
+          </div>
+        ) : null}
+      </div>
+
+      <div className="hidden overflow-x-auto rounded-[2rem] border border-white/5 bg-slate-900 xl:block">
+        <table className="w-full min-w-[1200px] border-collapse text-left">
           <thead>
             <tr className="bg-white/5 text-orange-500 text-[10px] font-black uppercase tracking-widest">
               <th className="p-6">Customer</th>

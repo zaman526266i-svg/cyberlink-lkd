@@ -1,8 +1,5 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { NextResponse } from "next/server";
-
-const filePath = path.join(process.cwd(), "app", "offers", "offersData.json");
+import { readContentByKey } from "@/lib/serverContent";
 
 export async function GET(_request, { params }) {
   try {
@@ -14,8 +11,8 @@ export async function GET(_request, { params }) {
       );
     }
 
-    const raw = await fs.readFile(filePath, "utf8");
-    const data = JSON.parse(raw);
+    const record = await readContentByKey("offers");
+    const data = record?.content || { offers: [] };
     const offer = data.offers.find((item) => item.id === id);
 
     if (!offer) {

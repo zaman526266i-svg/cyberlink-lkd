@@ -79,11 +79,11 @@ export default function ManagersPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-4xl font-black">Managers</h1>
+        <h1 className="text-3xl font-black sm:text-4xl">Managers</h1>
         <p className="text-slate-400">Create managers and control who receives collection requests.</p>
       </div>
 
-      <form onSubmit={createManager} className="bg-slate-900 border border-white/5 rounded-[1.5rem] p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+      <form onSubmit={createManager} className="grid grid-cols-1 gap-4 rounded-[1.5rem] border border-white/5 bg-slate-900 p-4 sm:p-6 md:grid-cols-2 xl:grid-cols-4">
         <input
           type="text"
           value={form.username}
@@ -121,8 +121,51 @@ export default function ManagersPage() {
       {loading ? <p className="text-slate-400">Loading managers...</p> : null}
       {error ? <p className="text-red-400">{error}</p> : null}
 
-      <div className="bg-slate-900 border border-white/5 rounded-[1.5rem] overflow-hidden">
-        <table className="w-full text-left min-w-[700px]">
+      <div className="grid gap-4 lg:hidden">
+        {managers.map((manager) => (
+          <div key={manager._id} className="rounded-[1.5rem] border border-white/5 bg-slate-900 p-5">
+            <div className="space-y-2">
+              <p className="font-semibold">{manager.username}</p>
+              <p className="text-sm text-slate-400">{manager.email || "N/A"}</p>
+              <p className="text-xs uppercase tracking-widest text-slate-500">{manager.role}</p>
+              <p className="text-sm text-slate-400">
+                {manager.createdAt ? new Date(manager.createdAt).toLocaleString() : "N/A"}
+              </p>
+              <span
+                className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ${
+                  manager.active ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"
+                }`}
+              >
+                {manager.active ? "ACTIVE" : "DISABLED"}
+              </span>
+            </div>
+            <div className="mt-4 flex gap-2">
+              <button
+                type="button"
+                onClick={() => toggleManager(manager)}
+                className="flex-1 rounded-lg bg-slate-800 px-3 py-2 text-xs font-semibold hover:bg-slate-700"
+              >
+                {manager.active ? "Disable" : "Enable"}
+              </button>
+              <button
+                type="button"
+                onClick={() => removeManager(manager._id)}
+                className="flex-1 rounded-lg bg-red-500/20 px-3 py-2 text-xs font-semibold text-red-300 hover:bg-red-500/30"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+        {!loading && managers.length === 0 ? (
+          <div className="rounded-[1.5rem] border border-white/5 bg-slate-900 p-8 text-center text-slate-500">
+            No managers found.
+          </div>
+        ) : null}
+      </div>
+
+      <div className="hidden overflow-x-auto rounded-[1.5rem] border border-white/5 bg-slate-900 lg:block">
+        <table className="w-full min-w-[700px] text-left">
           <thead className="bg-white/5 text-[10px] uppercase tracking-widest text-orange-500">
             <tr>
               <th className="p-5">Username</th>

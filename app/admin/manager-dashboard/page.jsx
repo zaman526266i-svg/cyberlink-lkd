@@ -46,15 +46,15 @@ export default function ManagerDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-6 md:p-10">
+    <div className="min-h-screen bg-slate-950 text-white p-4 sm:p-6 md:p-10">
       <div className="max-w-7xl mx-auto space-y-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-4xl font-black">Manager Dashboard</h1>
+            <h1 className="text-3xl font-black sm:text-4xl">Manager Dashboard</h1>
             <p className="text-slate-400">Your assigned collection requests and current progress.</p>
           </div>
           <form action="/api/admin/logout" method="POST">
-            <button type="submit" className="px-4 py-2 rounded-xl bg-red-500/20 text-red-300 font-semibold hover:bg-red-500/30">
+            <button type="submit" className="w-full rounded-xl bg-red-500/20 px-4 py-2 font-semibold text-red-300 hover:bg-red-500/30 sm:w-auto">
               Logout
             </button>
           </form>
@@ -63,8 +63,53 @@ export default function ManagerDashboardPage() {
         {loading ? <p className="text-slate-400">Loading assigned requests...</p> : null}
         {error ? <p className="text-red-400">{error}</p> : null}
 
-        <div className="bg-slate-900 border border-white/5 rounded-[1.5rem] overflow-x-auto">
-          <table className="w-full text-left min-w-[900px]">
+        <div className="grid gap-4 lg:hidden">
+          {requests.map((item) => (
+            <div key={item._id} className="rounded-[1.5rem] border border-white/5 bg-slate-900 p-5">
+              <div className="space-y-1">
+                <p className="font-semibold">{item.fullName || "N/A"}</p>
+                <p className="text-xs text-slate-500">{item.mobile || "N/A"}</p>
+                <p className="text-sm text-orange-300">{item.package || "N/A"}</p>
+                <p className="text-sm text-slate-400">{item.location || "N/A"}</p>
+              </div>
+              <div className="mt-4 grid gap-3">
+                <select
+                  value={item.status || "pending"}
+                  onChange={(event) => updateRequest(item._id, { status: event.target.value })}
+                  className="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-xs outline-none"
+                >
+                  {statusOptions.map((status) => (
+                    <option key={status} value={status}>
+                      {status.toUpperCase()}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  value={item.assignmentStatus || "assigned"}
+                  onChange={(event) => updateRequest(item._id, { assignmentStatus: event.target.value })}
+                  className="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 text-xs outline-none"
+                >
+                  {assignmentOptions.map((status) => (
+                    <option key={status} value={status}>
+                      {status.toUpperCase()}
+                    </option>
+                  ))}
+                </select>
+                <Link href={`/admin/manager-dashboard/applications/${item._id}`} className="text-sm text-orange-400 hover:underline">
+                  View details
+                </Link>
+              </div>
+            </div>
+          ))}
+          {!loading && requests.length === 0 ? (
+            <div className="rounded-[1.5rem] border border-white/5 bg-slate-900 p-8 text-center text-slate-500">
+              No request is assigned to you yet.
+            </div>
+          ) : null}
+        </div>
+
+        <div className="hidden overflow-x-auto rounded-[1.5rem] border border-white/5 bg-slate-900 lg:block">
+          <table className="w-full min-w-[900px] text-left">
             <thead className="bg-white/5 text-orange-400 text-[10px] uppercase tracking-widest">
               <tr>
                 <th className="p-5">Customer</th>

@@ -1,16 +1,14 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { NextResponse } from "next/server";
-
-const filePath = path.join(process.cwd(), "app", "offers", "offersData.json");
+import { getSessionFromRequest } from "@/lib/adminAuth";
+import { readContentByKey, writeContentByKey } from "@/lib/serverContent";
 
 async function readOffersData() {
-  const raw = await fs.readFile(filePath, "utf8");
-  return JSON.parse(raw);
+  const record = await readContentByKey("offers");
+  return record?.content || { header: { title: "", description: "", bgImage: "" }, offers: [] };
 }
 
 async function writeOffersData(data) {
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+  await writeContentByKey("offers", data);
 }
 
 function toNumberId(value) {
@@ -32,6 +30,11 @@ export async function GET() {
 
 export async function POST(request) {
   try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
     const body = await request.json();
     const data = await readOffersData();
 
@@ -74,6 +77,11 @@ export async function POST(request) {
 
 export async function PATCH(request) {
   try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
     const body = await request.json();
     const id = toNumberId(body.id);
 
@@ -120,6 +128,11 @@ export async function PATCH(request) {
 
 export async function DELETE(request) {
   try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
     const body = await request.json();
     const id = toNumberId(body.id);
 

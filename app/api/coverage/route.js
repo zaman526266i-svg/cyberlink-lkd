@@ -1,16 +1,14 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { NextResponse } from "next/server";
-
-const filePath = path.join(process.cwd(), "app", "coverage", "coverageData.json");
+import { getSessionFromRequest } from "@/lib/adminAuth";
+import { readContentByKey, writeContentByKey } from "@/lib/serverContent";
 
 async function readCoverageData() {
-  const raw = await fs.readFile(filePath, "utf8");
-  return JSON.parse(raw);
+  const record = await readContentByKey("coverage");
+  return record?.content || { header: { title: "", description: "", bgVideo: "" }, regions: [] };
 }
 
 async function writeCoverageData(data) {
-  await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+  await writeContentByKey("coverage", data);
 }
 
 function toNumberId(value) {
@@ -32,6 +30,11 @@ export async function GET() {
 
 export async function POST(request) {
   try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
     const body = await request.json();
     const data = await readCoverageData();
 
@@ -71,6 +74,11 @@ export async function POST(request) {
 
 export async function PATCH(request) {
   try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
     const body = await request.json();
     const regionId = toNumberId(body.regionId);
     const action = body.action;
@@ -144,6 +152,11 @@ export async function PATCH(request) {
 
 export async function DELETE(request) {
   try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
     const body = await request.json();
     const regionId = toNumberId(body.regionId);
 
