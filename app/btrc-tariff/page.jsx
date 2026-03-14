@@ -38,17 +38,18 @@ const BtrcTariffPage = () => {
     ];
 
     return (
-        <div className="min-h-screen font-hind pb-24 bg-white">
+        <div className="min-h-screen font-hind pb-24 bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b]">
 
             {/* ১. প্রিমিয়াম হেডার সেকশন */}
             <section className="relative h-[350px] lg:h-[450px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg"
-                        className="w-full h-full object-cover opacity-100"
+                        className="w-full h-full object-cover opacity-60 brightness-75"
                         alt="BTRC Background"
                     />
-                    
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-[#414b41]/80 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#414b41]"></div>
                 </div>
 
                 <div className="container mx-auto px-6 lg:px-20 relative z-10">
@@ -56,10 +57,10 @@ const BtrcTariffPage = () => {
                         <div className="inline-flex items-center gap-2 px-4 py-1 bg-[#BFFF00] text-[#070b14] rounded-lg text-xs font-black mb-6 tracking-widest font-poppins uppercase">
                             <ShieldCheck size={14} /> Official Tariff
                         </div>
-                        <h1 className="text-4xl lg:text-8xl font-black mb-6 text-slate-900 font-poppins tracking-tighter uppercase italic leading-none">
+                        <h1 className="text-4xl lg:text-8xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic leading-none">
                             BTRC <span className="text-[#BFFF00]">Tariff</span>
                         </h1>
-                        <p className="text-slate-800 text-lg lg:text-xl font-medium leading-relaxed max-w-2xl opacity-90 bg-white/70 rounded-xl p-3">
+                        <p className="text-gray-100 text-lg lg:text-xl font-medium leading-relaxed max-w-2xl opacity-90">
                             বাংলাদেশ টেলিযোগাযোগ নিয়ন্ত্রণ কমিশন (বিটিআরসি) কর্তৃক অনুমোদিত ইন্টারনেট প্যাকেজ ও মূল্য তালিকা।
                         </p>
                     </motion.div>

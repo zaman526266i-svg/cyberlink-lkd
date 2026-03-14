@@ -36,7 +36,7 @@ export default async function OfferDetails({ params }) {
         />
 
         <div className="relative z-10 text-center px-6">
-          <h1 className="text-4xl lg:text-7xl font-black uppercase tracking-tight text-slate-900 bg-white/70 rounded-xl px-6 py-3 inline-block">
+          <h1 className="text-4xl lg:text-7xl font-black uppercase tracking-tight text-slate-900  rounded-xl px-6 py-3 inline-block">
             {offer.title}
           </h1>
         </div>

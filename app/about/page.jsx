@@ -17,7 +17,7 @@ const { data: aboutData, loading } = usePublicContent("about", {
 
  return (
  <div
- className="min-h-screen my-4  font-hind selection:text-white selection:bg-cyan-600"
+ className="min-h-screen   font-hind selection:text-white selection:bg-cyan-600"
  >
  <section className="relative h-[400px] lg:h-[500px] flex items-center justify-center overflow-hidden">
 <img
@@ -31,8 +31,8 @@ const { data: aboutData, loading } = usePublicContent("about", {
  <motion.h1
 initial={{ opacity: 0, y: -20 }}
  animate={{ opacity: 1, y: 0 }}
- className="text-5xl lg:text-8xl font-black italic tracking-tighter text-slate-900 
-  drop-shadow-[0_10px_20px_rgba(0,0,0,0.2)] font-poppins uppercase bg-white/90 rounded-xl px-5 py-2 inline-block"
+ className="text-5xl lg:text-8xl font-black italic tracking-tighter text-white 
+  drop-shadow-[0_10px_20px_rgba(0,0,0,0.2)] font-poppins uppercase  rounded-xl px-5 py-2 inline-block"
  >
  {aboutData.aboutHeader.title}
 <div className="w-24 h-1.5 bg-cyan-400 mx-auto mt-4 rounded-full" />

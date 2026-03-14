@@ -58,21 +58,19 @@ export default function CoveragePage() {
   );
 
   return (
-    <div className="min-h-screen my-5 bg-white font-hind selection:text-white selection:bg-blue-600">
+    <div className="min-h-screen bg-white font-hind selection:text-white selection:bg-blue-600">
       <section className="relative h-[350px] lg:h-[450px] flex items-center justify-center overflow-hidden">
         <img
-          src="/header/coverage.png"
+          src="/header/covarage.png"
           alt="Coverage banner"
-          className="absolute inset-0 w-full h-full object-cover opacity-100"
+          className="absolute inset-0 w-full h-full object-cover "
         />
      
         <div className="relative z-10 text-center px-6 py-3">
-     <h1 className="text-4xl lg:text-7xl font-black italic font-poppins tracking-tighter uppercase text-slate-900 drop-shadow-2xl">
+     <h1 className="text-4xl lg:text-7xl font-black text-white italic font-poppins tracking-tighter uppercase  drop-shadow-2xl">
   {coverageData.header.title}
 </h1>
-<p className="text-slate-800 text-xl mt-4 max-w-xl mx-auto font-medium font-hind bg-white/70 backdrop-blur-[2px] rounded-lg p-2">
-  {coverageData.header.description}
-</p>
+
         </div>
       </section>
 

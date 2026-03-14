@@ -41,22 +41,22 @@ export default function OffersPage() {
             <img
               src={offersData.header.bgImage}
               alt="Offers Background"
-              className="w-full h-full object-cover opacity-60"
+              className="w-full h-full object-cover "
             />
           ) : null}
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10 pt-20 pb-32 lg:pb-64">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10  pb-32 lg:pb-64">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <h1 className="text-3xl sm:text-5xl lg:text-8xl font-black mb-4 text-slate-900 font-poppins tracking-tighter uppercase drop-shadow-2xl leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase drop-shadow-2xl leading-tight">
               {offersData.header.title}
             </h1>
-            <p className="text-slate-800 text-sm sm:text-lg lg:text-xl leading-relaxed font-medium opacity-90 drop-shadow-md max-w-2xl bg-white/70 rounded-xl p-3 inline-block">
+            <p className="text-white text-sm sm:text-lg lg:text-xl leading-relaxed font-medium  drop-shadow-md max-w-2xl  rounded-xl p-3 inline-block">
               {offersData.header.description}
             </p>
           </motion.div>

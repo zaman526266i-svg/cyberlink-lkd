@@ -18,14 +18,14 @@ export default function PayBillPage() {
     }
 
     return (
-        <div className="min-h-screen my-4 bg-white font-hind selection:text-white selection:bg-blue-600">
+        <div className="min-h-screen  bg-white font-hind selection:text-white selection:bg-blue-600">
 
             {/* ১. হেডার সেকশন - প্যাডিং কমিয়ে চওড়া করা হয়েছে */}
             <section className="relative h-[250px] lg:h-[350px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg"
-                        className="w-full h-full object-cover opacity-50"
+                        src="/header/paybill.jpg"
+                        className="w-full h-full object-cover"
                         alt="Pay Bill Header"
                     />
                     
@@ -33,12 +33,10 @@ export default function PayBillPage() {
 
                 <div className="max-w-[1400px] mx-auto w-full px-4 lg:px-6 relative z-10">
                     <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-2xl">
-                        <h1 className="text-4xl lg:text-6xl font-black mb-3 text-slate-900 font-poppins tracking-tight uppercase">
-                            How to <span className="text-blue-700">Pay?</span>
+                        <h1 className="text-4xl lg:text-6xl font-black mb-3 text-white font-poppins tracking-tight uppercase">
+                            How to Pay?
                         </h1>
-                        <p className="text-slate-800 text-base lg:text-lg font-medium leading-relaxed font-hind opacity-90 bg-white/70 rounded-xl p-3 inline-block">
-                            সহজ কিছু ধাপ অনুসরণ করে আপনার মাসিক ইন্টারনেট বিল পরিশোধ করুন।
-                        </p>
+                       
                     </motion.div>
                 </div>
             </section>

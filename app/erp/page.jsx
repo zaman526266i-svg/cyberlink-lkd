@@ -42,14 +42,14 @@ const ErpyPage = () => {
     ];
 
     return (
-        <div className="min-h-screen my-4 bg-white font-hind selection:text-white selection:bg-blue-600">
+        <div className="min-h-screen  bg-white font-hind selection:text-white selection:bg-blue-600">
             
             {/* ১. লাক্সারি হেডার সেকশন */}
             <section className="relative h-[450px] lg:h-[550px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
                         src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
-                        className="w-full h-full object-cover opacity-40" 
+                        className="w-full h-full object-cover " 
                         alt="ERP Header" 
                     />
                     
@@ -65,12 +65,10 @@ const ErpyPage = () => {
                         <div className="inline-block px-4 py-1 bg-blue-600 text-white rounded-lg text-xs font-black mb-6 tracking-[0.3em] font-poppins uppercase shadow-lg shadow-blue-600/20">
                             The Next-Gen ERP
                         </div>
-                        <h1 className="text-5xl lg:text-9xl font-black mb-6 text-slate-900 font-poppins tracking-tighter uppercase italic leading-none">
-                            ERP <span className="text-blue-700">System</span>
+                        <h1 className="text-5xl lg:text-9xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic leading-none">
+                            ERP System
                         </h1>
-                        <p className="text-slate-800 text-lg lg:text-2xl font-bold leading-relaxed opacity-90 max-w-2xl bg-white/70 rounded-xl p-3 inline-block">
-                            আপনার ব্যবসাকে অটোমেটেড এবং স্মার্ট করতে আমরা নিয়ে এসেছি সম্পূর্ণ ইন্টিগ্রেটেড ERP সলিউশন। পরিচালনা করুন সবকিছু এক জায়গা থেকে।
-                        </p>
+                        
                     </motion.div>
                 </div>
             </section>

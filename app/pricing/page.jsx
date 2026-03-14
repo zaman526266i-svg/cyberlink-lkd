@@ -106,17 +106,17 @@ export default function PricingPage() {
         <img
           src="/header/pricing.png"
           alt="Pricing banner"
-          className="absolute inset-0 w-full h-full object-cover opacity-100"
+          className="absolute inset-0 w-full h-full object-cover "
         />
         <div className="relative z-10 text-center px-6 max-w-4xl">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl lg:text-7xl font-black italic text-slate-900 font-poppins mb-4 uppercase tracking-tighter bg-white/70 rounded-xl px-5 py-2 inline-block"
+            className="text-4xl lg:text-7xl font-black italic text-white font-poppins mb-4 uppercase tracking-tighter  rounded-xl px-5 py-2 inline-block"
           >
             {pricingData?.header?.title || "Pricing Plans"}
           </motion.h1>
-          <p className="text-slate-800 text-lg lg:text-xl font-bold max-w-2xl mx-auto bg-white/70 rounded-xl p-3">
+          <p className="text-white text-lg lg:text-xl font-bold max-w-2xl mx-auto  rounded-xl p-3">
             {pricingData?.header?.description || "Choose the best package for your budget and needs."}
           </p>
         </div>

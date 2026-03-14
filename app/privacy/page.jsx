@@ -36,26 +36,27 @@ const PrivacyPolicyPage = () => {
   ];
 
   return (
-    <div className="min-h-screen font-hind pb-24 bg-white">
+    <div className="min-h-screen font-hind pb-24 bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b]">
       
       {/* ১. প্রিমিয়াম হেডার সেকশন */}
       <section className="relative h-[300px] lg:h-[450px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
-            className="w-full h-full object-cover opacity-100" 
+            className="w-full h-full object-cover opacity-60 brightness-75" 
             alt="Privacy Background" 
           />
           {/* নতুন থিমের ওভারলে */}
-          
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-[#414b41]/80 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#414b41]"></div>
         </div>
 
         <div className="container mx-auto px-6 lg:px-20 relative z-10">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-            <h1 className="text-5xl lg:text-8xl font-black mb-6 text-slate-900 font-poppins tracking-tighter uppercase italic">
+            <h1 className="text-5xl lg:text-8xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic">
               Privacy <span className="text-[#BFFF00]">Policy</span>
             </h1>
-            <p className="text-slate-800 text-lg lg:text-xl font-medium leading-relaxed max-w-xl opacity-90 bg-white/70 rounded-xl p-3">
+            <p className="text-gray-100 text-lg lg:text-xl font-medium leading-relaxed max-w-xl opacity-90">
               আপনার ব্যক্তিগত তথ্যের সুরক্ষা নিশ্চিত করাই আমাদের প্রধান লক্ষ্য। আমরা কীভাবে আপনার ডাটা ম্যানেজ করি তা বিস্তারিত জেনে নিন।
             </p>
           </motion.div>
@@ -121,8 +122,8 @@ const PrivacyPolicyPage = () => {
                <p className="text-gray-400 text-sm font-medium mb-8 leading-relaxed font-hind">
                   আপনার তথ্য সংক্রান্ত যেকোনো সংশোধনী বা প্রশ্নের জন্য সরাসরি আমাদের প্রাইভেসি টিমের সাথে যোগাযোগ করুন।
                </p>
-               <a href="mailto:privacy@cyberlinkcomuinication.com" className="flex items-center gap-3 text-white font-black text-lg hover:text-[#BFFF00] transition-colors">
-                  privacy@cyberlinkcomuinication.com
+               <a href="mailto:privacy@dotinternet.com" className="flex items-center gap-3 text-white font-black text-lg hover:text-[#BFFF00] transition-colors">
+                  privacy@cyberlinkcommunication.com
                </a>
             </div>
           </div>
