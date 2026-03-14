@@ -156,28 +156,33 @@ export default function HomePage() {
 
                         {/* ========= GAMES TYPE ========= */}
                         {slide.type === 'games' && (
-                            <div className="w-full text-center text-white px-2">
+                            <div className="flex w-full items-center justify-center px-3 sm:px-6 lg:px-10">
                                 <Image
                                     src="/banner/cyberlink banner.png"
-                                    alt="Game Logo"
+                                    alt="Game Banner"
                                     width={1600}
                                     height={1600}
-                                    className="mx-auto mb-6 object-contain"
+                                    className="mx-auto h-auto w-full max-w-[340px] object-contain sm:max-w-[540px] md:max-w-[760px] lg:max-w-[980px] xl:max-w-[1120px]"
+                                    sizes="(max-width: 640px) 92vw, (max-width: 768px) 86vw, (max-width: 1280px) 78vw, 1120px"
+                                    priority={false}
                                 />
                             </div>
                         )}
 
                         {/* ========= IPV6 TYPE ========= */}
                         {slide.type === 'ipv6' && (
-                            <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-12">
-                                <div className="w-full lg:w-1/2 order-2 lg:order-1 text-center text-white">
-                                    <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black font-poppins uppercase mb-4">
+                            <div className="flex w-full flex-col items-center gap-6 px-2 sm:px-4 lg:flex-row lg:gap-12">
+                                <div className="order-2 w-full text-center text-white lg:order-1 lg:w-1/2 lg:text-left">
+                                    <div className="mb-4 inline-flex rounded-full border border-blue-200/25 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.25em] text-blue-100">
+                                        Next Generation Network
+                                    </div>
+                                    <h2 className="mb-4 text-3xl font-black font-poppins uppercase leading-tight sm:text-5xl lg:text-6xl">
                                         {slide.title}
                                     </h2>
-                                    <p className="text-sm sm:text-lg text-slate-200 mb-6">
+                                    <p className="mx-auto mb-6 max-w-xl text-sm text-slate-200 sm:text-lg lg:mx-0">
                                         {slide.subtitle}
                                     </p>
-                                    <div className="flex flex-wrap justify-center gap-3 mb-8">
+                                    <div className="mb-8 flex flex-wrap justify-center gap-3 lg:justify-start">
                                         {slide.features?.map((feature) => (
                                             <span
                                                 key={feature}
@@ -189,18 +194,18 @@ export default function HomePage() {
                                     </div>
                                     <Link
                                         href="/connection"
-                                        className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-xl font-black text-sm uppercase"
+                                        className="inline-block w-full rounded-xl bg-orange-600 px-8 py-3 text-sm font-black uppercase text-white hover:bg-orange-700 sm:w-auto"
                                     >
                                         Get Connection
                                     </Link>
                                 </div>
-                                <div className="w-full lg:w-1/2 order-1 lg:order-2">
+                                <div className="order-1 w-full lg:order-2 lg:w-1/2">
                                     <Image
                                         src="/banner/cyberlink_web_banner_01.png"
                                         alt="IPv6 Banner"
                                         width={1600}
                                         height={1600}
-                                        className="mx-auto w-full max-w-xl object-contain"
+                                        className="mx-auto w-full max-w-sm object-contain sm:max-w-md lg:max-w-xl"
                                     />
                                 </div>
                             </div>
