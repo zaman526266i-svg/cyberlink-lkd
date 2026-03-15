@@ -81,7 +81,7 @@ export default function HomePage() {
     return (
         <div className="min-h-screen font-hind selection:bg-blue-600 selection:text-white">
          {/* ১. Hero Section (Fully Responsive Slider) */}
-<section className="relative w-full h-[100vh] lg:h-[600px] overflow-hidden">
+<section className="relative w-full min-h-[92svh] lg:h-[720px] overflow-hidden">
 
     <Swiper
         modules={[Autoplay, EffectFade]}
@@ -109,41 +109,41 @@ export default function HomePage() {
                         ) : (
                             <div
                                 className="w-full h-full bg-cover bg-center scale-110"
-                                style={{ backgroundImage: `url(${slide.bgImagbae})` }}
+                                style={{ backgroundImage: `url(${slide.bgImage})` }}
                             />
                         )}
 
                         {/* Main Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/10"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/80 via-[#04152d]/45 to-[#020617]/20"></div>
 
                     </div>
 
                     {/* =========== Content Area ============*/}
-                    <div className="relative z-20 container mx-auto px-4 lg:px-10 h-full flex items-center justify-center pt-10 lg:pt-0">
+                    <div className="relative z-20 mx-auto flex h-full w-full max-w-[1600px] items-center justify-center px-4 pt-10 sm:px-6 md:px-8 lg:px-10 lg:pt-0">
 
                         {/* ========= PACKAGES TYPE ========= */}
                         {slide.type === 'packages' && (
-                            <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
+                            <div className="flex min-h-[72svh] w-full flex-col items-center justify-center gap-8 lg:min-h-[620px] lg:flex-row lg:gap-10">
 
-                                <div className="w-full lg:w-3/5 text-center text-white order-2 lg:order-1">
-                                    <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-3 italic leading-tight font-poppins drop-shadow-2xl">
+                                <div className="order-2 w-full text-center text-white lg:order-1 lg:w-[80%]">
+                                    <h1 className="mx-auto max-w-5xl text-4xl font-black italic leading-[1.02] font-poppins drop-shadow-2xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.4rem]">
                                         {slide.title}
                                     </h1>
 
-                                    <p className="text-sm sm:text-lg lg:text-xl mb-6 lg:mb-10 text-gray-200 max-w-xl mx-auto font-hind">
+                                    <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-gray-200 font-hind sm:text-lg md:text-xl lg:mt-6 lg:text-2xl">
                                         {slide.subtitle}
                                     </p>
 
-                                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 lg:gap-3">
+                                    <div className="mx-auto mt-8 grid max-w-6xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:mt-10">
                                         {slide.items?.map((item, i) => (
                                             <div
                                                 key={i}
-                                                className="bg-white/10 backdrop-blur-md p-3 lg:p-4 rounded-xl lg:rounded-2xl border border-white/20 text-center hover:bg-orange-600 transition-all cursor-pointer shadow-lg font-poppins"
+                                                className="rounded-2xl border border-white/20 bg-white/10 p-4 text-center shadow-lg backdrop-blur-md transition-all hover:bg-orange-600 sm:p-5 lg:rounded-[1.6rem] font-poppins"
                                             >
-                                                <div className="text-lg lg:text-xl font-black italic">
+                                                <div className="text-lg font-black italic sm:text-xl lg:text-2xl">
                                                     {item.label}
                                                 </div>
-                                                <div className="text-[10px] font-bold opacity-80 mt-0.5 uppercase">
+                                                <div className="mt-1.5 text-[11px] font-bold uppercase opacity-80 sm:text-xs lg:text-[13px]">
                                                     {item.price}
                                                 </div>
                                             </div>
@@ -156,85 +156,73 @@ export default function HomePage() {
 
                         {/* ========= GAMES TYPE ========= */}
                         {slide.type === 'games' && (
-                            <div className="grid w-full grid-cols-1 items-center gap-6 px-2 sm:px-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
-                                <div className="order-2 rounded-[2rem] border border-white/15 bg-black/25 p-4 backdrop-blur-sm sm:p-6 lg:order-1 lg:p-8">
-                                    <div className="mb-4 inline-flex rounded-full border border-orange-400/30 bg-orange-500/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.25em] text-orange-200">
-                                        Gaming Zone
-                                    </div>
-                                    <h2 className="max-w-2xl text-center text-3xl font-black leading-tight text-white drop-shadow-2xl sm:text-4xl lg:text-left lg:text-6xl">
-                                        {slide.title}
-                                    </h2>
-                                    <p className="mx-auto mt-4 max-w-xl text-center text-sm text-slate-200 sm:text-base lg:mx-0 lg:text-left lg:text-lg">
-                                        Download your favorite games faster and enjoy smoother gameplay with a high-speed connection built for low latency.
-                                    </p>
-                                    <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:mt-8">
-                                        {slide.logos?.map((logo, index) => (
-                                            <div
-                                                key={`${logo.img}-${index}`}
-                                                className="flex aspect-square items-center justify-center rounded-2xl border border-white/10 bg-white/10 p-3 shadow-lg"
-                                            >
-                                                <Image
-                                                    src={logo.img}
-                                                    alt={`Game logo ${index + 1}`}
-                                                    width={96}
-                                                    height={96}
-                                                    className="h-full w-full object-contain"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="order-1 lg:order-2">
-                                    <Image
-                                        src="/banner/cyberlink banner.png"
-                                        alt="Game Banner"
-                                        width={1600}
-                                        height={1600}
-                                        className="mx-auto w-full max-w-[780px] object-contain"
-                                    />
-                                </div>
+                            <div className="flex min-h-[72svh] w-full flex-col items-center justify-center gap-8 px-2 sm:px-4 lg:min-h-[620px] lg:flex-row lg:gap-12">
+                                <Image
+                                    src="/banner/cyberlink banner.png"
+                                    alt={slide.title}
+                                    width={1400}
+                                    height={900}
+                                    className="h-auto w-full max-w-[86%] object-contain sm:max-w-[82%] md:max-w-[78%] lg:max-w-[80%] xl:max-w-[86%]"
+                                />
                             </div>
                         )}
 
                         {/* ========= IPV6 TYPE ========= */}
                         {slide.type === 'ipv6' && (
-                            <div className="flex w-full flex-col items-center gap-6 px-2 sm:px-4 lg:flex-row lg:gap-12">
-                                <div className="order-2 w-full text-center text-white lg:order-1 lg:w-1/2 lg:text-left">
-                                    <div className="mb-4 inline-flex rounded-full border border-blue-200/25 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.25em] text-blue-100">
-                                        Next Generation Network
-                                    </div>
-                                    <h2 className="mb-4 text-3xl font-black font-poppins uppercase leading-tight sm:text-5xl lg:text-6xl">
-                                        {slide.title}
-                                    </h2>
-                                    <p className="mx-auto mb-6 max-w-xl text-sm text-slate-200 sm:text-lg lg:mx-0">
-                                        {slide.subtitle}
-                                    </p>
-                                    <div className="mb-8 flex flex-wrap justify-center gap-3 lg:justify-start">
-                                        {slide.features?.map((feature) => (
-                                            <span
-                                                key={feature}
-                                                className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-bold"
-                                            >
-                                                {feature}
+                            <div className="flex min-h-[72svh] w-full items-center justify-center px-4 py-8 sm:px-6 sm:py-10 lg:min-h-[620px] lg:px-8">
+                                <div className="grid w-full max-w-[86rem] items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+                                    <div className="order-2 text-center text-white lg:order-1 lg:text-left">
+                                        <div className="inline-flex rounded-full border border-cyan-300/35 px-4 py-2 text-[11px] font-black uppercase tracking-[0.28em] text-cyan-100 sm:px-5 sm:py-2.5 sm:text-xs">
+                                            Next Generation Network
+                                        </div>
+                                        <h2 className="mt-4 bg-[linear-gradient(90deg,#ffffff_0%,#9bdcff_45%,#d4b4ff_100%)] bg-clip-text text-5xl font-black uppercase leading-none text-transparent sm:text-6xl md:text-7xl lg:text-[5.6rem]">
+                                            {slide.title}
+                                        </h2>
+                                        <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-100 sm:text-lg sm:leading-8 lg:mx-0 lg:text-[1.35rem]">
+                                            Faster addressing, smoother routing and a stronger internet foundation for every modern device.
+                                        </p>
+
+                                        <div className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
+                                            <span className="rounded-full border border-white/20 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white sm:text-sm">
+                                                IPv6 Ready
                                             </span>
-                                        ))}
+                                            <span className="rounded-full border border-white/20 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white sm:text-sm">
+                                                Stable Routing
+                                            </span>
+                                            <span className="rounded-full border border-white/20 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.2em] text-white sm:text-sm">
+                                                Future Secure
+                                            </span>
+                                        </div>
+
+                                        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+                                            <Link
+                                                href="/connection"
+                                                className="inline-block w-full rounded-2xl bg-[linear-gradient(90deg,#06b6d4_0%,#7c3aed_100%)] px-8 py-4 text-sm font-black uppercase text-white shadow-[0_16px_40px_rgba(76,29,149,0.35)] transition hover:scale-[1.02] sm:w-auto"
+                                            >
+                                                Get Connection
+                                            </Link>
+                                            <Link
+                                                href="/pricing"
+                                                className="inline-block w-full rounded-2xl border border-white/20 px-8 py-4 text-sm font-black uppercase text-white transition hover:border-white/40 sm:w-auto"
+                                            >
+                                                View Plans
+                                            </Link>
+                                        </div>
                                     </div>
-                                    <Link
-                                        href="/connection"
-                                        className="inline-block w-full rounded-xl bg-orange-600 px-8 py-3 text-sm font-black uppercase text-white hover:bg-orange-700 sm:w-auto"
-                                    >
-                                        Get Connection
-                                    </Link>
-                                </div>
-                                <div className="order-1 w-full lg:order-2 lg:w-1/2">
-                                    <Image
-                                        src="/banner/cyberlink_web_banner_01.png"
-                                        alt="IPv6 Banner"
-                                        width={1600}
-                                        height={1600}
-                                        className="mx-auto w-full max-w-sm object-contain sm:max-w-md lg:max-w-xl"
-                                    />
+
+                                    <div className="order-1 flex items-center justify-center lg:order-2">
+                                        <div className="relative w-full max-w-[24rem] sm:max-w-[32rem] md:max-w-[38rem] lg:max-w-[50rem]">
+                                            <div className="absolute inset-0 rounded-full bg-cyan-400/18 blur-3xl" />
+                                            <div className="absolute -bottom-4 right-0 h-32 w-32 rounded-full bg-violet-500/25 blur-3xl sm:h-40 sm:w-40" />
+                                            <Image
+                                                src="/banner/cyberlink_web_banner_01.png"
+                                                alt="IPv6 Banner"
+                                                width={1600}
+                                                height={1600}
+                                                className="relative mx-auto h-auto w-full object-contain"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )}

@@ -49,7 +49,7 @@ export default function WelcomePopup() {
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto bg-slate-950/78 px-4 py-6 backdrop-blur-md"
+          className="fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto bg-slate-950/78 px-4 py-6 my-4 backdrop-blur-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
