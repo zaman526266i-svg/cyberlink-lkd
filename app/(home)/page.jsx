@@ -109,7 +109,7 @@ export default function HomePage() {
                         ) : (
                             <div
                                 className="w-full h-full bg-cover bg-center scale-110"
-                                style={{ backgroundImage: `url(${slide.bgImage})` }}
+                                style={{ backgroundImage: `url(${slide.bgImagbae})` }}
                             />
                         )}
 
@@ -156,16 +156,44 @@ export default function HomePage() {
 
                         {/* ========= GAMES TYPE ========= */}
                         {slide.type === 'games' && (
-                            <div className="flex w-full items-center justify-center px-3 sm:px-6 lg:px-10">
-                                <Image
-                                    src="/banner/cyberlink banner.png"
-                                    alt="Game Banner"
-                                    width={1600}
-                                    height={1600}
-                                    className="mx-auto h-auto w-full max-w-[340px] object-contain sm:max-w-[540px] md:max-w-[760px] lg:max-w-[980px] xl:max-w-[1120px]"
-                                    sizes="(max-width: 640px) 92vw, (max-width: 768px) 86vw, (max-width: 1280px) 78vw, 1120px"
-                                    priority={false}
-                                />
+                            <div className="grid w-full grid-cols-1 items-center gap-6 px-2 sm:px-4 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
+                                <div className="order-2 rounded-[2rem] border border-white/15 bg-black/25 p-4 backdrop-blur-sm sm:p-6 lg:order-1 lg:p-8">
+                                    <div className="mb-4 inline-flex rounded-full border border-orange-400/30 bg-orange-500/15 px-4 py-2 text-[11px] font-black uppercase tracking-[0.25em] text-orange-200">
+                                        Gaming Zone
+                                    </div>
+                                    <h2 className="max-w-2xl text-center text-3xl font-black leading-tight text-white drop-shadow-2xl sm:text-4xl lg:text-left lg:text-6xl">
+                                        {slide.title}
+                                    </h2>
+                                    <p className="mx-auto mt-4 max-w-xl text-center text-sm text-slate-200 sm:text-base lg:mx-0 lg:text-left lg:text-lg">
+                                        Download your favorite games faster and enjoy smoother gameplay with a high-speed connection built for low latency.
+                                    </p>
+                                    <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:mt-8">
+                                        {slide.logos?.map((logo, index) => (
+                                            <div
+                                                key={`${logo.img}-${index}`}
+                                                className="flex aspect-square items-center justify-center rounded-2xl border border-white/10 bg-white/10 p-3 shadow-lg"
+                                            >
+                                                <Image
+                                                    src={logo.img}
+                                                    alt={`Game logo ${index + 1}`}
+                                                    width={96}
+                                                    height={96}
+                                                    className="h-full w-full object-contain"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="order-1 lg:order-2">
+                                    <Image
+                                        src="/banner/cyberlink banner.png"
+                                        alt="Game Banner"
+                                        width={1600}
+                                        height={1600}
+                                        className="mx-auto w-full max-w-[780px] object-contain"
+                                    />
+                                </div>
                             </div>
                         )}
 
