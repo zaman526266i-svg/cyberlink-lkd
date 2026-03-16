@@ -6,6 +6,8 @@
     { "label": "80 Mbps", "price": "1575 TK" },
     { "label": "100 Mbps", "price": "2100 TK" },
     { "label": "120 Mbps", "price": "3150 TK" },
-    { "label": "150 Mbps", "price": "4200 TK" }
+    { "label": "150 Mbps", "price": "4200 TK" },
+    { "label": "30 Mbps(SME)", "price": "3000 TK" },
+    { "label": "50 Mbps(SME)", "price": "5000 TK" }
   ]
 }
