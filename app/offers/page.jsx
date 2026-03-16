@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight, BadgePercent, Sparkles } from "lucide-react";
 
 export default function OffersPage() {
   const [offersData, setOffersData] = useState({
@@ -34,97 +36,120 @@ export default function OffersPage() {
   }, []);
 
   return (
-    <div className="min-h-screen font-hind selection:text-white selection:bg-blue-600 pb-24 bg-white">
-      <section className="relative min-h-[450px] lg:min-h-[700px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.18),_transparent_22%),linear-gradient(180deg,#f7fbff_0%,#eef6ff_38%,#ffffff_100%)] pb-24 font-hind selection:bg-blue-600 selection:text-white">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
           {offersData.header.bgImage ? (
-            <img
+            <Image
               src={offersData.header.bgImage}
               alt="Offers Background"
-              className="w-full h-full object-cover "
+              fill
+              priority
+              className="object-cover"
             />
           ) : null}
+          <div className="absolute inset-0 bg-[linear-gradient(125deg,rgba(2,6,23,0.88),rgba(30,64,175,0.72),rgba(2,132,199,0.42))]" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-20 relative z-10  pb-32 lg:pb-64">
+        <div className="relative mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:min-h-[680px] lg:px-12">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-4xl"
           >
-            <h1 className="text-3xl sm:text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase drop-shadow-2xl leading-tight">
-              {offersData.header.title}
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.28em] text-blue-100 backdrop-blur">
+              <Sparkles size={14} />
+              Exclusive Campaigns
+            </div>
+            <h1 className="max-w-3xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white drop-shadow-2xl sm:text-6xl lg:text-8xl">
+              {offersData.header.title || "Offers & Campaigns"}
             </h1>
-            <p className="text-white text-sm sm:text-lg lg:text-xl leading-relaxed font-medium  drop-shadow-md max-w-2xl  rounded-xl p-3 inline-block">
-              {offersData.header.description}
-            </p>
+           
           </motion.div>
         </div>
       </section>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 -mt-16 sm:-mt-20 lg:-mt-24 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {offersData.offers.map((offer, index) => (
-            <motion.div
-              key={offer.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="bg-white border border-blue-200 rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_rgba(30,64,175,0.12)] flex flex-col group h-full"
-            >
-              <div className="relative h-48 sm:h-56 lg:h-64 w-full overflow-hidden">
-                <img
-                  src={offer.image}
-                  alt={offer.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-
-              <div className="p-6 sm:p-8 flex flex-col flex-grow">
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 group-hover:text-blue-600 transition-colors font-hind leading-tight uppercase tracking-tight">
-                  {offer.title}
-                </h3>
-
-                <div className="w-12 h-1 bg-blue-500 mb-4 group-hover:w-full transition-all duration-700 rounded-full" />
-
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 flex-grow line-clamp-3 font-hind font-medium">
-                  {offer.description}
-                </p>
-
-              <div className="mt-auto">
-                  <Link
-                    href={`/offers/${offer.id}`}
-                    className="bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white px-5 sm:px-6 py-3 rounded-xl sm:rounded-2xl font-black text-sm sm:text-base flex items-center justify-center gap-2 group/btn transition-all duration-300 shadow-sm"
-                  >
-                    <span className="uppercase tracking-wider text-xs font-poppins">Learn More</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="transition-transform group-hover/btn:translate-x-1"
-                    >
-                      <path d="m9 18 6-6-6-6" />
-                    </svg>
-                  </Link>
+      <div className="relative z-10 mx-auto -mt-16 max-w-7xl px-4 sm:-mt-20 sm:px-6 lg:-mt-24 lg:px-12">
+        {loading ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <div
+                key={index}
+                className="overflow-hidden rounded-[2rem] border border-blue-100 bg-white/80 shadow-[0_18px_50px_-30px_rgba(15,23,42,0.28)] backdrop-blur"
+              >
+                <div className="h-56 animate-pulse bg-slate-200" />
+                <div className="space-y-4 p-6">
+                  <div className="h-4 w-24 animate-pulse rounded-full bg-blue-100" />
+                  <div className="h-8 w-2/3 animate-pulse rounded-xl bg-slate-200" />
+                  <div className="h-20 animate-pulse rounded-2xl bg-slate-100" />
+                  <div className="h-12 w-full animate-pulse rounded-2xl bg-blue-100" />
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-        {loading ? <p className="text-slate-600 mt-6">Loading offers...</p> : null}
-        {error ? <p className="text-red-300 mt-6">{error}</p> : null}
+            ))}
+          </div>
+        ) : null}
+
+        {!loading && !error ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {offersData.offers.map((offer, index) => (
+              <motion.article
+                key={offer.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8 }}
+                className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-[0_18px_50px_-30px_rgba(15,23,42,0.28)] transition-all"
+              >
+                <div className="relative h-56 overflow-hidden sm:h-64">
+                  <Image
+                    src={offer.image}
+                    alt={offer.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-900/10 to-transparent" />
+                  <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-blue-700 shadow-sm">
+                    <BadgePercent size={14} />
+                    New Offer
+                  </div>
+                </div>
+
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3 className="text-2xl font-black uppercase leading-tight tracking-tight text-slate-900 transition-colors group-hover:text-blue-700">
+                    {offer.title}
+                  </h3>
+
+                  <div className="my-4 h-1 w-14 rounded-full bg-blue-500 transition-all duration-500 group-hover:w-full" />
+
+                  <p className="flex-grow text-sm font-medium leading-7 text-slate-600 sm:text-base">
+                    {offer.description}
+                  </p>
+
+                  <Link
+                    href={`/offers/${offer.id}`}
+                    className="mt-7 inline-flex items-center justify-between rounded-[1.35rem] bg-slate-950 px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:bg-blue-600"
+                  >
+                    <span>Learn More</span>
+                    <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        ) : null}
+
+        {error ? (
+          <div className="rounded-[2rem] border border-red-200 bg-red-50 px-6 py-5 text-red-700 shadow-sm">
+            {error}
+          </div>
+        ) : null}
+
         {!loading && !error && offersData.offers.length === 0 ? (
-          <p className="text-slate-600 mt-6">No active offers found.</p>
+          <div className="rounded-[2rem] border border-blue-100 bg-white px-6 py-10 text-center text-slate-600 shadow-sm">
+            No active offers found.
+          </div>
         ) : null}
       </div>
     </div>
