@@ -52,10 +52,10 @@ const Footer = () => {
     {
       title: "LEGAL",
       links: [
-        { name: "Terms & Conditions", href: "/terms" }, // কানেকশন দেওয়া হলো
-        { name: "Privacy Policy", href: "/privacy" },   // আমরা সামনে বানাবো
-        { name: "Return & Refund", href: "/refund" },   // আমরা সামনে বানাবো
-        { name: "BTRC Approved Tariff", href: "/btrc-tariff" } // আমরা সামনে বানাবো
+        { name: "Terms & Conditions", href: "/terms" }, 
+        { name: "Privacy Policy", href: "/privacy" },   
+        { name: "Return & Refund", href: "/refund" },   
+        { name: "BTRC Approved Tariff", href: "/btrc-tariff" } 
       ]
     }
   ];
@@ -158,7 +158,7 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center lg:justify-start gap-8">
             {[
               { icon: <Phone size={18} />, text: "09617888896", label: "Helpline" },
-              { icon: <Mail size={18} />, text: "info@cyberlinkcomuinication.com", label: "Email" },
+              { icon: <Mail size={18} />, text: "info@cyberlinkltd.com", label: "Email" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 bg-white/5 p-4 pr-8 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-all group shadow-xl">
                 <div className="p-3 rounded-xl bg-orange-600 text-white shadow-lg">{item.icon}</div>
