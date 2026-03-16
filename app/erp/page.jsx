@@ -101,7 +101,7 @@ const ErpyPage = () => {
                 {/* ৩. মডিউল গ্রিড (৩ডি হোভার ইফেক্ট) */}
                 <div className="mt-32">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl lg:text-6xl font-black text-white mb-4 font-poppins uppercase tracking-tighter">Core <span className="text-blue-600">Modules</span></h2>
+                        <h2 className="text-4xl lg:text-6xl font-black text-text-blue-300 mb-4 font-poppins uppercase tracking-tighter">Core <span className="text-blue-600">Modules</span></h2>
                         <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full shadow-[0_0_20px_#ea580c]"></div>
                     </div>
 
