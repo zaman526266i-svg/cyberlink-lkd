@@ -70,20 +70,39 @@ export default async function OfferDetails({ params }) {
             </div>
 
             <div className="rounded-[2.5rem] border border-blue-200 bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 p-7 text-white shadow-[0_24px_60px_-28px_rgba(37,99,235,0.6)] lg:p-8">
-              <h2 className="text-2xl font-black tracking-tight">Why this offer matters</h2>
-              <div className="mt-5 space-y-3 text-sm text-blue-50/90">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-cyan-300" />
-                  <p>বর্তমান campaign-এর তথ্য এক জায়গায় সুন্দরভাবে দেখানো হচ্ছে, যাতে visitor দ্রুত decision নিতে পারে।</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-cyan-300" />
-                  <p>Offer page থেকে detail page-এ click করার পর live environment-এও route ঠিকভাবে open হবে।</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-cyan-300" />
-                  <p>Design এখন mobile আর desktop দুই জায়গাতেই cleaner, premium আর more readable.</p>
-                </div>
+         
+              <div className="rounded-[2.5rem] border border-blue-200 bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 p-7 text-white shadow-[0_24px_60px_-28px_rgba(37,99,235,0.6)] lg:p-8">
+  <h2 className="text-2xl font-black tracking-tight">এই অফারটি কেন গুরুত্বপূর্ণ</h2>
+
+  <div className="mt-5 space-y-3 text-sm text-blue-50/90">
+    
+    <div className="flex items-start gap-3">
+      <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-cyan-300" />
+      <p>নতুন সংযোগে ফ্রি রাউটার সুবিধা, ফলে শুরুতেই অতিরিক্ত খরচ নেই।</p>
+    </div>
+
+    <div className="flex items-start gap-3">
+      <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-cyan-300" />
+      <p>দ্রুত ও স্থিতিশীল ইন্টারনেট—অনলাইন কাজ, স্ট্রিমিং ও ব্রাউজিং হবে একদম স্মুথ।</p>
+    </div>
+
+    <div className="flex items-start gap-3">
+      <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-cyan-300" />
+      <p>সহজ সেটআপ ও দ্রুত এক্টিভেশন—কোনো ঝামেলা ছাড়াই ব্যবহার শুরু।</p>
+    </div>
+
+    <div className="flex items-start gap-3">
+      <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-cyan-300" />
+      <p>২৪/৭ সাপোর্ট নিশ্চিত—যেকোনো সমস্যায় দ্রুত সহায়তা পাওয়া যাবে।</p>
+    </div>
+
+    <div className="flex items-start gap-3">
+      <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-cyan-300" />
+      <p>সীমিত সময়ের বিশেষ অফার—এখনই নিলে অতিরিক্ত সুবিধা পাওয়া যাবে।</p>
+    </div>
+
+  </div>
+</div>
               </div>
 
               {hasOfferLink ? (
@@ -115,7 +134,7 @@ export default async function OfferDetails({ params }) {
                   <ArrowUpRight size={18} />
                 </Link>
               )}
-            </div>
+ 
           </div>
         </div>
       </div>
