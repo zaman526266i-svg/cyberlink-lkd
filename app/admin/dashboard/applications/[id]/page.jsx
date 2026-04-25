@@ -94,6 +94,7 @@ export default function ApplicationDetails({ params }) {
         <Field label="Road No" value={app.roadNo} />
         <Field label="Area" value={app.area} />
         <Field label="Landmark" value={app.landmark} />
+        <Field label="Referred By" value={app.reference || "Not Provided"} />
         <Field label="Assigned Manager" value={app.assignedManagerName || "Unassigned"} />
         <Field label="Requested At" value={app.requestedAt ? new Date(app.requestedAt).toLocaleString() : "N/A"} />
         <Field label="Last Updated" value={app.updatedAt ? new Date(app.updatedAt).toLocaleString() : "N/A"} />

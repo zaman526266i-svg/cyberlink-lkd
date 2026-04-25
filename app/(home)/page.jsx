@@ -97,7 +97,12 @@ export default function HomePage() {
                     {/* ========== Background Media ========== */}
                     <div className="absolute inset-0">
 
-                        {slide.bgImage && (slide.bgImage.endsWith('.mp4') || slide.bgImage.includes('video')) ? (
+                        {slide.type === 'games' ? (
+                            <div
+                                className="w-full h-full bg-cover bg-center scale-110"
+                                style={{ backgroundImage: `url(${slide.image || slide.bgImage})` }}
+                            />
+                        ) : slide.bgImage && (slide.bgImage.endsWith('.mp4') || slide.bgImage.includes('video')) ? (
                             <video
                                 src={slide.bgImage}
                                 autoPlay

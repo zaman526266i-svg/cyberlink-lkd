@@ -22,45 +22,77 @@ function downloadRequestPdf(requestData) {
   const pageHeight = doc.internal.pageSize.getHeight();
   let y = 52;
 
-  const rows = [
-    ["Generated", now],
-    ["Request ID", requestData._id || "N/A"],
-    ["Full Name", requestData.fullName || "N/A"],
-    ["Email", requestData.email || "N/A"],
-    ["Mobile", requestData.mobile || "N/A"],
-    ["Phone", requestData.phone || "N/A"],
-    ["Package", requestData.package || "N/A"],
-    ["Location", requestData.location || "N/A"],
-    ["Flat No", requestData.flatNo || "N/A"],
-    ["House No", requestData.houseNo || "N/A"],
-    ["Road No", requestData.roadNo || "N/A"],
-    ["Area", requestData.area || "N/A"],
-    ["Landmark", requestData.landmark || "N/A"],
-    ["NID", requestData.nid || "N/A"],
-    ["Latitude", requestData.latitude || "N/A"],
-    ["Longitude", requestData.longitude || "N/A"],
-    ["Google Map", requestData.mapLink || "N/A"],
-    ["Status", "Submitted"],
-  ];
-
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(16);
-  doc.text("CyberLink - New Connection Request", marginLeft, y);
-  y += 28;
-
-  doc.setFontSize(11);
-  doc.setFont("helvetica", "normal");
-
-  for (const [key, value] of rows) {
-    const wrapped = doc.splitTextToSize(`${key}: ${String(value)}`, maxWidth);
-    const neededHeight = wrapped.length * 16;
+  const ensureSpace = (neededHeight) => {
     if (y + neededHeight > pageHeight - 48) {
       doc.addPage();
       y = 52;
     }
+  };
+
+  const addSection = (title) => {
+    ensureSpace(28);
+    doc.setFillColor(15, 23, 42);
+    doc.roundedRect(marginLeft, y - 4, 500, 22, 6, 6, "F");
+    doc.setTextColor(255, 255, 255);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text(title.toUpperCase(), marginLeft + 12, y + 10);
+    y += 34;
+    doc.setTextColor(15, 23, 42);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+  };
+
+  const addField = (label, value) => {
+    const text = `${label}: ${String(value || "N/A")}`;
+    const wrapped = doc.splitTextToSize(text, maxWidth);
+    const neededHeight = wrapped.length * 16 + 4;
+    ensureSpace(neededHeight);
     doc.text(wrapped, marginLeft, y);
     y += neededHeight;
-  }
+  };
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(20);
+  doc.setTextColor(15, 23, 42);
+  doc.text("CyberLink", marginLeft, y);
+  y += 22;
+
+  doc.setFontSize(13);
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(71, 85, 105);
+  doc.text("New Connection Request", marginLeft, y);
+  y += 10;
+  doc.setDrawColor(226, 232, 240);
+  doc.line(marginLeft, y + 10, marginLeft + maxWidth, y + 10);
+  y += 28;
+
+  addSection("Request Info");
+  addField("Generated", now);
+  addField("Request ID", requestData._id || "N/A");
+  addField("Status", "Submitted");
+
+  addSection("Personal Info");
+  addField("Full Name", requestData.fullName || "N/A");
+  addField("Email", requestData.email || "N/A");
+  addField("Mobile", requestData.mobile || "N/A");
+  addField("Phone", requestData.phone || "N/A");
+  addField("NID", requestData.nid || "N/A");
+  addField("Referred By", requestData.reference || requestData.referenceSource || "N/A");
+
+  addSection("Package And Address");
+  addField("Package", requestData.package || "N/A");
+  addField("Location", requestData.location || "N/A");
+  addField("Flat No", requestData.flatNo || "N/A");
+  addField("House No", requestData.houseNo || "N/A");
+  addField("Road No", requestData.roadNo || "N/A");
+  addField("Area", requestData.area || "N/A");
+  addField("Landmark", requestData.landmark || "N/A");
+
+  addSection("Location Details");
+  addField("Latitude", requestData.latitude || "N/A");
+  addField("Longitude", requestData.longitude || "N/A");
+  addField("Google Map", requestData.mapLink || "N/A");
 
   const namePart = sanitizeFileNamePart(requestData.fullName) || "customer";
   const fileName = `new-collection-request-of-${namePart}.pdf`;
@@ -87,12 +119,23 @@ export default function ConnectionForm() {
     mobile: "",
     phone: "",
     nid: "",
+    reference: "",
+    referenceSource: "",
     latitude: "",
     longitude: "",
     mapLink: "",
   });
 
-  const handleChange = (event) => setFormData({ ...formData, [event.target.name]: event.target.value });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => {
+      const nextValue = { ...prev, [name]: value };
+      if (step === 1 && nextValue.package && nextValue.location) {
+        setStep(2);
+      }
+      return nextValue;
+    });
+  };
 
   useEffect(() => {
     const loadCoverage = async () => {
@@ -178,10 +221,13 @@ export default function ConnectionForm() {
       });
       if (response.ok) {
         const result = await response.json();
-        const requestData = result?.request || { ...formData, _id: result?.id || "" };
-        downloadRequestPdf(requestData);
-        alert("Your request has been submitted successfully. PDF downloaded.");
-        router.push("/");
+      const requestData = result?.request || { ...formData, _id: result?.id || "" };
+      if (!requestData.reference && requestData.referenceSource) {
+        requestData.reference = requestData.referenceSource;
+      }
+      downloadRequestPdf(requestData);
+      alert("Your request has been submitted successfully. PDF downloaded.");
+      router.push("/");
       } else {
         alert("Something went wrong, please try again.");
       }
@@ -294,6 +340,37 @@ export default function ConnectionForm() {
               <div className="flex flex-col gap-2">
                 <label className="text-slate-400 text-[10px] font-black uppercase tracking-widest">NID (Optional)</label>
                 <input type="text" name="nid" onChange={handleChange} className="bg-slate-800 border-2 border-slate-700 text-white rounded-2xl p-4 outline-none focus:border-orange-500 transition-all" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Referred By</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <select
+                    name="referenceSource"
+                    value={formData.referenceSource}
+                    onChange={handleChange}
+                    className="bg-slate-800 border-2 border-slate-700 text-white rounded-2xl p-4 outline-none focus:border-orange-500 transition-all"
+                  >
+                    <option value="">Select source</option>
+                    <option value="Friend/Family">Friend / Family</option>
+                    <option value="Agent">Agent</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Website">Website</option>
+                    <option value="Office">Office</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <input
+                    type="text"
+                    name="reference"
+                    onChange={handleChange}
+                    value={formData.reference}
+                    placeholder="Name / details (optional)"
+                    className="bg-slate-800 border-2 border-slate-700 text-white rounded-2xl p-4 outline-none focus:border-orange-500 transition-all"
+                  />
+                </div>
+                <p className="text-[11px] text-slate-500">
+                  This helps us know where the customer came from. Leave it empty if there is no reference.
+                </p>
               </div>
 
               <div className="md:col-span-2 flex justify-between items-center mt-10 border-t border-slate-800 pt-10">

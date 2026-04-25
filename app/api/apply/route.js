@@ -88,6 +88,7 @@ export async function POST(request) {
       roadNo: body.roadNo || "",
       area: body.area || "",
       landmark: body.landmark || "",
+      reference: body.reference || body.referenceSource || "",
       nid: body.nid || "",
       package: body.package || "",
       latitude: Number.isFinite(Number(body.latitude)) ? Number(body.latitude) : null,

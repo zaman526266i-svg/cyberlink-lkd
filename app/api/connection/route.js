@@ -19,6 +19,7 @@ export async function POST(request) {
       roadNo: data.roadNo || "",
       area: data.area || "",
       landmark: data.landmark || "",
+      reference: data.reference || data.referenceSource || "",
       package: data.package || "",
       nid: data.nid || "",
       latitude: Number.isFinite(Number(data.latitude)) ? Number(data.latitude) : null,
