@@ -17,47 +17,51 @@ const ArticlesPage = () => {
     : articlesData.articles.filter(art => art.category === activeCategory);
 
   if (loading) {
-    return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
+    return <div className="min-h-screen bg-[#020b18] text-white flex items-center justify-center">Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen font-hind py-3 bg-white selection:text-white selection:bg-orange-500">
+    <div className="min-h-screen font-hind pb-20 bg-slate-50 selection:text-[#082453] selection:bg-[#BFFF00]">
       
-      {/* ১. প্রিমিয়াম হেডার সেকশন */}
-      <section className="relative h-[350px] lg:h-[450px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <video 
-            src={articlesData.header.bgVideo} 
-            autoPlay muted loop playsInline 
-            className="w-full h-full object-cover opacity-100" 
-          />
-        </div>
+      {/* ১. প্রিমিয়াম ডার্ক সার্ভার হেডার সেকশন */}
+      <section className="relative h-[380px] lg:h-[450px] flex items-center overflow-hidden bg-[#020b18]">
+        
+        {/* সার্ভার ইমেজ (আপনার ইমেজের লোকেশন দিন) */}
+        <img 
+          src="/banner/article.png" 
+          alt="Tech Articles Cover" 
+          className="absolute inset-0 w-full h-full object-cover opacity-60 z-0 mix-blend-lighten"
+        />
+        
+        {/* ডার্ক ব্লু ওভারলে যাতে লেখা একদম ক্লিয়ার থাকে */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020813] via-[#04142c]/90 to-transparent z-0"></div>
 
-        <div className="container mx-auto px-6 lg:px-20 relative z-10 pt-10">
+        <div className="container mx-auto px-6 lg:px-20 relative z-10 -mt-16 lg:-mt-24">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-            <h1 className="text-5xl lg:text-8xl font-black mb-6 text-slate-900 font-poppins tracking-tighter uppercase italic">
-              Tech <span className="text-[#BFFF00]">Articles</span>
+            <h1 className="text-5xl lg:text-7xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic drop-shadow-2xl">
+              Tech <span className="text-[#BFFF00] drop-shadow-sm">Articles</span>
             </h1>
-            <p className="text-slate-800 text-lg lg:text-xl font-medium leading-relaxed max-w-xl opacity-90 bg-white/70 rounded-xl p-3">
-              {articlesData.header.description}
+            
+            <p className="text-slate-200 text-lg lg:text-xl font-medium max-w-xl leading-relaxed drop-shadow-md">
+              {articlesData.header.description || "ইন্টারনেট জগত সম্পর্কে আরও জানুন। আমাদের টেকনিক্যাল টিম নিয়মিত আপনাদের জন্য প্রয়োজনীয় টিপস এবং গাইড শেয়ার করে থাকে।"}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ২. ক্যাটাগরি ও কন্টেন্ট সেকশন */}
-      <div className="container mx-auto px-4 lg:px-10 relative z-20 -mt-12 lg:-mt-16">
+      {/* ২. ক্যাটাগরি ও কন্টেন্ট সেকশন (Overlapping) */}
+      <div className="container mx-auto px-4 lg:px-10 relative z-20 -mt-24 lg:-mt-28">
         
         {/* ক্যাটাগরি পিলস */}
-        <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-12">
+        <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
           {articlesData.categories.map((cat, i) => (
             <button 
               key={i}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-lg 
+              className={`px-6 py-3 rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_30px_-10px_rgba(0,0,0,0.2)] 
               ${activeCategory === cat 
-                ? 'bg-[#BFFF00] text-[#070b14] scale-105 shadow-[#BFFF00]/20' 
-                : 'bg-white text-slate-600 hover:bg-[#BFFF00]/10 hover:text-[#BFFF00] border border-white'}`}
+                ? 'bg-[#BFFF00] text-[#020b18] scale-105' 
+                : 'bg-white text-[#0f172a] hover:bg-[#BFFF00] hover:text-[#020b18]'}`}
             >
               {cat}
             </button>
@@ -69,12 +73,12 @@ const ArticlesPage = () => {
           {filteredArticles.map((article, index) => (
             <motion.div
               key={article.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col group h-full border border-white"
+              transition={{ delay: index * 0.1, duration: 0.4 }}
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] flex flex-col group h-full border border-slate-100 transition-all duration-300"
             >
               {/* আর্টিকেল ইমেজ */}
               <div className="relative h-56 w-full overflow-hidden">
@@ -84,7 +88,7 @@ const ArticlesPage = () => {
                   alt={article.title} 
                 />
                 {/* ক্যাটাগরি ব্যাজ */}
-                <div className="absolute top-5 left-5 bg-[#BFFF00] text-[#070b14] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
+                <div className="absolute top-5 left-5 bg-[#BFFF00] text-[#020b18] px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
                   {article.category}
                 </div>
               </div>
@@ -95,7 +99,7 @@ const ArticlesPage = () => {
                   <span className="flex items-center gap-1.5"><Calendar size={14} /> {article.date}</span>
                 </div>
                 
-                <h3 className="text-xl lg:text-2xl font-black text-slate-900 mb-4 group-hover:text-[#BFFF00] transition-colors leading-tight tracking-tight">
+                <h3 className="text-xl lg:text-2xl font-black text-[#0f172a] mb-4 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
                   {article.title}
                 </h3>
                 
@@ -105,8 +109,8 @@ const ArticlesPage = () => {
 
                 {/* বাটন */}
                 <div className="mt-auto">
-                  <button className="w-full bg-slate-50 text-slate-900 hover:bg-[#BFFF00] hover:text-[#070b14] py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-slate-100">
-                    আর্টিকেল পড়ুন
+                  <button className="w-full bg-[#f0f5ff] text-[#2563eb] hover:bg-[#BFFF00] hover:text-[#020b18] py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-transparent">
+                    আর্টিকেল পড়ুন
                     <ChevronRight size={16} className="transition-transform group-hover/btn:translate-x-1" />
                   </button>
                 </div>
@@ -115,10 +119,10 @@ const ArticlesPage = () => {
           ))}
         </div>
 
-        {/* ৪. লোড মোর বাটন (যদি অনেক থাকে) */}
+        {/* ৪. লোড মোর বাটন */}
         {filteredArticles.length > 0 && (
           <div className="mt-16 text-center">
-            <button className="bg-white/10 hover:bg-[#BFFF00] text-[#BFFF00] hover:text-[#070b14] border-2 border-[#BFFF00]/50 px-12 py-4 rounded-full font-black text-lg transition-all active:scale-95 shadow-xl uppercase tracking-tighter">
+            <button className="bg-white hover:bg-[#020b18] text-[#020b18] hover:text-white border-2 border-[#020b18]/10 hover:border-[#020b18] px-12 py-4 rounded-full font-black text-lg transition-all active:scale-95 shadow-xl uppercase tracking-tighter">
               আরও দেখুন
             </button>
           </div>

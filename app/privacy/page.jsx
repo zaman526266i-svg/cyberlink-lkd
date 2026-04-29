@@ -53,7 +53,7 @@ const PrivacyPolicyPage = () => {
 
         <div className="container mx-auto px-6 lg:px-20 relative z-10">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-            <h1 className="text-5xl lg:text-8xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic">
+            <h1 className="text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic">
               Privacy <span className="text-[#BFFF00]">Policy</span>
             </h1>
             <p className="text-gray-100 text-lg lg:text-xl font-medium leading-relaxed max-w-xl opacity-90">
@@ -123,7 +123,7 @@ const PrivacyPolicyPage = () => {
                   আপনার তথ্য সংক্রান্ত যেকোনো সংশোধনী বা প্রশ্নের জন্য সরাসরি আমাদের প্রাইভেসি টিমের সাথে যোগাযোগ করুন।
                </p>
                <a href="mailto:privacy@dotinternet.com" className="flex items-center gap-3 text-white font-black text-lg hover:text-[#BFFF00] transition-colors">
-                  privacy@cyberlinkcommunication.com
+                 info@cyberlinkltd.com
                </a>
             </div>
           </div>

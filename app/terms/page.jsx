@@ -46,7 +46,7 @@ const TermsPage = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
-            className="w-full h-full object-cover opacity-30 brightness-110" 
+            className="w-full h-full object-cover opacity-100 brightness-110" 
             alt="Terms Header" 
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#070b14] via-[#070b14]/80 to-transparent"></div>
@@ -133,7 +133,7 @@ const TermsPage = () => {
                </p>
                <div className="flex items-center gap-3 text-white font-black text-lg font-poppins">
                   <Globe className="text-orange-500 animate-spin-slow" size={20} />
-                  09638 121 121
+                 09617888896
                </div>
             </div>
           </div>

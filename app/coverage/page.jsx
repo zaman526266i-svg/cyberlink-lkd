@@ -61,7 +61,7 @@ export default function CoveragePage() {
     <div className="min-h-screen bg-white font-hind selection:text-white selection:bg-blue-600">
       <section className="relative h-[350px] lg:h-[450px] flex items-center justify-center overflow-hidden">
         <img
-          src="/header/covarage.png"
+          src="/banner/covarage.jpeg"
           alt="Coverage banner"
           className="absolute inset-0 w-full h-full object-cover "
         />

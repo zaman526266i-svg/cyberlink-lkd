@@ -32,10 +32,10 @@ export default function SelfcarePage() {
 
                 <div className="container mx-auto px-6 lg:px-20 relative z-10">
                     <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-                        <h1 className="text-4xl lg:text-7xl font-black mb-4 text-slate-900 font-poppins tracking-tight uppercase">
+                        <h1  className="text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic">
                             Login to <span className="text-blue-700">Selfcare</span>
                         </h1>
-                        <p className="text-slate-800 text-lg lg:text-xl font-medium leading-relaxed max-w-xl bg-white/70 rounded-xl p-3">
+                        <p className="text-white text-lg lg:text-xl font-bold leading-relaxed font-hind  rounded-xl p-3 inline-block">
                             {selfcareData.header.description}
                         </p>
                     </motion.div>
@@ -48,7 +48,7 @@ export default function SelfcarePage() {
                 <motion.div 
                     initial={{ opacity: 0, y: 30 }} 
                     animate={{ opacity: 1, y: 0 }} 
-                    className="bg-white rounded-[2.5rem] mt-[-60px] shadow-[0_30px_70px_rgba(124,45,18,0.15)] border border-orange-200 overflow-hidden flex flex-col lg:flex-row"
+                    className="bg-white rounded-[2.5rem] mt-[-60px]  border border-orange-200 overflow-hidden flex flex-col lg:flex-row"
                 >
                     
                     {/* বাম পাশ: ওয়েলকাম এবং বেনিফিটস */}

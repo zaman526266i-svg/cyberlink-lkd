@@ -126,10 +126,10 @@ const RefundPolicyPage = () => {
                </p>
                <div className="space-y-4">
                   <div className="text-2xl font-black text-white font-poppins tracking-tighter hover:text-[#BFFF00] transition-colors cursor-pointer">
-                    09638 121 121
+                   09617888896
                   </div>
                   <div className="text-sm font-bold text-gray-400 font-poppins">
-                    billing@cyberlinkcomunication.com
+                   info@cyberlinkltd.com
                   </div>
                </div>
             </div>

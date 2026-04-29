@@ -171,10 +171,8 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-6 bg-white p-5 lg:p-6 rounded-[2.5rem] shadow-2xl flex-wrap justify-center">
-            {paymentLogos.map((logo, index) => (
-              <img key={index} src={logo} alt="payment" className="h-7 lg:h-9 w-auto object-contain hover:scale-125 transition-transform duration-300 cursor-pointer" />
-            ))}
-          </div>
+           <Image src="/SSL.jpeg" alt="Payment Methods" width={400} height={40} className="object-contain" />
+      </div>
         </div>
 
         {/* কপিরাইট বক্স */}
