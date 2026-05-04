@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { jsPDF } from "jspdf";
 
 function sanitizeFileNamePart(value) {
@@ -100,7 +99,6 @@ function downloadRequestPdf(requestData) {
 }
 
 export default function ConnectionForm() {
-  const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [locating, setLocating] = useState(false);
@@ -140,7 +138,7 @@ export default function ConnectionForm() {
   useEffect(() => {
     const loadCoverage = async () => {
       try {
-        const response = await fetch("/api/coverage", { cache: "no-store" });
+        const response = await fetch("/api/coverage");
         const data = await response.json();
         if (response.ok && data.success && Array.isArray(data.data?.regions)) {
           const mappedRegions = data.data.regions.map((region) => ({
@@ -160,7 +158,7 @@ export default function ConnectionForm() {
   useEffect(() => {
     const loadPackages = async () => {
       try {
-        const response = await fetch("/api/packages", { cache: "no-store" });
+        const response = await fetch("/api/packages");
         const data = await response.json();
         if (response.ok && data.success && Array.isArray(data.data?.packages)) {
           setPackages(data.data.packages);
@@ -221,13 +219,28 @@ export default function ConnectionForm() {
       });
       if (response.ok) {
         const result = await response.json();
-      const requestData = result?.request || { ...formData, _id: result?.id || "" };
-      if (!requestData.reference && requestData.referenceSource) {
-        requestData.reference = requestData.referenceSource;
-      }
-      downloadRequestPdf(requestData);
-      alert("Your request has been submitted successfully. PDF downloaded.");
-      router.push("/");
+        const requestData = result?.request || { ...formData, _id: result?.id || "" };
+        if (!requestData.reference && requestData.referenceSource) {
+          requestData.reference = requestData.referenceSource;
+        }
+        downloadRequestPdf(requestData);
+
+        const paymentRes = await fetch("/api/payments/init", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            flowType: "new_connection",
+            requestId: requestData._id || result?.id || "",
+            packageLabel: requestData.package || formData.package,
+            source: "connection_form",
+          }),
+        });
+        const paymentData = await paymentRes.json();
+        if (!paymentRes.ok || !paymentData.success || !paymentData.data?.gatewayUrl) {
+          throw new Error(paymentData.error || "Payment session could not be created.");
+        }
+
+        window.location.href = paymentData.data.gatewayUrl;
       } else {
         alert("Something went wrong, please try again.");
       }
@@ -378,7 +391,7 @@ export default function ConnectionForm() {
                   &larr; Back
                 </button>
                 <button type="submit" disabled={loading} className="bg-orange-600 hover:bg-orange-700 text-white font-black px-12 py-4 rounded-2xl transition-all shadow-xl shadow-orange-600/30 disabled:opacity-50">
-                  {loading ? "SENDING..." : "CONFIRM REQUEST"}
+                  {loading ? "PROCESSING PAYMENT..." : "CONFIRM & PAY"}
                 </button>
               </div>
             </div>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { LayoutDashboard, Users, MapPin, Gift, Globe, UserCog, Package, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, Users, MapPin, Gift, Globe, UserCog, Package, LogOut, Menu, X, CreditCard } from "lucide-react";
 
 export default function AdminLayout({ children }) {
   const pathname = usePathname();
@@ -15,6 +15,7 @@ export default function AdminLayout({ children }) {
     { name: "Managers", href: "/admin/dashboard/managers", icon: <UserCog size={20} /> },
     { name: "Coverage", href: "/admin/dashboard/coverage", icon: <MapPin size={20} /> },
     { name: "Offers", href: "/admin/dashboard/offers", icon: <Gift size={20} /> },
+    { name: "Payments", href: "/admin/dashboard/payments", icon: <CreditCard size={20} /> },
     { name: "Site Content", href: "/admin/dashboard/settings", icon: <Globe size={20} /> },
   ];
 

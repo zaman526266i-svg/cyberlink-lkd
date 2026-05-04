@@ -1,14 +1,12 @@
-import path from "path";
-import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
-
-const FILE_PATH = path.join(process.cwd(), "app", "data", "packagesData.json");
+import { readContentByKey } from "@/lib/serverContent";
+import { PUBLIC_CACHE_HEADERS } from "@/lib/apiCache";
 
 export async function GET() {
   try {
-    const raw = await fs.readFile(FILE_PATH, "utf8");
-    const parsed = JSON.parse(raw);
-    return NextResponse.json({ success: true, data: parsed });
+    const record = await readContentByKey("packages");
+    const data = record?.content || { packages: [] };
+    return NextResponse.json({ success: true, data }, { headers: PUBLIC_CACHE_HEADERS });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }

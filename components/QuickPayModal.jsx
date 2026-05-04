@@ -1,9 +1,42 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 
 const QuickPayModal = ({ isOpen, onClose }) => {
+  const [customerId, setCustomerId] = useState("");
+  const [paying, setPaying] = useState(false);
+
+  const startQuickPay = async () => {
+    const normalizedCustomerId = customerId.trim();
+    if (!normalizedCustomerId) {
+      window.alert("Please enter customer ID.");
+      return;
+    }
+
+    setPaying(true);
+    try {
+      const response = await fetch("/api/payments/init", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          flowType: "monthly_bill",
+          customerId: normalizedCustomerId,
+          source: "navbar_quick_pay",
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok || !data.success || !data.data?.gatewayUrl) {
+        throw new Error(data.error || "Unable to start payment.");
+      }
+      window.location.href = data.data.gatewayUrl;
+    } catch (error) {
+      window.alert(error.message || "Unable to start payment.");
+    } finally {
+      setPaying(false);
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -60,15 +93,22 @@ const QuickPayModal = ({ isOpen, onClose }) => {
                     <input 
                       type="text" 
                       placeholder="Ex: 123456" 
+                      value={customerId}
+                      onChange={(event) => setCustomerId(event.target.value)}
                       className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl py-4 pl-12 pr-6 outline-none focus:border-orange-500 focus:bg-white transition-all text-lg font-bold font-poppins text-slate-800 placeholder:text-slate-300 shadow-sm"
                     />
                   </div>
                 </div>
 
                 {/* ৫. অরেঞ্জ বাটন */}
-                <button className="relative group/btn w-full bg-orange-600 hover:bg-orange-700 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 shadow-[0_10px_25px_-5px_rgba(234,88,12,0.4)] transition-all active:scale-[0.97] text-lg font-poppins overflow-hidden uppercase tracking-wider">
+                <button
+                  type="button"
+                  onClick={startQuickPay}
+                  disabled={paying}
+                  className="relative group/btn w-full bg-orange-600 hover:bg-orange-700 disabled:opacity-60 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 shadow-[0_10px_25px_-5px_rgba(234,88,12,0.4)] transition-all active:scale-[0.97] text-lg font-poppins overflow-hidden uppercase tracking-wider"
+                >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
-                  <span>Pay Now</span>
+                  <span>{paying ? "Processing..." : "Pay Now"}</span>
                   <ArrowRight size={20} strokeWidth={3} className="group-hover/btn:translate-x-1 transition-transform" />
                 </button>
               </div>

@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     const loadOfferCount = async () => {
       try {
-        const response = await fetch("/api/offers", { cache: "no-store" });
+        const response = await fetch("/api/offers");
         const data = await response.json();
         if (response.ok && data.success) {
           setOfferCount(data?.data?.offers?.length || 0);

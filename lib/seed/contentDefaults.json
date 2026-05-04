@@ -1,0 +1,1323 @@
+{
+  "home": {
+    "heroSlides": [
+      {
+        "id": 1,
+        "type": "packages",
+        "bgImage": "https://github.com/mdabdullahm/video/raw/refs/heads/main/14900-259623335_tiny.mp4",
+        "title": "আমাদের প্রিমিয়াম প্যাকেজের",
+        "subtitle": "সাথে নিরবচ্ছিন্ন ইন্টারনেট সংযোগের অভিজ্ঞতা নিন",
+        "image": "https://i.ibb.co.com/9kgt40Xx/global-network-connectivity-interconnected-nodes-and-systems-png.png",
+        "items": [
+          {
+            "label": "40 Mbps",
+            "price": "890 TK"
+          },
+          {
+            "label": "60 Mbps",
+            "price": "1050 TK"
+          },
+          {
+            "label": "70 Mbps",
+            "price": "1280 TK"
+          },
+          {
+            "label": "80 Mbps",
+            "price": "1575 TK"
+          },
+          {
+            "label": "100 Mbps",
+            "price": "2100 TK"
+          },
+          {
+            "label": "120 Mbps",
+            "price": "3150 TK"
+          },
+          {
+            "label": "150 Mbps",
+            "price": "4200 TK"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "type": "games",
+        "bgImage": "https://i.ibb.co.com/PsYTsbc7/network-sphere-interconnected-nodes-and-global-systems-png.png",
+        "title": "হাই স্পিড এ ডাউনলোড করুন সকল গেম",
+        "logos": [
+          {
+            "img": "https://i.ibb.co.com/R4QKNpRP/im1.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/jvf317K0/im2.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/TB9Qt2fR/im3.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/7tCcw7z0/im4.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/4Rb7vTmp/im5.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/Kz8tVKgg/im6.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/LD4Zs0dK/im7.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/B2PFpDx6/im8.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/XkFRBMGL/im9.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/V0J9smQR/im10.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/4wt72cmG/im11.png"
+          },
+          {
+            "img": "https://i.ibb.co.com/FbWLB5mF/im12.png"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "type": "ipv6",
+        "bgImage": "https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg",
+        "title": "IPv6 READY",
+        "subtitle": "Connecting the World",
+        "image": "https://i.ibb.co.com/PsYTsbc7/network-sphere-interconnected-nodes-and-global-systems-png.png",
+        "features": [
+          "One address at a time with IPv6"
+        ]
+      }
+    ],
+    "services": [
+      [
+        {
+          "id": 1,
+          "title": "Home Broadband Internet",
+          "slug": "home-broadband-internet",
+          "icon": "home",
+          "shortDesc": "Reliable high-speed fiber broadband internet for residential users.",
+          "desc": "Our Home Broadband Internet service is designed for modern households that demand fast, stable, and uninterrupted internet connectivity. Whether it is online classes, remote work, streaming 4K videos, gaming, or everyday browsing, our fiber-optic powered broadband ensures smooth performance with low latency and consistent speed throughout the day.",
+          "details": {
+            "overview": "We provide dedicated fiber connectivity directly to your home, ensuring minimal packet loss and maximum stability. Our infrastructure is optimized for both local BDIX content and international bandwidth.",
+            "useCases": [
+              "Online classes and remote learning",
+              "4K YouTube, Facebook and OTT streaming",
+              "Online gaming with low ping",
+              "Work from home and video conferencing"
+            ],
+            "technologies": [
+              "Fiber Optic Network (FTTH)",
+              "IPv6 Ready Infrastructure",
+              "High-speed BDIX & CDN support"
+            ]
+          },
+          "benefits": [
+            "Stable and consistent internet speed",
+            "Low latency for gaming and streaming",
+            "24/7 customer support",
+            "Affordable monthly packages"
+          ],
+          "cta": {
+            "label": "Get Home Connection",
+            "action": "contact"
+          }
+        },
+        {
+          "id": 2,
+          "title": "Network Security Solutions",
+          "slug": "network-security-solutions",
+          "icon": "shield",
+          "shortDesc": "Enterprise-grade security solutions to protect your network and data.",
+          "desc": "Our Network Security Solutions ensure that your digital assets, systems, and data remain protected from cyber threats. We offer end-to-end security services including firewalls, VPNs, antivirus protection, and CCTV surveillance systems for both residential and commercial clients.",
+          "details": {
+            "overview": "Security is no longer optional. We design and implement multi-layer security architectures that safeguard your network against internal and external threats.",
+            "useCases": [
+              "Office network protection",
+              "Secure remote access via VPN",
+              "Surveillance and monitoring",
+              "Data breach prevention"
+            ],
+            "technologies": [
+              "Firewall & IDS/IPS",
+              "VPN (Site-to-Site & Client VPN)",
+              "IP-based CCTV Surveillance"
+            ]
+          },
+          "benefits": [
+            "Enhanced network protection",
+            "Reduced risk of cyber attacks",
+            "Centralized monitoring",
+            "Professional security management"
+          ],
+          "cta": {
+            "label": "Secure Your Network",
+            "action": "contact"
+          }
+        },
+        {
+          "id": 3,
+          "title": "Corporate & SME Internet",
+          "slug": "corporate-sme-internet",
+          "icon": "briefcase",
+          "shortDesc": "Dedicated and scalable internet solutions for businesses and SMEs.",
+          "desc": "Our Corporate and SME Internet service is tailored for businesses that require reliable connectivity, guaranteed uptime, and scalable bandwidth. We understand that business operations depend heavily on stable internet, and our solutions are designed to ensure uninterrupted productivity.",
+          "details": {
+            "overview": "We provide enterprise-grade internet connections with dedicated bandwidth and priority routing to ensure consistent performance.",
+            "useCases": [
+              "Office operations",
+              "Cloud-based applications",
+              "Video conferencing",
+              "Branch-to-branch connectivity"
+            ],
+            "technologies": [
+              "Dedicated Fiber Links",
+              "Static IP Support",
+              "Multiple Upstream Providers"
+            ]
+          },
+          "benefits": [
+            "Guaranteed bandwidth",
+            "High uptime (99.9%)",
+            "Priority technical support",
+            "Scalable plans"
+          ],
+          "cta": {
+            "label": "Business Internet",
+            "action": "contact"
+          }
+        },
+        {
+          "id": 4,
+          "title": "Dedicated Server Hosting",
+          "slug": "dedicated-server-hosting",
+          "icon": "server",
+          "shortDesc": "High-performance dedicated servers hosted with reliable connectivity.",
+          "desc": "Our Dedicated Server Hosting service provides businesses with exclusive server resources to run mission-critical applications. Ideal for websites, enterprise software, data storage, and custom applications requiring full control and high performance.",
+          "details": {
+            "overview": "We deploy and manage dedicated servers with optimized routing and secure infrastructure.",
+            "useCases": [
+              "Website & application hosting",
+              "Enterprise systems",
+              "Private cloud setup",
+              "Data storage & backup"
+            ],
+            "technologies": [
+              "High-performance servers",
+              "Secure data center environment",
+              "Advanced network routing"
+            ]
+          },
+          "benefits": [
+            "Full server control",
+            "High performance & reliability",
+            "Custom configurations",
+            "Secure hosting environment"
+          ],
+          "cta": {
+            "label": "Host Your Server",
+            "action": "contact"
+          }
+        },
+        {
+          "id": 5,
+          "title": "Network Solutions (LAN & WAN)",
+          "slug": "network-solutions-lan-wan",
+          "icon": "network",
+          "shortDesc": "Complete LAN and WAN design, deployment, and management solutions.",
+          "desc": "We provide professional LAN and WAN network solutions for offices, factories, and institutions. From planning and cabling to configuration and maintenance, our expert engineers ensure efficient and secure network infrastructure.",
+          "details": {
+            "overview": "A well-designed network is the backbone of any organization. We deliver optimized, scalable, and secure network architectures.",
+            "useCases": [
+              "Office LAN setup",
+              "Inter-branch WAN connectivity",
+              "Industrial networking",
+              "Campus network deployment"
+            ],
+            "technologies": [
+              "Managed Switches & Routers",
+              "Structured Cabling",
+              "Network Monitoring Tools"
+            ]
+          },
+          "benefits": [
+            "Optimized network performance",
+            "Scalable infrastructure",
+            "Reduced downtime",
+            "Expert implementation"
+          ],
+          "cta": {
+            "label": "Build Network",
+            "action": "contact"
+          }
+        },
+        {
+          "id": 6,
+          "title": "CCTV & Surveillance Systems",
+          "slug": "cctv-surveillance-systems",
+          "icon": "settings",
+          "shortDesc": "Advanced CCTV and IP surveillance solutions for complete security.",
+          "desc": "Our CCTV and Surveillance Systems provide reliable monitoring solutions for residential, commercial, and industrial environments. We deploy high-resolution cameras with remote access and recording capabilities.",
+          "details": {
+            "overview": "Security monitoring made simple with modern surveillance technology.",
+            "useCases": [
+              "Home security",
+              "Office & warehouse monitoring",
+              "Industrial surveillance",
+              "Remote live monitoring"
+            ],
+            "technologies": [
+              "IP Cameras",
+              "NVR/DVR Systems",
+              "Remote Monitoring"
+            ]
+          },
+          "benefits": [
+            "24/7 surveillance",
+            "Remote access",
+            "High-resolution recording",
+            "Improved safety"
+          ],
+          "cta": {
+            "label": "Install CCTV",
+            "action": "contact"
+          }
+        },
+        {
+          "id": 7,
+          "title": "Data Connectivity Solutions",
+          "slug": "data-connectivity-solutions",
+          "icon": "database",
+          "shortDesc": "Reliable data connectivity services for seamless communication.",
+          "desc": "Our Data Connectivity Solutions ensure smooth data transmission between systems, branches, and cloud platforms. We focus on performance, reliability, and future scalability.",
+          "details": {
+            "overview": "Designed for organizations that depend on uninterrupted data flow.",
+            "useCases": [
+              "Data synchronization",
+              "Cloud connectivity",
+              "Enterprise applications",
+              "Remote system access"
+            ],
+            "technologies": [
+              "High-capacity links",
+              "Redundant routing",
+              "Secure data channels"
+            ]
+          },
+          "benefits": [
+            "Fast data transfer",
+            "Reliable connectivity",
+            "Scalable solutions",
+            "Secure data flow"
+          ],
+          "cta": {
+            "label": "Connect Data",
+            "action": "contact"
+          }
+        },
+        {
+          "id": 8,
+          "title": "Dedicated Internet Connectivity",
+          "slug": "dedicated-internet-connectivity",
+          "icon": "globe",
+          "shortDesc": "Dedicated high-speed internet with guaranteed uptime.",
+          "desc": "Our Dedicated Internet Connectivity service delivers uncontended bandwidth with multiple upstream links to ensure maximum uptime and reliability for mission-critical operations.",
+          "details": {
+            "overview": "Best suited for enterprises requiring guaranteed performance.",
+            "useCases": [
+              "Enterprise operations",
+              "Critical online services",
+              "Cloud-based platforms",
+              "Data centers"
+            ],
+            "technologies": [
+              "1:1 Contention Ratio",
+              "Multiple Backup Links",
+              "Real IP Support"
+            ]
+          },
+          "benefits": [
+            "Guaranteed bandwidth",
+            "99.9% uptime",
+            "Priority routing",
+            "Enterprise-grade support"
+          ],
+          "cta": {
+            "label": "Get Dedicated Link",
+            "action": "contact"
+          }
+        }
+      ]
+    ],
+    "featureCards": [
+      {
+        "id": 1,
+        "title": "Why CeyberLink Communication?",
+        "videoUrl": "https://github.com/mdabdullahm/video/raw/refs/heads/main/mp41.mov",
+        "bgColor": "bg-[#ffedea]"
+      },
+      {
+        "id": 2,
+        "title": "Coverage area",
+        "videoUrl": "/lotte1.json",
+        "bgColor": "bg-[#f5f5dc]"
+      },
+      {
+        "id": 3,
+        "title": "CeyberLink's Self-care",
+        "videoUrl": "/lotte2.json",
+        "bgColor": "bg-[#cbd5e1]"
+      },
+      {
+        "id": 4,
+        "title": "Support 24/7",
+        "videoUrl": "/lotte3.json",
+        "bgColor": "bg-[#e9d5ff]"
+      }
+    ],
+    "regularPlans": [
+      {
+        "id": 1,
+        "name": "Silver+",
+        "speed": "40 Mbps",
+        "price": "890",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Gold+",
+        "speed": "60 Mbps",
+        "price": "1050",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Platinum+",
+        "speed": "70 Mbps",
+        "price": "1280",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Diamond+",
+        "speed": "80 Mbps",
+        "price": "1575",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Sapphire+",
+        "speed": "100 Mbps",
+        "price": "2100",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Star+",
+        "speed": "120 Mbps",
+        "price": "3150",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      }
+    ],
+    "smePlans": [
+      {
+        "id": 101,
+        "name": "SME Business",
+        "speed": "150 Mbps",
+        "price": "5000",
+        "features": [
+          "Dedicated Bandwidth",
+          "Static IP Support",
+          "99.9% Uptime Guarantee",
+          "Real IP Included",
+          "Priority Support",
+          "1:1 Contention Ratio"
+        ]
+      }
+    ],
+    "coverageBanner": {
+      "title": "Ready to start?",
+      "subTitle": "Locate our coverage area",
+      "description": "CyberLink is spread almost everywhere in Dhaka city. Check the availability of all coverage areas in Dhaka.",
+      "btnText": "Coverage Area",
+      "bgImage": "https://github.com/mdabdullahm/video/raw/refs/heads/main/0009.mp4",
+      "overlayText": "কভারেজ এরিয়া"
+    },
+    "columns": [
+      {
+        "title": "COMPANY",
+        "links": [
+          "About us",
+          "Pricing",
+          "Coverage area",
+          "Bill Payment"
+        ]
+      },
+      {
+        "title": "SUPPORT",
+        "links": [
+          "How to Pay",
+          "Self-care",
+          "Articles",
+          "Contact us"
+        ]
+      },
+      {
+        "title": "QUICK LINKS",
+        "links": [
+          "Join Group",
+          "Like our Page"
+        ]
+      },
+      {
+        "title": "LEGAL",
+        "links": [
+          "Terms & Conditions",
+          "Privacy Policy",
+          "Return & Refund",
+          "BTRC Approved Tariff"
+        ]
+      }
+    ],
+    "newsletter": {
+      "title": "SUBSCRIBE TO OUR NEWSLETTER",
+      "desc": "The latest news, articles, and resources, sent to your inbox weekly."
+    },
+    "paymentLogos": [
+      "https://i.ibb.co/S6pP6vN/visa.png",
+      "https://i.ibb.co/XSbL0xX/mastercard.png",
+      "https://i.ibb.co/9vP6H4Q/bkash.png",
+      "https://i.ibb.co/r7C8L3J/nagad.png",
+      "https://i.ibb.co/r7C8L3J/rocket.png"
+    ]
+  },
+  "about": {
+    "aboutHeader": {
+      "title": "About CyberLink",
+      "license": "ISP License Number: 05-56175"
+    },
+    "mainDescription": "CyberLink Communication started its operation in the year 2021 with the commitment of quality internet service at an affordable price. Over time, our team has developed and introduced many new technologies to meet the requirement of the new millennium. We are one of the top growing ISP Providers in Dhaka, hoping to do much better in the broadband industry with great service.",
+    "missionVision": [
+      {
+        "id": 1,
+        "type": "Mission",
+        "desc": "Our mission works to make Quality Internet and Solutions reachable for all user ranges."
+      },
+      {
+        "id": 2,
+        "type": "Vision",
+        "desc": "Be the Top Internet and solutions provider of Bangladesh with QOS (Quality of Service)."
+      }
+    ],
+    "partners": [
+      {
+        "name": "APNIC",
+        "logo": "https://i.ibb.co.com/1YpFhYfC/22000-1.png"
+      },
+      {
+        "name": "CISCO",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg"
+      },
+      {
+        "name": "MikroTik",
+        "logo": "https://i.ibb.co.com/Jjz4RbnG/00000000.png"
+      },
+      {
+        "name": "Google",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+      },
+      {
+        "name": "Facebook",
+        "logo": "https://upload.wikimedia.org/wikipedia/en/0/04/Facebook_f_logo_%282021%29.svg"
+      }
+    ]
+  },
+  "pricing": {
+    "header": {
+      "title": "Pricing Plans",
+      "description": "Choose the best internet package according to your budget and needs.",
+      "bgVideo": "https://github.com/mdabdullahm/video/raw/refs/heads/main/hero2.mp4"
+    },
+    "regularPlans": [
+      {
+        "id": 1,
+        "name": "Silver+",
+        "speed": "40 Mbps",
+        "price": "890",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Gold+",
+        "speed": "60 Mbps",
+        "price": "1050",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Platinum+",
+        "speed": "70 Mbps",
+        "price": "1280",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Diamond+",
+        "speed": "80 Mbps",
+        "price": "1575",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Sapphire+",
+        "speed": "100 Mbps",
+        "price": "2100",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Star+",
+        "speed": "120 Mbps",
+        "price": "3150",
+        "features": [
+          "High speed BDIX and CDN",
+          "4K Youtube and Facebook",
+          "Optical Fiber Connection",
+          "IPv6 Public IP Only",
+          "24/7 Phone Support",
+          "1:8 Contention Ratio"
+        ]
+      }
+    ],
+    "smePlans": [
+      {
+        "id": 101,
+        "name": "SME Business",
+        "speed": "150 Mbps",
+        "price": "5000",
+        "features": [
+          "Dedicated Bandwidth",
+          "Static IP Support",
+          "99.9% Uptime Guarantee",
+          "Real IP Included",
+          "Priority Support",
+          "1:1 Contention Ratio"
+        ]
+      }
+    ]
+  },
+  "offers": {
+    "header": {
+      "title": "Offers & Campaigns",
+      "description": "Welcome to CyberLink Communication's Offers page! Since 2005, we've been providing top-notch broadband services with cutting-edge technology. As one of Bangladesh's fastest-growing ISPs, we're committed to affordable prices and excellent customer service. Stay tuned for exciting offers and promotions to enhance your internet experience! Choose CyberLink Communication today!",
+      "bgImage": "https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg"
+    },
+    "offers": [
+      {
+        "id": 1,
+        "title": "রেফার করুন, পুরস্কার জিতুন",
+        "description": "সাইবার লিংক কমিউনিকেশন এলো সকল গ্রাহকদের জন্য রেফারাল প্রোগ্রাম। এখন সাইবার লিংক  এর সংযোগ নতুন কাউকে রেফার করেই পেয়ে যান মাসিক বিলের ওপর আকর্ষণীয় ডিসকাউন্ট এবং ক্যাশব্যাক অফার!",
+        "image": "https://i.ibb.co.com/6JLYHwNw/download.jpg",
+        "link": "/#"
+      },
+      {
+        "id": 2,
+        "title": "নতুন সংযোগে ফ্রি রাউটার",
+        "description": "বছরের সেরা অফার! ডট ইন্টারনেটের নতুন সংযোগ নিলেই পাচ্ছেন হাই-স্পিড ডুয়াল ব্যান্ড রাউটার একদম ফ্রি। অফারটি সীমিত সময়ের জন্য, আজই যোগাযোগ করুন।",
+        "image": "https://i.ibb.co.com/0V8HmLPZ/discount-wi-fi-router-podium.jpg",
+        "link": "#"
+      },
+      {
+        "id": 3,
+        "title": "বিকাশ পেমেন্টে ১০% ক্যাশব্যাক",
+        "description": "বিকাশ দিয়ে মাসিক ইন্টারনেট বিল পেমেন্ট করলেই পাচ্ছেন নিশ্চিত ১০% ক্যাশব্যাক। ঘরে বসেই বিল দিন নিরাপদে এবং সাশ্রয় করুন আপনার টাকা।",
+        "image": "https://i.ibb.co.com/rRJd0Qj5/download.png",
+        "link": "#"
+      }
+    ]
+  },
+  "coverage": {
+    "header": {
+      "title": "Coverage Area",
+      "description": "CyberLink Communication's coverage is wide. CyberLink Communication is spread almost everywhere in Dhaka city. Check the availability of all coverage areas in Dhaka.",
+      "bgVideo": "https://github.com/mdabdullahm/video/raw/refs/heads/main/hero2.mp4"
+    },
+    "regions": [
+      {
+        "id": 1,
+        "name": "Dhaka",
+        "subtitle": "Check the available area for the Dhaka Region",
+        "areas": [
+          "Tejgaon",
+          "Tejgaon Industrial Area",
+          "Mohammadpur",
+          "Adabor",
+          "Sher E Bangla Nagar",
+          "Pallabi",
+          "Mirpur",
+          "Rupnagar",
+          "Darus Salam",
+          "Kafrul",
+          "Bhasantek",
+          "Banani",
+          "Gulshan",
+          "Vatara",
+          "Badda",
+          "Rampura",
+          "Hatirjheel",
+          "Khilkhet",
+          "Airport",
+          "Ramna",
+          "Shahbagh",
+          "Dhanmondi",
+          "New Market",
+          "Hazaribag"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Faridpur",
+        "subtitle": "Check the available area for the Faridpur Region",
+        "areas": [
+          "Khabaspur",
+          "Jantar Mor",
+          "Jhultuli",
+          "Chanmari",
+          "Kamalapur",
+          "Habli Gopalpur",
+          "Laler Mor",
+          "Goalchamot"
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Narayanganj",
+        "subtitle": "Check the available area for the Narayanganj Region",
+        "areas": [
+          "Masdair",
+          "Deobhog",
+          "Baburail",
+          "Tan Bazar",
+          "Bappi Chattar",
+          "Kashipur",
+          "Gabtoli",
+          "Chashara"
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Keraniganj",
+        "subtitle": "Check the available area for the Keraniganj Region",
+        "areas": [
+          "Bashundhara Riverview",
+          "Doleshwar",
+          "Hasnabad",
+          "Nazirabag",
+          "Chunkutia",
+          "Keraniganj Model Town",
+          "Guljarbag",
+          "Jinjira",
+          "Nojorganj",
+          "Barishur",
+          "Kaliganj",
+          "Aga Nagar"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Narayanganj",
+        "subtitle": "Check the available area for the Narayanganj Region",
+        "areas": [
+          "Masdair",
+          "Deobhog",
+          "Baburail",
+          "Tan Bazar",
+          "Bappi Chattar",
+          "Kashipur",
+          "Gabtoli",
+          "Chashara",
+          "Amlapara",
+          "Shabujbag",
+          "Nagar Khanpur",
+          "Shibu Market",
+          "Bhuingar"
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Ati Bazar",
+        "subtitle": "Check the available area for the Ati Bazar Region",
+        "areas": [
+          "Ati Bazar",
+          "Pachdona",
+          "Noya Bazar",
+          "Ghatarchar",
+          "Washpur",
+          "Arshinagar"
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Narshingdi",
+        "subtitle": "Check the available area for the Narshingdi Region",
+        "areas": [
+          "Hazipur",
+          "Narshingdi Shadar",
+          "Brahmondi",
+          "Chowala",
+          "Nagoriakandi"
+        ]
+      },
+      {
+        "id": 7,
+        "name": "Savar",
+        "subtitle": "Check the available area for the Savar Region",
+        "areas": [
+          "Bank Colony",
+          "Anandapur",
+          "Genda",
+          "Bank Town",
+          "Rajfulbaria",
+          "Hemayetpur",
+          "Vatpara",
+          "Jamsing Housing",
+          "Baktarpur",
+          "Akran bazar"
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Tongi",
+        "subtitle": "Check the available area for the Tongi Region",
+        "areas": [
+          "Tongi Bazar",
+          "Arichpur",
+          "Barodeora",
+          "Cherag Ali Bazar",
+          "Dattapara",
+          "Bonmala",
+          "Auchpara",
+          "Rasulbag",
+          "Gazipura",
+          "Shataish"
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Gazipur",
+        "subtitle": "Check the available area for the Gazipur Region",
+        "areas": [
+          "Konabari"
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Gopalganj",
+        "subtitle": "Check the available area for the Gopalganj Region",
+        "areas": [
+          "Ghonapara",
+          "Gobra Union",
+          "Nilar Math",
+          "Nabinbag",
+          "Bankpara",
+          "Islamabad",
+          "Ghosherchar",
+          "Latifpur Union",
+          "Chapail Road",
+          "Berashi Union",
+          "Bedgram",
+          "Police Line",
+          "Moulovipara",
+          "Kalabagan",
+          "Shobujbag",
+          "Mia Para"
+        ]
+      },
+      {
+        "id": 11,
+        "name": "Tangail",
+        "subtitle": "Check the available area for the Tangail Region",
+        "areas": [
+          "Bisik Road",
+          "Baby Stand",
+          "New Bus Stand",
+          "Sabalia",
+          "Adalat Para",
+          "Kodalia",
+          "Amin Bazar",
+          "6 Ani Bazar",
+          "Delduar Road"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "header": {
+      "title": "Get in touch",
+      "description": "If you would like to find out more about how we can help you, please give us a call or drop us an email. We welcome your comments and suggestions about this website and/or any issues that you wish to raise.",
+      "bgVideo": "https://github.com/mdabdullahm/video/raw/refs/heads/main/hero2.mp4"
+    },
+    "info": {
+      "title": "Contact Information",
+      "phones": [
+        "+8801834123860",
+        "+8801928866916",
+        "+880 1728-115026"
+      ],
+      "email": "info@cyberlinkltd.com",
+      "address": "Board Bazar, National University, Gazipur , Gazipur, Bangladesh, 1704",
+      "enquiries": [
+        {
+          "label": "Billing enquiries",
+          "email": "accounts@cyberlinkltd.com"
+        },
+        {
+          "label": "Technical enquiries",
+          "email": "noc@cyberlinkltd.com"
+        },
+        {
+          "label": "New connection enquiries",
+          "email": "sales@cyberlinkltd.com"
+        },
+        {
+          "label": "Management",
+          "email": "admin@cyberlinkltd.com"
+        }
+      ]
+    }
+  },
+  "payBill": {
+    "header": {
+      "title": "How to Pay?",
+      "description": "Make your payment via internet and mobile banking and enjoy automatic bill update with CyberLink Communication's automatic billing system.",
+      "bgImage": "https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg"
+    },
+    "paymentMethods": [
+      {
+        "id": "bkash",
+        "name": "bKash",
+        "title": "Pay Bill through bKash",
+        "steps": [
+          "Login to your bKash account with your PIN.",
+          "Select 'Pay Bill' option from the menu.",
+          "Under 'Internet' find and select 'CyberLink Communication'.",
+          "Enter your Customer ID and check the bill.",
+          "Confirm payment to complete the process."
+        ],
+        "appImage": "https://i.ibb.co.com/842myBLZ/download-2.jpg"
+      },
+      {
+        "id": "upay",
+        "name": "Upay",
+        "title": "Pay Bill through Upay",
+        "steps": [
+          "Login to your Upay account.",
+          "Select 'Pay Bill' and tap on 'Internet'.",
+          "Select 'CyberLink Communication' from the provider list.",
+          "Enter your unique Customer ID.",
+          "Check amount and confirm with your PIN."
+        ],
+        "appImage": "https://i.ibb.co.com/Z63dXMxz/download-1.jpg"
+      },
+      {
+        "id": "rocket",
+        "name": "Rocket",
+        "title": "Pay Bill through Rocket",
+        "steps": [
+          "Dial *322# or login to Rocket App.",
+          "Select 'Bill Pay' and choose 'Self' or 'Other'.",
+          "Enter Biller ID for CyberLink Communication (e.g. 1234).",
+          "Provide your Customer ID as Bill Number.",
+          "Enter Bill amount and your Secret PIN."
+        ],
+        "appImage": "https://i.ibb.co.com/bg5sY6CZ/download.jpg"
+      }
+    ],
+    "banks": [
+      {
+        "id": 1,
+        "bankName": "Brac Bank",
+        "accountName": "CYBERLINK COMMUNICATION",
+        "accountNo": "1509201168141001",
+        "routing": "060276074",
+        "branch": "SATMASJID ROAD",
+        "logo": "https://i.ibb.co.com/JZ7JT3h/download-1.png"
+      },
+      {
+        "id": 2,
+        "bankName": "One Bank",
+        "accountName": "CYBERLINK COMMUNICATION",
+        "accountNo": "0391020004607",
+        "routing": "165260727",
+        "branch": "BANASREE BRANCH",
+        "logo": "https://placehold.co/100x50/white/red?text=One"
+      },
+      {
+        "id": 3,
+        "bankName": "City Bank",
+        "accountName": "CYBERLINK COMMUNICATION",
+        "accountNo": "1502387863001",
+        "routing": "225263527",
+        "branch": "NEW MARKET BRANCH",
+        "logo": "https://placehold.co/100x50/white/red?text=City"
+      }
+    ]
+  },
+  "selfcare": {
+    "header": {
+      "title": "Login to Selfcare",
+      "description": "Make your payment using a variety of available facilities, such as bKash, MasterCard, Visa and other payment methods.",
+      "bgImage": "https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg"
+    },
+    "loginSection": {
+      "welcomeTitle": "Welcome",
+      "welcomeDesc": "Log in to unlock a world of digital experiences.",
+      "benefits": [
+        "Pay the due at anytime",
+        "Get support 24/7",
+        "Check connection status",
+        "Get usage and insights",
+        "Manage users and devices"
+      ]
+    }
+  },
+  "articles": {
+    "header": {
+      "title": "Articles & Guides",
+      "description": "ইন্টারনেট জগত সম্পর্কে আরও জানুন। আমাদের টেকনিক্যাল টিম নিয়মিত আপনাদের জন্য প্রয়োজনীয় টিপস এবং গাইড শেয়ার করে থাকে।",
+      "bgVideo": "https://github.com/mdabdullahm/video/raw/refs/heads/main/0009.mp4"
+    },
+    "categories": [
+      "All",
+      "Tech Tips",
+      "Router Setup",
+      "Security",
+      "News"
+    ],
+    "articles": [
+      {
+        "id": 1,
+        "title": "কীভাবে ইন্টারনেটের গতি বাড়ানো যায়?",
+        "category": "Tech Tips",
+        "date": "জানুয়ারি ২০, ২০২৬",
+        "image": "https://i.ibb.co.com/JZ7JT3h/download-1.png",
+        "excerpt": "আপনার রাউটার সঠিক জায়গায় না থাকলে ইন্টারনেটের গতি কমে যেতে পারে। জেনে নিন সঠিক নিয়ম..."
+      },
+      {
+        "id": 2,
+        "title": "টিপি-লিংক রাউটার সেটআপ করার সহজ গাইড",
+        "category": "Router Setup",
+        "date": "জানুয়ারি ১৮, ২০২৬",
+        "image": "https://i.ibb.co.com/JZ7JT3h/download-1.png",
+        "excerpt": "নতুন রাউটার কিনেছেন? আমাদের এই গাইডের মাধ্যমে আপনি মাত্র ৫ মিনিটেই আপনার রাউটারটি কনফিগার করতে পারবেন।"
+      },
+      {
+        "id": 3,
+        "title": "সাইবার নিরাপত্তা: পাসওয়ার্ড নিরাপদ রাখার নিয়ম",
+        "category": "Security",
+        "date": "জানুয়ারি ১৫, ২০২৬",
+        "image": "https://i.ibb.co.com/JZ7JT3h/download-1.png",
+        "excerpt": "ইন্টারনেট ব্যবহারের সময় আপনার ব্যক্তিগত তথ্য সুরক্ষিত রাখা খুবই জরুরি। কিছু সহজ টিপস অনুসরণ করুন..."
+      }
+    ]
+  },
+  "packages": {
+    "packages": [
+      {
+        "label": "40 Mbps",
+        "price": "890 TK"
+      },
+      {
+        "label": "60 Mbps",
+        "price": "1050 TK"
+      },
+      {
+        "label": "70 Mbps",
+        "price": "1280 TK"
+      },
+      {
+        "label": "80 Mbps",
+        "price": "1575 TK"
+      },
+      {
+        "label": "100 Mbps",
+        "price": "2100 TK"
+      },
+      {
+        "label": "120 Mbps",
+        "price": "3150 TK"
+      },
+      {
+        "label": "150 Mbps",
+        "price": "4200 TK"
+      },
+      {
+        "label": "30 Mbps(SME)",
+        "price": "3000 TK"
+      },
+      {
+        "label": "50 Mbps(SME)",
+        "price": "5000 TK"
+      }
+    ]
+  },
+  "services": {
+    "services": [
+      {
+        "id": 1,
+        "slug": "home-broadband-internet",
+        "title": "Home Broadband Internet",
+        "icon": "home",
+        "shortDesc": "Reliable high-speed fiber broadband internet for residential users.",
+        "desc": "Our Home Broadband Internet service is designed for modern households that demand fast, stable, and uninterrupted internet connectivity. Whether it is online classes, remote work, streaming 4K videos, gaming, or everyday browsing, our fiber-optic powered broadband ensures smooth performance with low latency and consistent speed throughout the day.",
+        "details": {
+          "overview": "We provide dedicated fiber connectivity directly to your home, ensuring minimal packet loss and maximum stability. Our infrastructure is optimized for both local BDIX content and international bandwidth.",
+          "useCases": [
+            "Online classes and remote learning",
+            "4K YouTube, Facebook and OTT streaming",
+            "Online gaming with low ping",
+            "Work from home and video conferencing"
+          ],
+          "technologies": [
+            "Fiber Optic Network (FTTH)",
+            "IPv6 Ready Infrastructure",
+            "High-speed BDIX & CDN support"
+          ]
+        },
+        "benefits": [
+          "Stable and consistent internet speed",
+          "Low latency for gaming and streaming",
+          "24/7 customer support",
+          "Affordable monthly packages"
+        ],
+        "cta": {
+          "label": "Get Home Connection",
+          "action": "contact"
+        }
+      },
+      {
+        "id": 2,
+        "slug": "network-security-solutions",
+        "title": "Network Security Solutions",
+        "icon": "shield",
+        "shortDesc": "Enterprise-grade security solutions to protect your network and data.",
+        "desc": "Our Network Security Solutions ensure that your digital assets, systems, and data remain protected from cyber threats. We offer end-to-end security services including firewalls, VPNs, antivirus protection, and CCTV surveillance systems for both residential and commercial clients.",
+        "details": {
+          "overview": "Security is no longer optional. We design and implement multi-layer security architectures that safeguard your network against internal and external threats.",
+          "useCases": [
+            "Office network protection",
+            "Secure remote access via VPN",
+            "Surveillance and monitoring",
+            "Data breach prevention"
+          ],
+          "technologies": [
+            "Firewall & IDS/IPS",
+            "VPN (Site-to-Site & Client VPN)",
+            "IP-based CCTV Surveillance"
+          ]
+        },
+        "benefits": [
+          "Enhanced network protection",
+          "Reduced risk of cyber attacks",
+          "Centralized monitoring",
+          "Professional security management"
+        ],
+        "cta": {
+          "label": "Secure Your Network",
+          "action": "contact"
+        }
+      },
+      {
+        "id": 3,
+        "slug": "corporate-sme-internet",
+        "title": "Corporate & SME Internet",
+        "icon": "briefcase",
+        "shortDesc": "Dedicated and scalable internet solutions for businesses and SMEs.",
+        "desc": "Our Corporate and SME Internet service is tailored for businesses that require reliable connectivity, guaranteed uptime, and scalable bandwidth.",
+        "benefits": [
+          "Guaranteed bandwidth",
+          "High uptime (99.9%)",
+          "Priority technical support",
+          "Scalable plans"
+        ],
+        "cta": {
+          "label": "Business Internet",
+          "action": "contact"
+        }
+      },
+      {
+        "id": 4,
+        "slug": "dedicated-server-hosting",
+        "title": "Dedicated Server Hosting",
+        "icon": "server",
+        "shortDesc": "High-performance dedicated servers hosted with reliable connectivity.",
+        "desc": "Our Dedicated Server Hosting service provides businesses with exclusive server resources to run mission-critical applications.",
+        "benefits": [
+          "Full server control",
+          "High performance & reliability",
+          "Custom configurations",
+          "Secure hosting environment"
+        ],
+        "cta": {
+          "label": "Host Your Server",
+          "action": "contact"
+        }
+      },
+      {
+        "id": 5,
+        "slug": "network-solutions-lan-wan",
+        "title": "Network Solutions (LAN & WAN)",
+        "icon": "network",
+        "shortDesc": "Complete LAN and WAN design, deployment, and management solutions.",
+        "desc": "Professional LAN and WAN network solutions for offices, factories, and institutions.",
+        "benefits": [
+          "Optimized network performance",
+          "Scalable infrastructure",
+          "Reduced downtime",
+          "Expert implementation"
+        ],
+        "cta": {
+          "label": "Build Network",
+          "action": "contact"
+        }
+      },
+      {
+        "id": 6,
+        "slug": "cctv-surveillance-systems",
+        "title": "CCTV & Surveillance Systems",
+        "icon": "settings",
+        "shortDesc": "Advanced CCTV and IP surveillance solutions for complete security.",
+        "desc": "Reliable monitoring solutions for residential, commercial, and industrial environments.",
+        "benefits": [
+          "24/7 surveillance",
+          "Remote access",
+          "High-resolution recording",
+          "Improved safety"
+        ],
+        "cta": {
+          "label": "Install CCTV",
+          "action": "contact"
+        }
+      },
+      {
+        "id": 7,
+        "slug": "data-connectivity-solutions",
+        "title": "Data Connectivity Solutions",
+        "icon": "database",
+        "shortDesc": "Reliable data connectivity services for seamless communication.",
+        "desc": "Smooth data transmission between systems, branches, and cloud platforms.",
+        "benefits": [
+          "Fast data transfer",
+          "Reliable connectivity",
+          "Scalable solutions",
+          "Secure data flow"
+        ],
+        "cta": {
+          "label": "Connect Data",
+          "action": "contact"
+        }
+      },
+      {
+        "id": 8,
+        "slug": "dedicated-internet-connectivity",
+        "title": "Dedicated Internet Connectivity",
+        "icon": "globe",
+        "shortDesc": "Dedicated high-speed internet with guaranteed uptime.",
+        "desc": "Uncontended bandwidth with multiple upstream links for mission-critical operations.",
+        "benefits": [
+          "Guaranteed bandwidth",
+          "99.9% uptime",
+          "Priority routing",
+          "Enterprise-grade support"
+        ],
+        "cta": {
+          "label": "Get Dedicated Link",
+          "action": "contact"
+        }
+      }
+    ]
+  }
+}

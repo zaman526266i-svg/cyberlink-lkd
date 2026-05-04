@@ -23,6 +23,77 @@ const PayServicePage = () => {
     ];
 
     const [selectedService, setSelectedService] = useState("");
+    const [customerId, setCustomerId] = useState("");
+    const [estimatedAmount, setEstimatedAmount] = useState("");
+    const [loadingAmount, setLoadingAmount] = useState(false);
+    const [paying, setPaying] = useState(false);
+
+    const serviceTypeMap = {
+        "New Connection": "new_connection",
+        "Shift Connection": "shift_connection",
+        Reconnection: "reconnection",
+        "Buy Router": "buy_router",
+    };
+
+    const fetchQuote = async (targetCustomerId, targetService) => {
+        const serviceType = serviceTypeMap[targetService] || "";
+        if (!targetCustomerId || !serviceType) {
+            setEstimatedAmount("");
+            return;
+        }
+        setLoadingAmount(true);
+        try {
+            const response = await fetch(
+                `/api/payments/quote?flowType=monthly_bill&customerId=${encodeURIComponent(targetCustomerId)}&serviceType=${encodeURIComponent(serviceType)}`
+            );
+            const data = await response.json();
+            if (response.ok && data.success) {
+                setEstimatedAmount(String(data.data.amount || ""));
+            } else {
+                setEstimatedAmount("");
+            }
+        } catch {
+            setEstimatedAmount("");
+        } finally {
+            setLoadingAmount(false);
+        }
+    };
+
+    const handlePay = async (event) => {
+        event.preventDefault();
+        const serviceType = serviceTypeMap[selectedService] || "";
+        if (!serviceType) {
+            window.alert("Please select a service first.");
+            return;
+        }
+        if (!customerId.trim()) {
+            window.alert("Please enter your customer ID or phone.");
+            return;
+        }
+
+        setPaying(true);
+        try {
+            const response = await fetch("/api/payments/init", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    flowType: "monthly_bill",
+                    customerId: customerId.trim(),
+                    serviceType,
+                    source: "pay_service_page",
+                }),
+            });
+            const data = await response.json();
+            if (!response.ok || !data.success || !data.data?.gatewayUrl) {
+                throw new Error(data.error || "Could not create payment session.");
+            }
+            window.location.href = data.data.gatewayUrl;
+        } catch (error) {
+            window.alert(error.message || "Could not start payment.");
+        } finally {
+            setPaying(false);
+        }
+    };
 
     return (
         <div className="min-h-screen  bg-white font-hind selection:text-white selection:bg-blue-600 pb-24">
@@ -58,7 +129,10 @@ const PayServicePage = () => {
                         <motion.div 
                             key={service.id}
                             whileHover={{ y: -10, scale: 1.02 }}
-                            onClick={() => setSelectedService(service.name)}
+                            onClick={() => {
+                                setSelectedService(service.name);
+                                fetchQuote(customerId.trim(), service.name);
+                            }}
                             className={`cursor-pointer p-6 lg:p-10 rounded-[2.5rem] border-2 transition-all duration-300 flex flex-col items-center justify-center text-center shadow-xl relative overflow-hidden group
                             ${selectedService === service.name 
                                 ? 'bg-blue-600 border-blue-600 text-white shadow-blue-500/40' 
@@ -90,7 +164,7 @@ const PayServicePage = () => {
                         <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full"></div>
                     </div>
 
-                    <form className="space-y-8">
+                    <form onSubmit={handlePay} className="space-y-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {/* সার্ভিস সিলেকশন (Read Only) */}
                             <div className="space-y-2">
@@ -113,6 +187,12 @@ const PayServicePage = () => {
                                     <input 
                                         type="text" 
                                         placeholder="Ex: 017XXXXXXXX" 
+                                        value={customerId}
+                                        onChange={(event) => {
+                                            const nextValue = event.target.value;
+                                            setCustomerId(nextValue);
+                                        }}
+                                        onBlur={() => fetchQuote(customerId.trim(), selectedService)}
                                         className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-blue-500 focus:bg-white transition-all font-bold text-slate-800 placeholder:text-slate-300"
                                     />
                                 </div>
@@ -127,15 +207,20 @@ const PayServicePage = () => {
                                 <input 
                                     type="number" 
                                     placeholder="0.00" 
+                                    readOnly
+                                    value={estimatedAmount}
                                     className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-blue-500 focus:bg-white transition-all text-3xl font-black text-slate-900"
                                 />
                             </div>
+                            <p className="text-xs text-slate-500">
+                                {loadingAmount ? "Loading amount from database..." : "Amount is resolved from server records for security."}
+                            </p>
                         </div>
 
                         {/* পে বাটন */}
-                        <button className="relative group/btn w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-blue-600/30 transition-all active:scale-95 text-xl font-poppins uppercase tracking-widest overflow-hidden">
+                        <button type="submit" disabled={paying} className="relative group/btn w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-black py-5 rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-blue-600/30 transition-all active:scale-95 text-xl font-poppins uppercase tracking-widest overflow-hidden">
                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
-                             <span>Proceed to Pay</span> 
+                             <span>{paying ? "Processing..." : "Proceed to Pay"}</span> 
                              <ArrowRight size={24} strokeWidth={3} className="group-hover/btn:translate-x-1 transition-transform" />
                         </button>
                     </form>

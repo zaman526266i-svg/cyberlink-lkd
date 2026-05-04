@@ -13,6 +13,37 @@ export default function PayBillPage() {
         banks: [],
     });
     const [customerId, setCustomerId] = useState("");
+    const [paying, setPaying] = useState(false);
+
+    const startMonthlyBillPayment = async (source = "pay_bill_page") => {
+        const normalizedCustomerId = customerId.trim();
+        if (!normalizedCustomerId) {
+            window.alert("Please enter your customer ID first.");
+            return;
+        }
+
+        setPaying(true);
+        try {
+            const response = await fetch("/api/payments/init", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    flowType: "monthly_bill",
+                    customerId: normalizedCustomerId,
+                    source,
+                }),
+            });
+            const data = await response.json();
+            if (!response.ok || !data.success || !data.data?.gatewayUrl) {
+                throw new Error(data.error || "Could not create payment session.");
+            }
+            window.location.href = data.data.gatewayUrl;
+        } catch (error) {
+            window.alert(error.message || "Could not start payment.");
+        } finally {
+            setPaying(false);
+        }
+    };
 
     if (loading) {
         return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
@@ -73,8 +104,13 @@ export default function PayBillPage() {
                                         onChange={(e) => setCustomerId(e.target.value)}
                                     />
                                 </div>
-                                <button className="bg-blue-600 hover:bg-blue-700 text-white font-black px-8 py-3.5 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap font-poppins text-sm">
-                                    Pay Now <ArrowRight size={18} />
+                                <button
+                                    type="button"
+                                    onClick={() => startMonthlyBillPayment("pay_bill_quick_pay")}
+                                    disabled={paying}
+                                    className="bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-black px-8 py-3.5 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95 whitespace-nowrap font-poppins text-sm"
+                                >
+                                    {paying ? "Processing..." : "Pay Now"} <ArrowRight size={18} />
                                 </button>
                             </div>
                         </div>

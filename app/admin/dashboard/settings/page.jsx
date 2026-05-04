@@ -103,7 +103,7 @@ export default function SettingsPage() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-black">Site Content Manager</h2>
-        <p className="text-slate-400">Edit all JSON-based page data from this dashboard.</p>
+        <p className="text-slate-400">Edit site page data stored in MongoDB from this dashboard.</p>
       </div>
 
       {loadingFiles ? <p className="text-slate-400">Loading content files...</p> : null}
@@ -113,7 +113,7 @@ export default function SettingsPage() {
       {!loadingFiles && files.length ? (
         <div className="space-y-4">
           <div className="bg-slate-900 border border-white/5 rounded-2xl p-4">
-            <label className="text-xs uppercase tracking-widest text-slate-400">Select Page Data File</label>
+            <label className="text-xs uppercase tracking-widest text-slate-400">Select content</label>
             <select
               value={selectedKey}
               onChange={(event) => setSelectedKey(event.target.value)}
@@ -121,7 +121,7 @@ export default function SettingsPage() {
             >
               {files.map((file) => (
                 <option key={file.key} value={file.key}>
-                  {file.label} ({file.path})
+                  {file.label} ({file.collection})
                 </option>
               ))}
             </select>

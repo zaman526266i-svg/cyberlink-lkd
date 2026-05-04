@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { readContentByKey } from "@/lib/serverContent";
+import { PUBLIC_CACHE_HEADERS } from "@/lib/apiCache";
 
-export async function GET(_request, { params }) {
+export async function GET(_request, context) {
   try {
+    const params = await context.params;
     const id = Number(params.id);
     if (!Number.isFinite(id)) {
       return NextResponse.json(
@@ -22,7 +24,7 @@ export async function GET(_request, { params }) {
       );
     }
 
-    return NextResponse.json({ success: true, data: offer });
+    return NextResponse.json({ success: true, data: offer }, { headers: PUBLIC_CACHE_HEADERS });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: error.message },

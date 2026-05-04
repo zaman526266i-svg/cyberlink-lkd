@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSessionFromRequest } from "@/lib/adminAuth";
 import { readContentByKey, writeContentByKey } from "@/lib/serverContent";
+import { PUBLIC_CACHE_HEADERS } from "@/lib/apiCache";
 
 async function readOffersData() {
   const record = await readContentByKey("offers");
@@ -19,7 +20,7 @@ function toNumberId(value) {
 export async function GET() {
   try {
     const data = await readOffersData();
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, data }, { headers: PUBLIC_CACHE_HEADERS });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: error.message },

@@ -1,19 +1,16 @@
 import { NextResponse } from "next/server";
 import { getContentFileByKey } from "@/lib/contentFiles";
-import { getContentFileList, readContentByKey } from "@/lib/serverContent";
+import { readContentByKey } from "@/lib/serverContent";
 import { PUBLIC_CACHE_HEADERS } from "@/lib/apiCache";
 
-export async function GET(request) {
+export async function GET(request, context) {
   try {
-    const { searchParams } = new URL(request.url);
-    const key = String(searchParams.get("key") || "");
+    const { key: rawKey } = await context.params;
+    const key = String(rawKey || "");
 
-    if (!key) {
-      return NextResponse.json({ success: true, data: getContentFileList() });
-    }
-
-    if (!getContentFileByKey(key)) {
-      return NextResponse.json({ success: false, error: "Invalid file key." }, { status: 400 });
+    const meta = getContentFileByKey(key);
+    if (!meta) {
+      return NextResponse.json({ success: false, error: "Invalid content key." }, { status: 400 });
     }
 
     const data = await readContentByKey(key);

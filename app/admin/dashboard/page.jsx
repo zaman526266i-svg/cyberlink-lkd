@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Users, MapPin, Gift, UserCog, FileText, Package } from "lucide-react";
+import { Users, MapPin, Gift, UserCog, FileText, Package, CreditCard } from "lucide-react";
 
 const modules = [
   {
@@ -47,15 +47,22 @@ const modules = [
     key: "contentFiles",
     accent: "text-fuchsia-400",
   },
+  {
+    title: "Payments",
+    href: "/admin/dashboard/payments",
+    icon: CreditCard,
+    key: "payments",
+    accent: "text-emerald-400",
+  },
 ];
 
 export default function DashboardPage() {
-  const [counts, setCounts] = useState({ applications: 0, regions: 0, offers: 0, managers: 0, contentFiles: 0, packages: 0 });
+  const [counts, setCounts] = useState({ applications: 0, regions: 0, offers: 0, managers: 0, contentFiles: 0, packages: 0, payments: 0 });
 
   useEffect(() => {
     const load = async () => {
       try {
-        const [applicationsRes, coverageRes, offersRes, managersRes, contentRes, homeRes, pricingRes] = await Promise.all([
+        const [applicationsRes, coverageRes, offersRes, managersRes, contentRes, homeRes, pricingRes, paymentsRes] = await Promise.all([
           fetch("/api/apply", { cache: "no-store" }),
           fetch("/api/coverage", { cache: "no-store" }),
           fetch("/api/offers", { cache: "no-store" }),
@@ -63,9 +70,10 @@ export default function DashboardPage() {
           fetch("/api/admin/content", { cache: "no-store" }),
           fetch("/api/admin/content?key=home", { cache: "no-store" }),
           fetch("/api/admin/content?key=pricing", { cache: "no-store" }),
+          fetch("/api/admin/payments", { cache: "no-store" }),
         ]);
 
-        const [applications, coverage, offers, managers, content, homeData, pricingData] = await Promise.all([
+        const [applications, coverage, offers, managers, content, homeData, pricingData, paymentsData] = await Promise.all([
           applicationsRes.json(),
           coverageRes.json(),
           offersRes.json(),
@@ -73,6 +81,7 @@ export default function DashboardPage() {
           contentRes.json(),
           homeRes.json(),
           pricingRes.json(),
+          paymentsRes.json(),
         ]);
 
         const heroPackagesCount =
@@ -88,9 +97,10 @@ export default function DashboardPage() {
           managers: managers?.data?.length || 0,
           contentFiles: content?.data?.length || 0,
           packages: heroPackagesCount + pricingPlansCount,
+          payments: paymentsData?.summary?.total || 0,
         });
       } catch {
-        setCounts({ applications: 0, regions: 0, offers: 0, managers: 0, contentFiles: 0, packages: 0 });
+        setCounts({ applications: 0, regions: 0, offers: 0, managers: 0, contentFiles: 0, packages: 0, payments: 0 });
       }
     };
 

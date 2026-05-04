@@ -19,7 +19,7 @@ export default function CoveragePage() {
       setLoading(true);
       setError("");
       try {
-        const response = await fetch("/api/coverage", { cache: "no-store" });
+        const response = await fetch("/api/coverage");
         const data = await response.json();
         if (!response.ok || !data.success || !data.data) {
           throw new Error(data.error || "Unable to load coverage.");
