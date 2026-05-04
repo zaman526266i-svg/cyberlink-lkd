@@ -70,6 +70,11 @@ const PayServicePage = () => {
             window.alert("Please enter your customer ID or phone.");
             return;
         }
+        const manualAmount = Number(estimatedAmount);
+        if (!Number.isFinite(manualAmount) || manualAmount <= 0) {
+            window.alert("Please provide a valid payment amount.");
+            return;
+        }
 
         setPaying(true);
         try {
@@ -80,6 +85,7 @@ const PayServicePage = () => {
                     flowType: "monthly_bill",
                     customerId: customerId.trim(),
                     serviceType,
+                    manualAmount,
                     source: "pay_service_page",
                 }),
             });
@@ -207,13 +213,15 @@ const PayServicePage = () => {
                                 <input 
                                     type="number" 
                                     placeholder="0.00" 
-                                    readOnly
                                     value={estimatedAmount}
+                                    onChange={(event) => setEstimatedAmount(event.target.value)}
                                     className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-blue-500 focus:bg-white transition-all text-3xl font-black text-slate-900"
                                 />
                             </div>
                             <p className="text-xs text-slate-500">
-                                {loadingAmount ? "Loading amount from database..." : "Amount is resolved from server records for security."}
+                                {loadingAmount
+                                    ? "Loading amount from server..."
+                                    : "Default amount এসেছে server থেকে। চাইলে edit করে payment করতে পারবেন।"}
                             </p>
                         </div>
 

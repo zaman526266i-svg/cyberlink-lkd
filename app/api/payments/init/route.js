@@ -27,11 +27,18 @@ export async function POST(request) {
     const customerId = String(body.customerId || "");
     const serviceType = String(body.serviceType || "");
     const source = String(body.source || "website");
+    const manualAmount = Number(body.manualAmount);
 
-    const pricing =
+    const pricingBase =
       flowType === "new_connection"
         ? await resolveAmountForNewConnection({ requestId, packageLabel })
         : await resolveAmountForMonthlyBill({ customerId, serviceType });
+    const allowManual = flowType === "monthly_bill" && Number.isFinite(manualAmount) && manualAmount > 0;
+    const pricing = {
+      ...pricingBase,
+      amount: allowManual ? Number(manualAmount.toFixed(2)) : pricingBase.amount,
+      amountSource: allowManual ? "manual_override" : "server_resolved",
+    };
 
     const tranId = generateTransactionId(flowType === "new_connection" ? "NEW" : "BILL");
     const now = new Date();
@@ -40,6 +47,7 @@ export async function POST(request) {
       tranId,
       flowType,
       source,
+      amountSource: pricing.amountSource,
       status: "INITIATED",
       validationStatus: "PENDING",
       amount: pricing.amount,

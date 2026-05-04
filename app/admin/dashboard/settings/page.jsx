@@ -104,6 +104,11 @@ export default function SettingsPage() {
       <div>
         <h2 className="text-3xl font-black">Site Content Manager</h2>
         <p className="text-slate-400">Edit site page data stored in MongoDB from this dashboard.</p>
+        <p className="text-xs text-slate-500 mt-1">
+          For Pay Service default charges, open <span className="font-bold">Pay Bill Page</span> content and set
+          <span className="font-mono"> serviceCharges </span>
+          keys like new_connection, shift_connection, reconnection, buy_router.
+        </p>
       </div>
 
       {loadingFiles ? <p className="text-slate-400">Loading content files...</p> : null}
