@@ -72,6 +72,9 @@ export default function ContactPage() {
                                     <p className="text-lg font-bold hover:text-blue-400 cursor-pointer transition-colors">{contactData.info.email}</p>
                                 </div>
                             </div>
+                            <div>
+                                <p>Mailing Address : House-44, Word No-32, Vill-Baliwara, National University, Gazipur</p>
+                            </div>
 
                             {/* এনকোয়ারি লিস্টসমূহ */}
                             <div className="pt-6 space-y-5 border-t border-white/5">
@@ -88,6 +91,7 @@ export default function ContactPage() {
                                 <button className="flex-grow bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold transition-all text-sm">Message Us</button>
                                 <button className="px-5 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition-all flex items-center justify-center"><Globe size={20} /></button>
                             </div>
+                            
                         </div>
                     </div>
 

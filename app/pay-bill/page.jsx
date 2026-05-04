@@ -5,6 +5,7 @@ import {
     CreditCard, Smartphone, ArrowRight, User, ChevronRight, CheckCircle2
 } from 'lucide-react';
 import usePublicContent from '@/lib/usePublicContent';
+import Link from 'next/link';
 
 export default function PayBillPage() {
     const { data: payBillData, loading } = usePublicContent("payBill", {
@@ -18,9 +19,9 @@ export default function PayBillPage() {
     }
 
     return (
-        <div className="min-h-screen  bg-white font-hind selection:text-white selection:bg-blue-600">
+        <div className="min-h-screen my-2 bg-white font-hind selection:text-white selection:bg-blue-600">
 
-            {/* ১. হেডার সেকশন - প্যাডিং কমিয়ে চওড়া করা হয়েছে */}
+            {/* ১. হেডার সেকশন - প্যাডিং কমিয়ে চওড়া করা হয়েছে */}
             <section className="relative h-[250px] lg:h-[350px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
@@ -41,7 +42,7 @@ export default function PayBillPage() {
                 </div>
             </section>
 
-            {/* মেইন কন্টেইনার - গ্যাপ কমিয়ে চওড়া (max-w-[1400px]) করা হয়েছে */}
+            {/* মেইন কন্টেইনার - গ্যাপ কমিয়ে চওড়া (max-w-[1400px]) করা হয়েছে */}
             <div className="max-w-[1400px] mx-auto px-4 lg:px-6 relative z-20">
 
                 {/* ২. কুইক পে কার্ড */}
@@ -80,7 +81,7 @@ export default function PayBillPage() {
                     </div>
                 </motion.div>
 
-                {/* ৩. পেমেন্ট গাইডসমূহ - চওড়া এবং স্মার্ট কার্ড */}
+                {/* ৩. পেমেন্ট গাইডসমূহ - চওড়া এবং স্মার্ট কার্ড */}
                 <div className="mt-20 space-y-12">
                     {payBillData.paymentMethods.map((method, index) => (
                         <motion.div
@@ -104,7 +105,7 @@ export default function PayBillPage() {
                                         Instruction Guide
                                     </div>
                                     <h2 className="text-2xl lg:text-4xl font-black text-slate-900 mb-6 leading-tight font-hind">
-                                        পেমেন্ট করুন <span className="text-blue-600">{method.name}</span> দিয়ে
+                                        পেমেন্ট করুন <span className="text-blue-600">{method.name}</span> দিয়ে
                                     </h2>
                                     <div className="space-y-2">
                                         {method.steps.map((step, i) => (
@@ -120,7 +121,7 @@ export default function PayBillPage() {
                     ))}
                 </div>
 
-                {/* ৪. কার্ড পেমেন্ট সেকশন - চওড়া করা হয়েছে */}
+                {/* ৪. কার্ড পেমেন্ট সেকশন - চওড়া করা হয়েছে */}
                 <section className="mt-16">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.98 }}
@@ -139,12 +140,14 @@ export default function PayBillPage() {
                             <div className="flex items-center gap-4 mb-10">
                                 <input type="checkbox" id="visa-pay-terms" className="w-6 h-6 rounded-md border-blue-300 text-blue-600 focus:ring-blue-500 cursor-pointer accent-blue-600 transition-all" />
                                 <label htmlFor="visa-pay-terms" className="text-sm lg:text-base text-slate-600 font-medium font-hind">
-                                    I read and agreed to the <span className="text-blue-600 font-bold mx-1 cursor-pointer hover:underline transition-all">Terms conditions</span>, <span className="text-blue-600 font-bold mx-1 cursor-pointer hover:underline transition-all">Return & refund</span> & <span className="text-blue-600 font-bold mx-1 cursor-pointer hover:underline transition-all">Privacy policy</span>
+                                    I read and agreed to the <span className="text-blue-600 font-bold mx-1 cursor-pointer hover:underline transition-all"><Link href="/terms">Terms conditions</Link></span>, <span className="text-blue-600 font-bold mx-1 cursor-pointer hover:underline transition-all"><Link href="/refund">Return & refund</Link></span> & <span className="text-blue-600 font-bold mx-1 cursor-pointer hover:underline transition-all"><Link href="/privacy">Privacy policy</Link></span>
                                 </label>
                             </div>
-                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-4.5 rounded-2xl transition-all shadow-[0_10px_30px_rgba(234,88,12,0.3)] flex items-center gap-3 active:scale-95 whitespace-nowrap font-poppins text-lg uppercase tracking-widest">
-                                Pay Now <ArrowRight size={22} strokeWidth={3} />
-                            </button>
+                            <Link href="/pay-service" className="flex items-center gap-2">
+                                <button className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-4.5 rounded-2xl transition-all shadow-[0_10px_30px_rgba(234,88,12,0.3)] flex items-center gap-3 active:scale-95 whitespace-nowrap font-poppins text-lg uppercase tracking-widest">
+                                    Pay Now <ArrowRight size={22} strokeWidth={3} />
+                                </button>
+                            </Link>
                         </div>
                     </motion.div>
                 </section>
@@ -179,7 +182,7 @@ export default function PayBillPage() {
                                     </h3>
                                 </div>
 
-                                {/* নিচের অংশ: ব্যাংক ইনফরমেশন (গ্যাপ কমিয়ে স্লিম করা হয়েছে) */}
+                                {/* নিচের অংশ: ব্যাংক ইনফরমেশন (গ্যাপ কমিয়ে স্লিম করা হয়েছে) */}
                                 <div className="space-y-2.5">
                                     {[
                                         { label: "Account Name", value: bank.accountName },
@@ -206,4 +209,3 @@ export default function PayBillPage() {
         </div>
     );
 }
-
