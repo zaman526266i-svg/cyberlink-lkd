@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import usePublicContent from '@/lib/usePublicContent';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function PayBillPage() {
     const { data: payBillData, loading } = usePublicContent("payBill", {
@@ -54,9 +55,9 @@ export default function PayBillPage() {
 
             {/* ১. হেডার সেকশন - প্যাডিং কমিয়ে চওড়া করা হয়েছে */}
             <section className="relative h-[250px] lg:h-[350px] flex items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
+              <div className="absolute inset-0 z-0">
                     <img
-                        src="/header/paybill.jpg"
+                        src="https://i.ibb.co.com/S4dsfHLD/paybill.png" 
                         className="w-full h-full object-cover"
                         alt="Pay Bill Header"
                     />

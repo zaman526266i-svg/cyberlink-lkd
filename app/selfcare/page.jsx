@@ -23,7 +23,7 @@ export default function SelfcarePage() {
             <section className="relative h-[300px] lg:h-[400px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img 
-                        src={selfcareData.header.bgImage} 
+                        src="https://i.ibb.co.com/JwtCKqgd/selfcare.png"
                         className="w-full h-full object-cover opacity-100" 
                         alt="Selfcare BG" 
                     />

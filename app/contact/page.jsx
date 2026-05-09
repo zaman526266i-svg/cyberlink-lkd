@@ -24,7 +24,8 @@ export default function ContactPage() {
             <section className="relative h-[300px] lg:h-[450px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="header/contact-us.jpg"
+                        src="https://i.ibb.co.com/S4WRhs5B/contact.png"
+                        className="w-full h-full object-cover"
                         alt="Contact banner"
                         className="w-full h-full object-cover opacity-100"
                     />

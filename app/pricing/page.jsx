@@ -6,7 +6,7 @@ import { motion, AnimatePresence, useMotionValue, useMotionTemplate, useTransfor
 import { Briefcase, Check, ChevronRight, LayoutGrid } from "lucide-react";
 import usePublicContent from "@/lib/usePublicContent";
 
-const InteractivePricingCard = ({ plan, index }) => {
+const InteractivePricingCard = ({ plan, index, linkKind = "regular" }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const rotateX = useTransform(mouseY, [-150, 150], [10, -10]);
@@ -74,7 +74,13 @@ const InteractivePricingCard = ({ plan, index }) => {
               <span className="text-blue-600 text-sm font-black mb-1 font-poppins">/Mo</span>
             </div>
           </div>
-          <Link href={`/connection?package=${encodeURIComponent(plan.speed || "")}`}>
+          <Link
+            href={
+              linkKind === "sme"
+                ? `/connection?kind=sme&package=${encodeURIComponent(plan.speed || "")}&plan=${encodeURIComponent(plan.name || "")}`
+                : `/connection?package=${encodeURIComponent(plan.speed || "")}&plan=${encodeURIComponent(plan.name || "")}`
+            }
+          >
             <button className="w-full lg:w-full bg-blue-600 hover:bg-blue-700 text-white font-black px-8 py-4 rounded-2xl transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 active:scale-95 uppercase tracking-widest text-xs">
               <span>Get Started</span>
               <ChevronRight size={18} />
@@ -104,7 +110,7 @@ export default function PricingPage() {
     <div className="min-h-screen bg-white text-slate-800 font-hind pb-24">
       <section className="relative h-[300px] lg:h-[400px] flex items-center justify-center overflow-hidden">
         <img
-          src="/header/pricing.png"
+          src="https://i.ibb.co.com/Z6n3yK6g/Pricing-1.png"
           alt="Pricing banner"
           className="absolute inset-0 w-full h-full object-cover "
         />
@@ -126,12 +132,14 @@ export default function PricingPage() {
         <div className="flex justify-center -mt-10 mb-16">
           <div className="bg-white/80 backdrop-blur-md p-2 rounded-2xl border border-blue-200 flex gap-2 shadow-xl">
             <button
+              type="button"
               onClick={() => setActiveTab("regular")}
               className={`flex items-center gap-2 px-8 py-3 rounded-xl font-black transition-all duration-300 uppercase tracking-widest text-xs ${activeTab === "regular" ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30" : "hover:bg-blue-50 text-blue-400"}`}
             >
               <LayoutGrid size={16} /> Regular
             </button>
             <button
+              type="button"
               onClick={() => setActiveTab("sme")}
               className={`flex items-center gap-2 px-8 py-3 rounded-xl font-black transition-all duration-300 uppercase tracking-widest text-xs ${activeTab === "sme" ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30" : "hover:bg-blue-50 text-blue-400"}`}
             >
@@ -142,9 +150,20 @@ export default function PricingPage() {
 
         <div className="max-w-6xl mx-auto space-y-8">
           <AnimatePresence mode="wait">
-            <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-8">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="space-y-8"
+            >
               {currentPlans.map((plan, index) => (
-                <InteractivePricingCard key={plan.id} plan={plan} index={index} />
+                <InteractivePricingCard
+                  key={plan.id}
+                  plan={plan}
+                  index={index}
+                  linkKind={activeTab === "sme" ? "sme" : "regular"}
+                />
               ))}
             </motion.div>
           </AnimatePresence>

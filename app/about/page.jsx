@@ -21,7 +21,7 @@ const { data: aboutData, loading } = usePublicContent("about", {
  >
  <section className="relative h-[400px] lg:h-[500px] flex items-center justify-center overflow-hidden">
 <img
- src="/header/about-section.png"
+ src="https://i.ibb.co.com/2YjrrDq5/about-1.png"
  alt="About banner"
  className="absolute inset-0 w-full h-full object-cover opacity-100"
  />

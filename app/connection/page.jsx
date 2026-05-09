@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { jsPDF } from "jspdf";
+import { useSearchParams } from "next/navigation";
 
 function sanitizeFileNamePart(value) {
   return String(value || "")
@@ -99,9 +100,12 @@ function downloadRequestPdf(requestData) {
 }
 
 export default function ConnectionForm() {
+  const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [locating, setLocating] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [submittedRequest, setSubmittedRequest] = useState(null);
   const [regions, setRegions] = useState([]);
   const [packages, setPackages] = useState([]);
   const [formData, setFormData] = useState({
@@ -126,13 +130,7 @@ export default function ConnectionForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prev) => {
-      const nextValue = { ...prev, [name]: value };
-      if (step === 1 && nextValue.package && nextValue.location) {
-        setStep(2);
-      }
-      return nextValue;
-    });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   useEffect(() => {
@@ -173,6 +171,59 @@ export default function ConnectionForm() {
     loadPackages();
   }, []);
 
+  useEffect(() => {
+    const requestedPackage = (searchParams.get("package") || "").trim();
+    const requestedPlan = (searchParams.get("plan") || "").trim();
+    const kind = (searchParams.get("kind") || "").trim().toLowerCase();
+    if (!requestedPackage && !requestedPlan) return;
+
+    const normalize = (value) => String(value || "").replace(/\s+/g, " ").trim().toLowerCase();
+
+    if (kind === "sme" && requestedPackage) {
+      const smeLabel = requestedPlan ? `${requestedPackage} — ${requestedPlan} (SME)` : `${requestedPackage} (SME)`;
+      const needle = normalize(smeLabel);
+
+      const matchedPackage = packages.find((pkg) => {
+        const label = normalize(pkg?.label);
+        if (!label) return false;
+        if (label === needle || label.includes(needle) || needle.includes(label)) return true;
+        const pkgSpeed = normalize(requestedPackage);
+        const pkgPlan = normalize(requestedPlan);
+        if (pkgSpeed && label.includes(pkgSpeed) && (!pkgPlan || label.includes(pkgPlan))) return true;
+        return false;
+      });
+
+      const labelToUse = matchedPackage?.label || smeLabel;
+
+      setPackages((prev) => {
+        const n = normalize(labelToUse);
+        if (prev.some((p) => normalize(p.label) === n)) return prev;
+        return [...prev, { label: labelToUse, price: matchedPackage?.price || "", category: "sme" }];
+      });
+
+      setFormData((prev) => (prev.package ? prev : { ...prev, package: labelToUse }));
+      return;
+    }
+
+    if (!packages.length) return;
+
+    const packageNeedle = normalize(requestedPackage);
+    const planNeedle = normalize(requestedPlan);
+
+    const matchedPackage = packages.find((pkg) => {
+      const label = normalize(pkg?.label);
+      if (!label) return false;
+      if (packageNeedle && (label === packageNeedle || label.includes(packageNeedle) || packageNeedle.includes(label))) {
+        return true;
+      }
+      return Boolean(planNeedle && label.includes(planNeedle));
+    });
+
+    if (matchedPackage?.label) {
+      setFormData((prev) => (prev.package ? prev : { ...prev, package: matchedPackage.label }));
+    }
+  }, [packages, searchParams]);
+
   const handleNext = () => {
     if (!formData.package || !formData.location) {
       alert("Package and location are required.");
@@ -208,6 +259,32 @@ export default function ConnectionForm() {
     );
   };
 
+  const startPayment = async (requestData) => {
+    if (!requestData?._id) return;
+    try {
+      setPaymentLoading(true);
+      const paymentRes = await fetch("/api/payments/init", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          flowType: "new_connection",
+          requestId: requestData._id,
+          packageLabel: requestData.package || formData.package,
+          source: "connection_form",
+        }),
+      });
+      const paymentData = await paymentRes.json();
+      if (!paymentRes.ok || !paymentData.success || !paymentData.data?.gatewayUrl) {
+        throw new Error(paymentData.error || "Payment session could not be created.");
+      }
+      window.location.href = paymentData.data.gatewayUrl;
+    } catch {
+      alert("Could not start payment right now. You can pay later from support.");
+    } finally {
+      setPaymentLoading(false);
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -224,23 +301,7 @@ export default function ConnectionForm() {
           requestData.reference = requestData.referenceSource;
         }
         downloadRequestPdf(requestData);
-
-        const paymentRes = await fetch("/api/payments/init", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            flowType: "new_connection",
-            requestId: requestData._id || result?.id || "",
-            packageLabel: requestData.package || formData.package,
-            source: "connection_form",
-          }),
-        });
-        const paymentData = await paymentRes.json();
-        if (!paymentRes.ok || !paymentData.success || !paymentData.data?.gatewayUrl) {
-          throw new Error(paymentData.error || "Payment session could not be created.");
-        }
-
-        window.location.href = paymentData.data.gatewayUrl;
+        setSubmittedRequest(requestData);
       } else {
         alert("Something went wrong, please try again.");
       }
@@ -260,7 +321,39 @@ export default function ConnectionForm() {
         </div>
 
         <form onSubmit={handleSubmit} className="p-8 lg:p-14">
-          {step === 1 ? (
+          {submittedRequest ? (
+            <div className="space-y-6">
+              <div className="bg-emerald-900/20 border border-emerald-500/30 rounded-2xl p-6">
+                <p className="text-emerald-300 text-[10px] font-black uppercase tracking-widest mb-2">Request Submitted</p>
+                <h3 className="text-white text-xl font-black mb-2">Your connection request has been saved.</h3>
+                <p className="text-slate-300 text-sm">
+                  Request ID: <span className="font-bold">{submittedRequest?._id || "N/A"}</span>
+                </p>
+                <p className="text-slate-400 text-sm mt-2">
+                  You can complete payment now or continue and pay later. Our team can also help you complete payment.
+                </p>
+              </div>
+              <div className="flex flex-col md:flex-row gap-3 md:justify-end">
+                <button
+                  type="button"
+                  onClick={() => startPayment(submittedRequest)}
+                  disabled={paymentLoading}
+                  className="bg-orange-600 hover:bg-orange-700 text-white font-black px-8 py-4 rounded-2xl transition-all shadow-xl shadow-orange-600/30 disabled:opacity-50"
+                >
+                  {paymentLoading ? "STARTING PAYMENT..." : "PAY NOW"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => (window.location.href = "/")}
+                  className="bg-slate-800 hover:bg-slate-700 text-white font-black px-8 py-4 rounded-2xl transition-all"
+                >
+                  PAY LATER
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+          {!submittedRequest && step === 1 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="flex flex-col gap-2">
                 <label className="text-orange-400 text-[10px] font-black uppercase tracking-widest">Select Package *</label>
@@ -328,7 +421,9 @@ export default function ConnectionForm() {
                 </button>
               </div>
             </div>
-          ) : (
+          ) : null}
+
+          {!submittedRequest && step === 2 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-in fade-in slide-in-from-right-4 duration-500">
               <div className="flex flex-col gap-2">
                 <label className="text-orange-400 text-[10px] font-black uppercase tracking-widest">Full Name *</label>
@@ -391,11 +486,11 @@ export default function ConnectionForm() {
                   &larr; Back
                 </button>
                 <button type="submit" disabled={loading} className="bg-orange-600 hover:bg-orange-700 text-white font-black px-12 py-4 rounded-2xl transition-all shadow-xl shadow-orange-600/30 disabled:opacity-50">
-                  {loading ? "PROCESSING PAYMENT..." : "CONFIRM & PAY"}
+                  {loading ? "SUBMITTING REQUEST..." : "SUBMIT REQUEST"}
                 </button>
               </div>
             </div>
-          )}
+          ) : null}
         </form>
       </div>
     </div>
