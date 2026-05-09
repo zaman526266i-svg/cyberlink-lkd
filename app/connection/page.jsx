@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { jsPDF } from "jspdf";
 import { useSearchParams } from "next/navigation";
 
@@ -99,7 +99,21 @@ function downloadRequestPdf(requestData) {
   doc.save(fileName);
 }
 
-export default function ConnectionForm() {
+export default function ConnectionPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 text-slate-400 text-sm font-semibold">
+          Loading form...
+        </div>
+      }
+    >
+      <ConnectionForm />
+    </Suspense>
+  );
+}
+
+function ConnectionForm() {
   const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
