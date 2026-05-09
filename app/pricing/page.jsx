@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useMotionTemplate, useTransform } from "framer-motion";
 import { Briefcase, Check, ChevronRight, LayoutGrid } from "lucide-react";
 import usePublicContent from "@/lib/usePublicContent";
+import PageBanner from "@/components/PageBanner";
 
 const InteractivePricingCard = ({ plan, index, linkKind = "regular" }) => {
   const mouseX = useMotionValue(0);
@@ -108,25 +109,18 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-800 font-hind pb-24">
-      <section className="relative h-[300px] lg:h-[400px] flex items-center justify-center overflow-hidden">
-        <img
-          src="https://i.ibb.co.com/Z6n3yK6g/Pricing-1.png"
-          alt="Pricing banner"
-          className="absolute inset-0 w-full h-full object-cover "
-        />
-        <div className="relative z-10 text-center px-6 max-w-4xl">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl lg:text-7xl font-black italic text-white font-poppins mb-4 uppercase tracking-tighter  rounded-xl px-5 py-2 inline-block"
-          >
-            {pricingData?.header?.title || "Pricing Plans"}
-          </motion.h1>
-          <p className="text-white text-lg lg:text-xl font-bold max-w-2xl mx-auto  rounded-xl p-3">
-            {pricingData?.header?.description || "Choose the best package for your budget and needs."}
-          </p>
-        </div>
-      </section>
+      <PageBanner src="https://i.ibb.co.com/Z6n3yK6g/Pricing-1.png" alt="Pricing banner" align="left">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl lg:text-7xl font-black italic text-white font-poppins mb-4 uppercase tracking-tighter rounded-xl py-2 drop-shadow-lg"
+        >
+          {pricingData?.header?.title || "Pricing Plans"}
+        </motion.h1>
+        <p className="text-white text-lg lg:text-xl font-bold max-w-2xl leading-relaxed rounded-xl py-1 drop-shadow-md">
+          {pricingData?.header?.description || "Choose the best package for your budget and needs."}
+        </p>
+      </PageBanner>
 
       <div className="container mx-auto px-4 lg:px-10 relative z-20">
         <div className="flex justify-center -mt-10 mb-16">

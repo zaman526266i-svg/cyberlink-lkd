@@ -5,6 +5,7 @@ import {
   Database, Users, BarChart3, Settings, 
   ShieldCheck, Zap, Globe, Cpu, ArrowRight, MessageSquare 
 } from 'lucide-react';
+import PageBanner from '@/components/PageBanner';
 
 const ErpyPage = () => {
     // --- ERP মডিউল ডাটা ---
@@ -44,34 +45,16 @@ const ErpyPage = () => {
     return (
         <div className="min-h-screen  bg-white font-hind selection:text-white selection:bg-blue-600">
             
-            {/* ১. লাক্সারি হেডার সেকশন */}
-            <section className="relative h-[450px] lg:h-[550px] flex items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img 
-                        src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
-                        className="w-full h-full object-cover " 
-                        alt="ERP Header" 
-                    />
-                    
-                </div>
-
-                <div className="container mx-auto px-6  lg:px-20 relative z-10">
-                    <motion.div 
-                        initial={{ opacity: 0, x: -50 }} 
-                        animate={{ opacity: 1, x: 0 }} 
-                        transition={{ duration: 0.8 }}
-                        className="max-w-3xl"
-                    >
-                        <div className="inline-block px-4 py-1 bg-blue-600 text-white rounded-lg text-xs font-black mb-6 tracking-[0.3em] font-poppins uppercase shadow-lg shadow-blue-600/20">
-                            The Next-Gen ERP
-                        </div>
-                        <h1 className="text-5xl lg:text-9xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic leading-none">
-                            ERP System
-                        </h1>
-                        
-                    </motion.div>
-                </div>
-            </section>
+            <PageBanner src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" alt="ERP header" align="left">
+                <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                    <div className="inline-block px-4 py-1 bg-blue-600 text-white rounded-lg text-xs font-black mb-6 tracking-[0.3em] font-poppins uppercase shadow-lg shadow-blue-600/20">
+                        The Next-Gen ERP
+                    </div>
+                    <h1 className="text-5xl lg:text-9xl font-black mb-6 text-white font-poppins tracking-tighter uppercase italic leading-none drop-shadow-lg">
+                        ERP System
+                    </h1>
+                </motion.div>
+            </PageBanner>
 
             <div className="container py-10 mx-auto px-4 lg:px-10 relative z-20">
                 

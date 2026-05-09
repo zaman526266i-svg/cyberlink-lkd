@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Search, Map, ChevronDown } from "lucide-react";
+import PageBanner from "@/components/PageBanner";
 
 export default function CoveragePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -59,20 +60,16 @@ export default function CoveragePage() {
 
   return (
     <div className="min-h-screen bg-white font-hind selection:text-white selection:bg-blue-600">
-      <section className="relative h-[350px] lg:h-[450px] flex items-center justify-center overflow-hidden">
-        <img
-          src="https://i.ibb.co.com/Q3LMKhm4/covarage-1.png"
-          alt="Coverage banner"
-          className="absolute inset-0 w-full h-full object-cover "
-        />
-     
-        <div className="relative z-10 text-center px-6 py-3">
-     <h1 className="text-4xl lg:text-7xl font-black text-white italic font-poppins tracking-tighter uppercase  drop-shadow-2xl">
-  {coverageData.header.title}
-</h1>
-
-        </div>
-      </section>
+      <PageBanner src="https://i.ibb.co.com/Q3LMKhm4/covarage-1.png" alt="Coverage banner" align="left">
+        <h1 className="text-4xl lg:text-7xl font-black text-white italic font-poppins tracking-tighter uppercase ">
+          {coverageData.header.title}
+        </h1>
+        {coverageData.header.description ? (
+          <p className="mt-4 max-w-2xl text-base font-semibold text-white/90 drop-shadow-md md:text-lg">
+            {coverageData.header.description}
+          </p>
+        ) : null}
+      </PageBanner>
 
       <div className="container mx-auto px-4 lg:px-10 relative z-20">
         <div className="flex justify-center mt-12 mb-20">

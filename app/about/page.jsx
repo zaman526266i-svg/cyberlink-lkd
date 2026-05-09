@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import usePublicContent from "@/lib/usePublicContent";
+import PageBanner from "@/components/PageBanner";
 
 export default function AboutPage() {
 const { data: aboutData, loading } = usePublicContent("about", {
@@ -19,31 +20,25 @@ const { data: aboutData, loading } = usePublicContent("about", {
  <div
  className="min-h-screen   font-hind selection:text-white selection:bg-cyan-600"
  >
- <section className="relative h-[400px] lg:h-[500px] flex items-center justify-center overflow-hidden">
-<img
+ <PageBanner
  src="https://i.ibb.co.com/2YjrrDq5/about-1.png"
  alt="About banner"
- className="absolute inset-0 w-full h-full object-cover opacity-100"
- />
-
-
- <div className="relative z-10 text-center px-6">
+ align="center"
+ >
  <motion.h1
-initial={{ opacity: 0, y: -20 }}
+ initial={{ opacity: 0, y: -20 }}
  animate={{ opacity: 1, y: 0 }}
- className="text-5xl lg:text-8xl font-black italic tracking-tighter text-white 
-  drop-shadow-[0_10px_20px_rgba(0,0,0,0.2)] font-poppins uppercase  rounded-xl px-5 py-2 inline-block"
+ className="text-5xl lg:text-8xl font-black italic tracking-tighter text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.35)] font-poppins uppercase rounded-xl px-5 py-2 inline-block"
  >
  {aboutData.aboutHeader.title}
-<div className="w-24 h-1.5 bg-cyan-400 mx-auto mt-4 rounded-full" />
-</motion.h1>
+ <div className="w-24 h-1.5 bg-cyan-400 mx-auto mt-4 rounded-full" />
+ </motion.h1>
  <motion.div
  initial={{ width: 0 }}
  animate={{ width: "120px" }}
  className="h-2 bg-blue-500 mx-auto mt-4 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.35)]"
  />
- </div>
- </section>
+ </PageBanner>
 
 <div className="container mx-auto px-6 lg:px-20 -mt-20 relative z-20">
  <motion.div

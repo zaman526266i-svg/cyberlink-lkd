@@ -329,50 +329,6 @@ export default function HomePage() {
                                 </motion.div>
                             ))}
                         </div>
-
-                        {/* {homeData.smePlans?.length ? (
-                            <div className="max-w-6xl mx-auto mt-20 space-y-8">
-                                <div className="text-center">
-                                    <div className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-amber-900">
-                                        <Briefcase size={14} className="text-amber-700" />
-                                        SME &amp; Business
-                                    </div>
-                                    <h3 className="mt-4 text-3xl lg:text-4xl font-black text-slate-900 font-poppins uppercase tracking-tight">SME <span className="text-amber-700">Plans</span></h3>
-                                    <p className="mt-2 text-slate-600 text-sm lg:text-base max-w-2xl mx-auto">Dedicated options for offices and growing teams — same request form, clearly marked as SME.</p>
-                                </div>
-                                <div className="space-y-6">
-                                    {homeData.smePlans.map((plan) => (
-                                        <motion.div
-                                            key={plan.id}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            viewport={{ once: true }}
-                                            className="bg-white border-2 border-amber-200/80 rounded-[2.5rem] p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between group hover:border-amber-500 transition-all duration-300 shadow-xl shadow-amber-900/5"
-                                        >
-                                            <div className="w-full lg:w-1/4 text-center flex flex-col items-center">
-                                                <h3 className="text-2xl font-black text-slate-900 mb-1 font-poppins uppercase tracking-tighter">{plan.name}</h3>
-                                                <p className="text-amber-800/80 text-[10px] font-black uppercase tracking-widest mb-6">SME Package</p>
-                                                <div className="bg-amber-600 text-white px-10 py-3 rounded-full text-xl font-black italic shadow-lg shadow-amber-600/30">{plan.speed}</div>
-                                            </div>
-                                            <div className="w-full lg:w-2/4 grid grid-cols-1 md:grid-cols-2 gap-4 py-8 lg:py-0 border-y lg:border-y-0 lg:border-x border-amber-100 lg:px-12">
-                                                {(plan.features || []).map((feature, idx) => (
-                                                    <div key={idx} className="flex items-center gap-3 text-sm font-bold text-slate-700">
-                                                        <div className="bg-amber-100 p-1 rounded-full text-amber-700"><Check size={14} strokeWidth={4} /></div>
-                                                        {feature}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                            <div className="w-full lg:w-1/4 text-center">
-                                                <div className="mb-6"><span className="text-4xl lg:text-5xl font-black text-slate-900">TK {plan.price}</span><span className="text-amber-700 text-xs font-black uppercase ml-1">/Mo</span></div>
-                                                <Link href={`/connection?package=${encodeURIComponent(plan.speed || "")}&plan=${encodeURIComponent(plan.name || "")}`}>
-                                                    <button type="button" className="bg-amber-600 hover:bg-amber-700 text-white font-black px-10 py-3.5 rounded-xl transition-all shadow-lg active:scale-95 whitespace-nowrap font-poppins text-xs w-full lg:w-auto">Buy Now</button>
-                                                </Link>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        ) : null} */}
                     </div>
                 </section>
             </div>

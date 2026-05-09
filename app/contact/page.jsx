@@ -6,6 +6,7 @@ import {
   User, MessageSquare, Tag, Globe 
 } from 'lucide-react';
 import usePublicContent from '@/lib/usePublicContent';
+import PageBanner from '@/components/PageBanner';
 
 export default function ContactPage() {
     const { data: contactData, loading } = usePublicContent("contact", {
@@ -20,19 +21,14 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen bg-white font-hind selection:text-white selection:bg-blue-600">
             
-            {/* ১. হেডার সেকশন - নীল/ডার্ক ওভারলেসহ (ভিডিওর সাথে মিল রেখে) */}
-            <section className="relative h-[300px] lg:h-[450px] flex items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img
-                        src="https://i.ibb.co.com/S4WRhs5B/contact.png"
-                        className="w-full h-full object-cover"
-                        alt="Contact banner"
-                        className="w-full h-full object-cover opacity-100"
-                    />
-                </div>
-
-               
-            </section>
+            <PageBanner src="https://i.ibb.co.com/S4WRhs5B/contact.png" alt="Contact banner" align="left">
+                <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+                    <h1 className="text-4xl font-black text-white drop-shadow-lg sm:text-5xl lg:text-7xl font-poppins uppercase italic tracking-tight">
+                        Contact us
+                    </h1>
+                    
+                </motion.div>
+            </PageBanner>
 
             <div className="container mx-auto px-4 lg:px-10 relative z-20">
                 

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import PageBanner from "@/components/PageBanner";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, BadgePercent, Sparkles } from "lucide-react";
@@ -37,21 +38,8 @@ export default function OffersPage() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.18),_transparent_22%),linear-gradient(180deg,#f7fbff_0%,#eef6ff_38%,#ffffff_100%)] pb-24 font-hind selection:bg-blue-600 selection:text-white">
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          {offersData.header.bgImage ? (
-            <Image
-              src={offersData.header.bgImage}
-              alt="Offers Background"
-              fill
-              priority
-              className="object-cover"
-            />
-          ) : null}
-          <div className="absolute inset-0 bg-[linear-gradient(125deg,rgba(2,6,23,0.88),rgba(30,64,175,0.72),rgba(2,132,199,0.42))]" />
-        </div>
-
-        <div className="relative mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:min-h-[680px] lg:px-12">
+      {offersData.header.bgImage ? (
+        <PageBanner src={offersData.header.bgImage} alt="Offers background" align="left">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,10 +53,22 @@ export default function OffersPage() {
             <h1 className="max-w-3xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white drop-shadow-2xl sm:text-6xl lg:text-8xl">
               {offersData.header.title || "Offers & Campaigns"}
             </h1>
-           
           </motion.div>
-        </div>
-      </section>
+        </PageBanner>
+      ) : (
+        <section className="relative flex min-h-[280px] items-center bg-[#050a14] px-4 py-16 sm:px-6 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="mx-auto max-w-7xl"
+          >
+            <h1 className="text-4xl font-black uppercase text-white sm:text-6xl lg:text-8xl">
+              {offersData.header.title || "Offers & Campaigns"}
+            </h1>
+          </motion.div>
+        </section>
+      )}
 
       <div className="relative z-10 mx-auto -mt-16 max-w-7xl px-4 sm:-mt-20 sm:px-6 lg:-mt-24 lg:px-12">
         {loading ? (

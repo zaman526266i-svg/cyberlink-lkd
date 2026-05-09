@@ -5,6 +5,7 @@ import {
   PlusCircle, RefreshCw, Move, Wifi, 
   ArrowRight, Smartphone, User, CheckCircle2 
 } from 'lucide-react';
+import PageBanner from '@/components/PageBanner';
 
 const PayServicePage = () => {
     // --- ডাটা সরাসরি এখানে সেট করা হলো ---
@@ -104,28 +105,16 @@ const PayServicePage = () => {
     return (
         <div className="min-h-screen  bg-white font-hind selection:text-white selection:bg-blue-600 pb-24">
             
-            {/* ১. প্রিমিয়াম হেডার সেকশন */}
-            <section className="relative h-[300px] lg:h-[400px] flex items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img 
-                        src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
-                        className="w-full h-full object-cover " 
-                        alt="Header BG" 
-                    />
-                    
-                </div>
-
-                <div className="container mx-auto px-6 lg:px-20 relative z-10">
-                    <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-2xl">
-                        <h1 className="text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic">
-                            Pay Service
-                        </h1>
-                        <p className="text-white text-lg lg:text-xl font-bold leading-relaxed font-hind  rounded-xl p-3 inline-block">
-                            আপনার প্রয়োজনীয় সার্ভিসটি সিলেক্ট করুন এবং সরাসরি অনলাইনে পেমেন্ট সম্পন্ন করুন।
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+            <PageBanner src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" alt="Pay service header" align="left">
+                <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
+                    <h1 className="text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic drop-shadow-lg">
+                        Pay Service
+                    </h1>
+                    <p className="text-white text-lg lg:text-xl font-bold leading-relaxed font-hind max-w-2xl drop-shadow-md">
+                        আপনার প্রয়োজনীয় সার্ভিসটি সিলেক্ট করুন এবং সরাসরি অনলাইনে পেমেন্ট সম্পন্ন করুন।
+                    </p>
+                </motion.div>
+            </PageBanner>
 
             <div className="container mx-auto px-4 lg:px-10 relative z-20">
                 

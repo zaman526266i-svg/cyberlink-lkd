@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Tag, ArrowRight, Search, ChevronRight } from 'lucide-react';
 import usePublicContent from '@/lib/usePublicContent';
+import PageBanner from '@/components/PageBanner';
 
 const ArticlesPage = () => {
   const { data: articlesData, loading } = usePublicContent("articles", {
@@ -23,31 +24,16 @@ const ArticlesPage = () => {
   return (
     <div className="min-h-screen font-hind pb-20 bg-slate-50 selection:text-[#082453] selection:bg-[#BFFF00]">
       
-      {/* ১. প্রিমিয়াম ডার্ক সার্ভার হেডার সেকশন */}
-      <section className="relative h-[380px] lg:h-[450px] flex items-center overflow-hidden bg-[#020b18]">
-        
-        {/* সার্ভার ইমেজ (আপনার ইমেজের লোকেশন দিন) */}
-        <img 
-          src="/banner/article.png" 
-          alt="Tech Articles Cover" 
-          className="absolute inset-0 w-full h-full object-cover opacity-60 z-0 mix-blend-lighten"
-        />
-        
-        {/* ডার্ক ব্লু ওভারলে যাতে লেখা একদম ক্লিয়ার থাকে */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020813] via-[#04142c]/90 to-transparent z-0"></div>
-
-        <div className="container mx-auto px-6 lg:px-20 relative z-10 -mt-16 lg:-mt-24">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-            <h1 className="text-5xl lg:text-7xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic drop-shadow-2xl">
-              Tech <span className="text-[#BFFF00] drop-shadow-sm">Articles</span>
-            </h1>
-            
-            <p className="text-slate-200 text-lg lg:text-xl font-medium max-w-xl leading-relaxed drop-shadow-md">
-              {articlesData.header.description || "ইন্টারনেট জগত সম্পর্কে আরও জানুন। আমাদের টেকনিক্যাল টিম নিয়মিত আপনাদের জন্য প্রয়োজনীয় টিপস এবং গাইড শেয়ার করে থাকে।"}
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageBanner src="/banner/article.png" alt="Tech articles cover" align="left">
+        <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
+          <h1 className="text-5xl lg:text-7xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic drop-shadow-2xl">
+            Tech <span className="text-[#BFFF00] drop-shadow-sm">Articles</span>
+          </h1>
+          <p className="text-slate-100 text-lg lg:text-xl font-medium max-w-xl leading-relaxed drop-shadow-md">
+            {articlesData.header.description || "ইন্টারনেট জগত সম্পর্কে আরও জানুন। আমাদের টেকনিক্যাল টিম নিয়মিত আপনাদের জন্য প্রয়োজনীয় টিপস এবং গাইড শেয়ার করে থাকে।"}
+          </p>
+        </motion.div>
+      </PageBanner>
 
       {/* ২. ক্যাটাগরি ও কন্টেন্ট সেকশন (Overlapping) */}
       <div className="container mx-auto px-4 lg:px-10 relative z-20 -mt-24 lg:-mt-28">

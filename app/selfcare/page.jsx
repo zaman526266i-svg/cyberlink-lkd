@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Lock, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 import usePublicContent from '@/lib/usePublicContent';
+import PageBanner from '@/components/PageBanner';
 
 export default function SelfcarePage() {
     const { data: selfcareData, loading } = usePublicContent("selfcare", {
@@ -19,28 +20,16 @@ export default function SelfcarePage() {
     return (
         <div className="min-h-screen bg-white font-hind selection:text-white selection:bg-orange-500 pb-24">
             
-            {/* ১. ডার্ক হেডার সেকশন (সার্কিট ব্যাকগ্রাউন্ড লুক) */}
-            <section className="relative h-[300px] lg:h-[400px] flex items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <img 
-                        src="https://i.ibb.co.com/JwtCKqgd/selfcare.png"
-                        className="w-full h-full object-cover opacity-100" 
-                        alt="Selfcare BG" 
-                    />
-                    
-                </div>
-
-                <div className="container mx-auto px-6 lg:px-20 relative z-10">
-                    <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-3xl">
-                        <h1  className="text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic">
-                            Login to <span className="text-blue-700">Selfcare</span>
-                        </h1>
-                        <p className="text-white text-lg lg:text-xl font-bold leading-relaxed font-hind  rounded-xl p-3 inline-block">
-                            {selfcareData.header.description}
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+            <PageBanner src="https://i.ibb.co.com/JwtCKqgd/selfcare.png" alt="Selfcare" align="left">
+                <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
+                    <h1 className="text-5xl lg:text-8xl font-black mb-4 text-white font-poppins tracking-tighter uppercase italic drop-shadow-lg">
+                        Login to <span className="text-blue-300">Selfcare</span>
+                    </h1>
+                    <p className="text-white text-lg lg:text-xl font-bold leading-relaxed font-hind max-w-2xl drop-shadow-md">
+                        {selfcareData.header.description}
+                    </p>
+                </motion.div>
+            </PageBanner>
 
             <div className="container mx-auto px-4 lg:px-10 relative z-20">
                 
