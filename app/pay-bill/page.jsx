@@ -112,45 +112,48 @@ export default function PayBillPage() {
                     </div>
                 </motion.div>
 
-                {/* ৩. পেমেন্ট গাইডসমূহ - চওড়া এবং স্মার্ট কার্ড */}
-                <div className="mt-20 space-y-12">
-                    {payBillData.paymentMethods.map((method, index) => (
-                        <motion.div
-                            key={method.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border border-blue-200/50"
-                        >
-                            <div className={`flex flex-col lg:flex-row items-stretch ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-                                <div className="w-full lg:w-1/2 bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-6 lg:p-10 border-b lg:border-b-0 border-blue-100">
-                                    <img
-                                        src={method.appImage}
-                                        className="max-w-full h-auto max-h-[380px] object-contain drop-shadow-2xl rounded-2xl"
-                                        alt={method.name}
-                                    />
-                                </div>
-
-                                <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                                    <div className="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-[9px] font-black mb-4 tracking-[0.2em] font-poppins uppercase w-fit">
-                                        Instruction Guide
-                                    </div>
-                                    <h2 className="text-2xl lg:text-4xl font-black text-slate-900 mb-6 leading-tight font-hind">
-                                        পেমেন্ট করুন <span className="text-blue-600">{method.name}</span> দিয়ে
-                                    </h2>
-                                    <div className="space-y-2">
-                                        {method.steps.map((step, i) => (
-                                            <div key={i} className="flex items-center gap-3 p-2 lg:p-3 bg-blue-50/50 rounded-xl border border-transparent hover:border-blue-200 transition-all group">
-                                                <span className="w-7 h-7 lg:w-8 lg:h-8 bg-white text-blue-600 rounded-lg flex items-center justify-center font-black shrink-0 shadow-sm border border-blue-100 text-xs lg:text-sm font-poppins">{i + 1}</span>
-                                                <p className="text-sm lg:text-base font-bold text-slate-700 leading-tight font-hind">{step}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+              {/* ৩. পেমেন্ট গাইডসমূহ - চওড়া এবং স্মার্ট কার্ড */}
+<div className="mt-20 space-y-12">
+    {payBillData.paymentMethods.map((method, index) => (
+        <motion.div
+            key={method.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border border-blue-200/50"
+        >
+            <div className={`flex flex-col lg:flex-row items-stretch ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+                
+                {/* ইমেজের সাইড - এখানে পরিবর্তন করা হয়েছে */}
+                <div className="w-full lg:w-1/2 bg-gradient-to-br from-blue-50 to-white flex items-center justify-center py-8 lg:py-12 border-b lg:border-b-0 border-blue-100">
+                    <img
+                        src='https://i.ibb.co.com/svpCds0B/Blue-and-White-Illustrated-Online-Payment-Gateway-Instagram-Post-1-1-1.png'
+                        className="w-[90%] h-auto object-contain drop-shadow-2xl rounded-2xl"
+                        alt={method.name}
+                    />
                 </div>
+
+                {/* টেক্সটের সাইড */}
+                <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                    <div className="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-[9px] font-black mb-4 tracking-[0.2em] font-poppins uppercase w-fit">
+                        Instruction Guide
+                    </div>
+                    <h2 className="text-2xl lg:text-4xl font-black text-slate-900 mb-6 leading-tight font-hind">
+                        পেমেন্ট করুন <span className="text-blue-600">Online Banking</span> দিয়ে
+                    </h2>
+                    <div className="space-y-2">
+                        {method.steps.map((step, i) => (
+                            <div key={i} className="flex items-center gap-3 p-2 lg:p-3 bg-blue-50/50 rounded-xl border border-transparent hover:border-blue-200 transition-all group">
+                                <span className="w-7 h-7 lg:w-8 lg:h-8 bg-white text-blue-600 rounded-lg flex items-center justify-center font-black shrink-0 shadow-sm border border-blue-100 text-xs lg:text-sm font-poppins">{i + 1}</span>
+                                <p className="text-sm lg:text-base font-bold text-slate-700 leading-tight font-hind">{step}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    ))}
+</div>
 
                 {/* ৪. কার্ড পেমেন্ট সেকশন - চওড়া করা হয়েছে */}
                 <section className="mt-16">

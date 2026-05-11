@@ -1,17 +1,19 @@
 /**
- * Full-bleed hero strip: image fills width (no side letterboxing), height capped so it is not overly tall.
- * object-cover keeps edges filled; center focal point. Height is ~2× the previous compact strip. No dimming overlay on the image.
+ * Full-bleed hero strip with fixed reduced height.
+ * Used `object-fill` so the image takes 100% width and 100% height,
+ * showing the full image without cropping (note: this may stretch the image).
  */
 export default function PageBanner({ src, alt = "", align = "left", children, className = "" }) {
   const center = align === "center";
 
   return (
-    <section className={`relative w-full overflow-hidden bg-[#0a1628] ${className}`}>
-      <div className="relative w-full h-[clamp(400px,56svh,680px)] sm:h-[clamp(440px,60svh,720px)] md:h-[clamp(480px,64svh,760px)] lg:h-[clamp(520px,68svh,800px)]">
+    <section className={`relative w-full overflow-hidden bg-[#0a1628] border-t border-gray-700 ${className}`}>
+      {/* 75% reduced height across all breakpoints */}
+      <div className="relative w-full h-[clamp(300px,42svh,510px)] sm:h-[clamp(330px,45svh,540px)] md:h-[clamp(360px,48svh,570px)] lg:h-[clamp(390px,51svh,600px)]">
         <img
           src={src}
           alt={alt}
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-fill"
           decoding="async"
           sizes="100vw"
         />
