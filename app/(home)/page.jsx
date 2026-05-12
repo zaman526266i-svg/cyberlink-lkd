@@ -1,10 +1,11 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Lottie from "lottie-react";
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import usePublicContent from "@/lib/usePublicContent";
+import { mergeRegularPlansForSite, publicPlanListKey } from "@/lib/planMerge";
 
 // Swiper ইমপোর্ট
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -60,6 +61,14 @@ export default function HomePage() {
         regularPlans: [],
         smePlans: [],
     });
+    const { data: pricingData } = usePublicContent("pricing", {
+        regularPlans: [],
+    });
+
+    const mergedRegularPlans = useMemo(
+        () => mergeRegularPlansForSite(homeData?.regularPlans, pricingData?.regularPlans),
+        [homeData?.regularPlans, pricingData?.regularPlans]
+    );
     
     // ৩ডি এনিমেশন ভ্যালু
     const x = useMotionValue(0);
@@ -305,8 +314,8 @@ export default function HomePage() {
                             <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-6 shadow-lg shadow-blue-500/20"></div>
                         </div>
                         <div className="space-y-6 max-w-6xl mx-auto">
-                            {homeData.regularPlans?.map((plan) => (
-                                <motion.div key={plan.id} whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} viewport={{ once: true }} className="bg-white border border-blue-200 rounded-[2.5rem] p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between group hover:border-blue-500 transition-all duration-300 shadow-xl">
+                            {mergedRegularPlans?.map((plan, index) => (
+                                <motion.div key={publicPlanListKey(plan, "regular", index)} whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} viewport={{ once: true }} className="bg-white border border-blue-200 rounded-[2.5rem] p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between group hover:border-blue-500 transition-all duration-300 shadow-xl">
                                     <div className="w-full lg:w-1/4 text-center flex flex-col items-center">
                                         <h3 className="text-2xl font-black text-slate-900 mb-1 font-poppins uppercase tracking-tighter">{plan.name}</h3>
                                         <p className="text-blue-900/60 text-[10px] font-black uppercase tracking-widest mb-6">Digital Journey Start</p>
@@ -322,8 +331,11 @@ export default function HomePage() {
                                     </div>
                                     <div className="w-full lg:w-1/4 text-center">
                                         <div className="mb-6"><span className="text-4xl lg:text-5xl font-black text-slate-900">TK {plan.price}</span><span className="text-blue-700 text-xs font-black uppercase ml-1">/Mo</span></div>
-                                        <Link href={`/connection?package=${encodeURIComponent(plan.speed || "")}&plan=${encodeURIComponent(plan.name || "")}`}>
-                                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-black px-10 py-3.5 rounded-xl transition-all shadow-lg active:scale-95 whitespace-nowrap font-poppins text-xs">Buy Now</button>
+                                        <Link
+                                            href={`/connection?package=${encodeURIComponent(plan.speed || "")}&plan=${encodeURIComponent(plan.name || "")}`}
+                                            className="inline-block whitespace-nowrap rounded-xl bg-blue-600 px-10 py-3.5 font-poppins text-xs font-black text-white shadow-lg transition-all hover:bg-blue-700 active:scale-95"
+                                        >
+                                            Buy Now
                                         </Link>
                                     </div>
                                 </motion.div>

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useMotionTemplate, useTransform } from "framer-motion";
 import { Briefcase, Check, ChevronRight, LayoutGrid } from "lucide-react";
 import usePublicContent from "@/lib/usePublicContent";
 import PageBanner from "@/components/PageBanner";
+import { mergeRegularPlansForSite, mergeSmePlansForSite, publicPlanListKey } from "@/lib/planMerge";
 
 const InteractivePricingCard = ({ plan, index, linkKind = "regular" }) => {
   const mouseX = useMotionValue(0);
@@ -81,11 +82,10 @@ const InteractivePricingCard = ({ plan, index, linkKind = "regular" }) => {
                 ? `/connection?kind=sme&package=${encodeURIComponent(plan.speed || "")}&plan=${encodeURIComponent(plan.name || "")}`
                 : `/connection?package=${encodeURIComponent(plan.speed || "")}&plan=${encodeURIComponent(plan.name || "")}`
             }
+            className="inline-flex w-full lg:w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-8 py-4 text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-blue-600/30 transition-all hover:bg-blue-700 active:scale-95"
           >
-            <button className="w-full lg:w-full bg-blue-600 hover:bg-blue-700 text-white font-black px-8 py-4 rounded-2xl transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 active:scale-95 uppercase tracking-widest text-xs">
-              <span>Get Started</span>
-              <ChevronRight size={18} />
-            </button>
+            <span>Get Started</span>
+            <ChevronRight size={18} />
           </Link>
         </div>
       </div>
@@ -95,13 +95,27 @@ const InteractivePricingCard = ({ plan, index, linkKind = "regular" }) => {
 
 export default function PricingPage() {
   const [activeTab, setActiveTab] = useState("regular");
-  const { data: pricingData, loading } = usePublicContent("pricing", {
+  const { data: homeData, loading: homeLoading } = usePublicContent("home", {
+    regularPlans: [],
+    smePlans: [],
+  });
+  const { data: pricingData, loading: pricingLoading } = usePublicContent("pricing", {
     header: {},
     regularPlans: [],
     smePlans: [],
   });
 
-  const currentPlans = activeTab === "regular" ? pricingData?.regularPlans || [] : pricingData?.smePlans || [];
+  const regularMerged = useMemo(
+    () => mergeRegularPlansForSite(homeData?.regularPlans, pricingData?.regularPlans),
+    [homeData?.regularPlans, pricingData?.regularPlans]
+  );
+  const smeMerged = useMemo(
+    () => mergeSmePlansForSite(homeData?.smePlans, pricingData?.smePlans),
+    [homeData?.smePlans, pricingData?.smePlans]
+  );
+
+  const currentPlans = activeTab === "regular" ? regularMerged : smeMerged;
+  const loading = homeLoading || pricingLoading;
 
   if (loading) {
     return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
@@ -153,7 +167,7 @@ export default function PricingPage() {
             >
               {currentPlans.map((plan, index) => (
                 <InteractivePricingCard
-                  key={plan.id}
+                  key={publicPlanListKey(plan, activeTab === "sme" ? "sme" : "regular", index)}
                   plan={plan}
                   index={index}
                   linkKind={activeTab === "sme" ? "sme" : "regular"}

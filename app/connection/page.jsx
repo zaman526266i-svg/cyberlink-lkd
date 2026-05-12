@@ -219,8 +219,6 @@ function ConnectionForm() {
       return;
     }
 
-    if (!packages.length) return;
-
     const packageNeedle = normalize(requestedPackage);
     const planNeedle = normalize(requestedPlan);
 
@@ -235,6 +233,18 @@ function ConnectionForm() {
 
     if (matchedPackage?.label) {
       setFormData((prev) => (prev.package ? prev : { ...prev, package: matchedPackage.label }));
+      return;
+    }
+
+    // Deep link from pricing/home passes speed as `package`; keep selection + option if list is still loading or differs.
+    if (requestedPackage.trim()) {
+      const speedLabel = requestedPackage.trim();
+      setPackages((prev) => {
+        const n = normalize(speedLabel);
+        if (prev.some((p) => normalize(p.label) === n)) return prev;
+        return [...prev, { label: speedLabel, price: "" }];
+      });
+      setFormData((prev) => (prev.package ? prev : { ...prev, package: speedLabel }));
     }
   }, [packages, searchParams]);
 
